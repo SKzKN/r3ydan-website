@@ -1,0 +1,13 @@
+# Secrets — never commit (contain live MongoDB Atlas credentials)
+.env
+.env.*
+
+# OS / editor cruft
+.DS_Store
+**/.DS_Store
+
+# Node
+node_modules/
+
+# Personal local Claude config
+.claude/settings.local.json

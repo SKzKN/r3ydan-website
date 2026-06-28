@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "R3ydan Website",
+      "runtimeExecutable": "/Users/lyrim/.nvm/versions/node/v24.17.0/bin/node",
+      "runtimeArgs": ["server.js"],
+      "port": 3000
+    }
+  ]
+}

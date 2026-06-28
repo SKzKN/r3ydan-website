@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyVideoAgency - Loome lühivideosid, mis kasvatavad brändide mõju sotsmeedias. Professionaalne video produktsioon Eestis.">
+    <meta name="keywords" content="video produktsioon, lühivideod, sotsiaalmeedia, turundus, Eesti">
+    <title>MyVideoAgency - Lühivideo Produktsioon</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #151515;
+            --bg-card: #1A1A1A;
+            --accent-light: #E8F4F8;
+            --accent-blue: #B8D4E3;
+            --accent-subtle: #9BB5C4;
+            --text-primary: #F5F5F5;
+            --text-secondary: #B8B8B8;
+            --text-muted: #888888;
+            --gradient-primary: linear-gradient(135deg, #151515 0%, #0A0A0A 100%);
+            --gradient-card: linear-gradient(145deg, #1A1A1A 0%, #131313 100%);
+            --shadow-glow: 0 0 20px rgba(184, 212, 227, 0.15);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --border-subtle: rgba(184, 212, 227, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Particle Animation Background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(21, 21, 21, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            text-shadow: 0 0 10px rgba(184, 212, 227, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+            text-shadow: 0 0 8px rgba(184, 212, 227, 0.4);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--accent-blue);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(184, 212, 227, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            min-height: 60vh;
+            padding-top: 10vh;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-subtle));
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Hero Clients Section */
+        .hero-clients {
+            padding: 1rem 0 0 0;
+            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.3));
+        }
+
+        .clients-intro {
+            display: none;
+        }
+
+        .hero-logos {
+            margin: 0;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 10px;
+            padding: 1.5rem 0;
+        }
+
+        .hero-logos .logo-item {
+            width: 180px;
+        }
+
+        .hero-logos .logo-placeholder {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(184, 212, 227, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            height: 100px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-logos .logo-placeholder:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(184, 212, 227, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .hero-logos .logo-placeholder i {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            opacity: 0.9;
+        }
+
+        .hero-logos .logo-placeholder span {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--gradient-card);
+        }
+
+        /* Client Logos Animation */
+        .client-logos {
+            margin: 3rem 0;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .logo-track {
+            display: flex;
+            animation: scrollLogos 15s linear infinite;
+            gap: 4rem;
+        }
+
+        .logo-item {
+            flex-shrink: 0;
+            width: 200px;
+        }
+
+        .logo-placeholder {
+            background: var(--gradient-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .client-logo {
+            max-width: 100%;
+            max-height: 80px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: brightness(0.9) contrast(1.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-placeholder:hover .client-logo {
+            filter: brightness(1.1) contrast(1.2);
+            transform: scale(1.05);
+        }
+
+        .logo-placeholder:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(184, 212, 227, 0.1);
+        }
+
+        @keyframes scrollLogos {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Process Section */
+        .process {
+            background: var(--bg-primary);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            background: var(--gradient-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .process-step.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-blue);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-subtle));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--bg-primary);
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            background: var(--gradient-card);
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-study-card {
+            background: var(--gradient-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-blue);
+        }
+
+        /* Case Study Preview Overlay */
+        .case-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+        .case-study-card:hover .case-preview {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .preview-content {
+            width: 90%;
+            max-width: 300px;
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .case-study-card:hover .preview-content {
+            transform: translateY(0);
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .preview-header h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .preview-close {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .preview-close:hover {
+            opacity: 1;
+        }
+
+        .preview-video-placeholder {
+            background: var(--gradient-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            gap: 0.5rem;
+        }
+
+        .preview-video-placeholder i {
+            color: var(--accent-blue);
+            font-size: 2rem;
+        }
+
+        .preview-video-placeholder span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .preview-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-number {
+            display: block;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
+        .preview-description {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .case-metric {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(184, 212, 227, 0.3);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(184, 212, 227, 0.1);
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-subtle));
+            width: 0;
+            transition: width 2s ease;
+            border-radius: 2px;
+        }
+
+        .case-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .case-link:hover {
+            text-shadow: 0 0 8px rgba(184, 212, 227, 0.4);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: var(--bg-primary);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--gradient-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(184, 212, 227, 0.05) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-blue);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .benefit-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: var(--gradient-card);
+        }
+
+        .price-calculator {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--gradient-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .calculator-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .base-package {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-subtle));
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--bg-primary);
+        }
+
+        .base-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .base-description p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .base-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .options-section {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .option-group {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .option-select {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .option-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(184, 212, 227, 0.2);
+        }
+
+        .checkbox-options {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .checkbox-group {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-group:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-checkbox {
+            display: none;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border-subtle);
+            border-radius: 6px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .option-checkbox:checked + .checkmark {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        .option-checkbox:checked + .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--bg-primary);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .checkbox-text {
+            flex: 1;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .checkbox-price {
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .option-description {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-left: 40px;
+        }
+
+        .price-summary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-line:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            padding-top: 1rem;
+            border-top: 2px solid var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .calculator-cta {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            display: flex;
+        }
+
+        /* FAQ Section */
+        .faq {
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: var(--gradient-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(184, 212, 227, 0.03);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.open {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-cta {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-blue);
+            text-shadow: 0 0 8px rgba(184, 212, 227, 0.4);
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 255, 255, 0.1);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--bg-secondary);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero-container {
+                min-height: 50vh;
+                padding: 2rem;
+                padding-top: 8vh;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .process-grid,
+            .case-studies-grid,
+            .benefits-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-content {
+                width: 95%;
+                max-width: 250px;
+            }
+
+            .preview-header h4 {
+                font-size: 1rem;
+            }
+
+            .preview-video-placeholder {
+                height: 100px;
+            }
+
+            .preview-video-placeholder i {
+                font-size: 1.5rem;
+            }
+
+            .preview-stats {
+                gap: 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 1rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .preview-description {
+                font-size: 0.8rem;
+            }
+
+            .logo-item {
+                width: 150px;
+            }
+
+            .hero-logos .logo-item {
+                width: 140px;
+            }
+
+            .hero-logos .logo-placeholder {
+                padding: 1rem 0.5rem;
+                height: 80px;
+            }
+
+            .hero-logos .client-logo {
+                max-height: 60px;
+            }
+
+            .logo-placeholder {
+                padding: 1.5rem 0.5rem;
+                height: 100px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .price-calculator {
+                padding: 2rem 1.5rem;
+            }
+
+            .base-package {
+                padding: 1.5rem;
+            }
+
+            .base-title {
+                font-size: 1.25rem;
+            }
+
+            .base-price {
+                font-size: 1.75rem;
+            }
+
+            .checkbox-group {
+                padding: 1rem;
+            }
+
+            .option-description {
+                margin-left: 32px;
+                font-size: 0.8rem;
+            }
+
+            .price-summary {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Title Animation */
+        .hero-title,
+        .hero-content p,
+        .hero-content .cta-button {
+            opacity: 0;
+        }
+
+        .hero-title {
+            animation: heroFadeIn 1.5s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .hero-content p {
+            animation: heroFadeIn 1.5s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .hero-content .cta-button {
+            animation: heroFadeIn 1.5s ease forwards;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Animation Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">MyVideoAgency</div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link">Avaleht</a></li>
+                <li><a href="#process" class="nav-link">Protsess</a></li>
+                <li><a href="#case-studies" class="nav-link">Tööd</a></li>
+                <li><a href="#pricing" class="nav-link">Hinnad</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">Loome lühivideosid, mis kasvatavad brändide mõju sotsmeedias</h1>
+                <p class="fade-in">Meie kogenud produtsendid ja monteerijad aitavad Sinu turundustiimil tõusta uute kõrgusteni</p>
+                <a href="https://calendly.com" class="cta-button fade-in">Alusta tasuta strateegiakõnega!</a>
+            </div>
+        </div>
+        
+        <!-- Client Logos in Hero -->
+        <div class="hero-clients">
+            <div class="container">
+                <div class="client-logos hero-logos">
+                    <div class="logo-track">
+                        <div class="logo-item">
+                            <div class="logo-placeholder">
+                                <img src="11346894_arco-vara-kinnisvaraburoo-ou_31010806_a_xl.jpg" alt="Arco Vara" class="client-logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder">
+                                <img src="optibet-logo-3D-Horizontal-04-white-bg-002.png" alt="Optibet" class="client-logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder">
+                                <img src="timber.webp" alt="Timber" class="client-logo">
+                            </div>
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder">
+                                <img src="11346894_arco-vara-kinnisvaraburoo-ou_31010806_a_xl.jpg" alt="Arco Vara" class="client-logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder">
+                                <img src="optibet-logo-3D-Horizontal-04-white-bg-002.png" alt="Optibet" class="client-logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder">
+                                <img src="timber.webp" alt="Timber" class="client-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="section case-studies">
+        <div class="container">
+            <h2 class="section-title">Tööde näited</h2>
+            <p class="section-subtitle">Numbrid, mis räägivad enda eest</p>
+            <div class="case-studies-grid">
+                <div class="case-study-card fade-in">
+                    <div class="case-preview">
+                        <div class="preview-content">
+                            <div class="preview-header">
+                                <h4>TikTok Kampaania Case Study</h4>
+                                <div class="preview-close">&times;</div>
+                            </div>
+                            <div class="preview-body">
+                                <div class="preview-video-placeholder">
+                                    <i class="fas fa-play"></i>
+                                    <span>Demo Video</span>
+                                </div>
+                                <div class="preview-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">20M</span>
+                                        <span class="stat-label">Vaatamisi</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">95%</span>
+                                        <span class="stat-label">Engagement</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">300%</span>
+                                        <span class="stat-label">ROI</span>
+                                    </div>
+                                </div>
+                                <p class="preview-description">E-kaubanduse ettevõtte jaoks loodud TikTok kampaania, mis saavutas viralse staatuse ja tõstis müüki 300%.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-metric" data-target="20000000">0</div>
+                    <p class="metric-label">Vaatamisi</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="95"></div>
+                    </div>
+                    <p>E-kaubanduse ettevõte TikTok kampaania</p>
+                    <a href="#" class="case-link">Ava case study <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="case-study-card fade-in">
+                    <div class="case-preview">
+                        <div class="preview-content">
+                            <div class="preview-header">
+                                <h4>Instagram Reels Case Study</h4>
+                                <div class="preview-close">&times;</div>
+                            </div>
+                            <div class="preview-body">
+                                <div class="preview-video-placeholder">
+                                    <i class="fas fa-play"></i>
+                                    <span>Demo Video</span>
+                                </div>
+                                <div class="preview-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">350%</span>
+                                        <span class="stat-label">Müügi kasv</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">2M</span>
+                                        <span class="stat-label">Reach</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">85%</span>
+                                        <span class="stat-label">Engagement</span>
+                                    </div>
+                                </div>
+                                <p class="preview-description">Moe brändi Instagram Reels seeria, mis tõstis müüki 350% ja saavutas üle 2 miljoni jõudmise.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-metric" data-target="350">0%</div>
+                    <p class="metric-label">Müügi kasv</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85"></div>
+                    </div>
+                    <p>Moe brändi Instagram Reels seeria</p>
+                    <a href="#" class="case-link">Ava case study <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="case-study-card fade-in">
+                    <div class="case-preview">
+                        <div class="preview-content">
+                            <div class="preview-header">
+                                <h4>YouTube Shorts Case Study</h4>
+                                <div class="preview-close">&times;</div>
+                            </div>
+                            <div class="preview-body">
+                                <div class="preview-video-placeholder">
+                                    <i class="fas fa-play"></i>
+                                    <span>Demo Video</span>
+                                </div>
+                                <div class="preview-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">5M</span>
+                                        <span class="stat-label">Jõudmine</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">90%</span>
+                                        <span class="stat-label">Completion Rate</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">400%</span>
+                                        <span class="stat-label">Growth</span>
+                                    </div>
+                                </div>
+                                <p class="preview-description">Tehnoloogiaettevõtte YouTube Shorts kampaania, mis saavutas 5M jõudmise ja 90% lõpetamise määra.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-metric" data-target="5000000">0</div>
+                    <p class="metric-label">Jõudmist</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="90"></div>
+                    </div>
+                    <p>Tehnoloogiaettevõtte YouTube Shorts</p>
+                    <a href="#" class="case-link">Ava case study <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section process">
+        <div class="container">
+            <h2 class="section-title">Meie töökäik</h2>
+            <p class="section-subtitle">Lihtne ja tõhus protsess, mis toob tulemusi</p>
+            <div class="process-grid">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="step-title">Strateegia</h3>
+                    <p class="step-description">Analüüsime Teie sihtgrupi ja konkurente, et luua tõhus videostrateegia</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="step-title">Produktsioon</h3>
+                    <p class="step-description">Filmime professionaalse seadmestiku ja kogenud meeskonnaga</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3 class="step-title">Montaaž</h3>
+                    <p class="step-description">Loome köitva sisu, mis jääb vaatajatele meelde ja motiveerib tegutsema</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="step-title">Postitamine & analüüs</h3>
+                    <p class="step-description">Optimeerime postitamist ja jälgime tulemusi pidevaks parandamiseks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="section benefits">
+        <div class="container">
+            <h2 class="section-title">Miks valida meid?</h2>
+            <p class="section-subtitle">Kolm põhilist põhjust, miks me oleme parim valik</p>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Laienda tiimi</h3>
+                    <p class="benefit-description">Saad kohe ligipääsu professionaalsele videotiimile ilma täiendavaid töötajaid palkamata</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Kasvata vaatamisi</h3>
+                    <p class="benefit-description">Meie videod on optimeeritud algoritmidele ja genereerivad maksimaalset orgaanilist jõudmist</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="benefit-title">Eristu massist</h3>
+                    <p class="benefit-description">Loomingulised ja professionaalsed videod, mis aitavad Sul konkurentidest eristuda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section pricing">
+        <div class="container">
+            <h2 class="section-title">Hinnakalkulaator</h2>
+            <p class="section-subtitle">Koostage oma ideaalne videoturunduse pakett</p>
+            
+            <div class="price-calculator">
+                <div class="calculator-content">
+                    <div class="base-package">
+                        <h3 class="base-title">Baaspakett</h3>
+                        <div class="base-description">
+                            <p>4 videot + 1 võttepäev</p>
+                            <div class="base-price">€500</div>
+                        </div>
+                    </div>
+
+                    <div class="options-section">
+                        <div class="option-group">
+                            <label class="option-label">Videote arv</label>
+                            <select id="videoCount" class="option-select">
+                                <option value="4" data-price="500">4 videot - €500</option>
+                                <option value="6" data-price="600">6 videot - €600</option>
+                                <option value="8" data-price="800">8 videot - €800</option>
+                                <option value="12" data-price="1200">12 videot - €1200</option>
+                            </select>
+                        </div>
+
+                        <div class="checkbox-options">
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="creativeCopy" class="option-checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Loovkirjutamine</span>
+                                    <span class="checkbox-price" id="copyPrice">€200</span>
+                                </label>
+                                <p class="option-description">€50 per video (4 videot = €200)</p>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="postPlanning" class="option-checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Postituste planeerimine ja haldus</span>
+                                    <span class="checkbox-price">€250</span>
+                                </label>
+                                <p class="option-description">Sotsiaalmeedia sisu planeerimine ja avaldamine</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-summary">
+                        <div class="summary-line">
+                            <span>Baaspakk:</span>
+                            <span id="baseTotal">€500</span>
+                        </div>
+                        <div class="summary-line" id="copyLine" style="display: none;">
+                            <span>Loovkirjutamine:</span>
+                            <span id="copyTotal">€0</span>
+                        </div>
+                        <div class="summary-line" id="planningLine" style="display: none;">
+                            <span>Postituste planeerimine:</span>
+                            <span>€250</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>Kokku:</span>
+                            <span id="grandTotal">€500</span>
+                        </div>
+                        <a href="https://calendly.com" class="cta-button calculator-cta">Broneeri konsultatsioon</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq">
+                <h3 class="section-title" style="font-size: 2rem; margin-bottom: 2rem;">Korduma kippuvad küsimused</h3>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Kui kiiresti saame alustada?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tavaliselt saame alustada 2-3 tööpäeva jooksul pärast lepingu sõlmimist ja esimese strateegiakõne läbiviimist.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Kas teete ka pikemaid videosid?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Jah, lisaks lühivideotele pakume ka pikemaid videolahendusi. Võtke ühendust, et arutada konkreetseid vajadusi.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Mida revisjoni ring sisaldab?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Revisjoni ring sisaldab video muudatusi vastavalt Teie tagasisidele - teksti, muusika, effektide või montaaži muutmist.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Kas saate garanteerida tulemusi?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Kuigi me ei saa garanteerida kindlaid numbreid, saame lubada kvaliteetset ja algoritmioptimeeritud sisu, mis maksimeerib Teie võimalusi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-cta">
+                <h3 style="margin-bottom: 1rem;">Valmis alustama?</h3>
+                <a href="https://calendly.com" class="cta-button">Broneeri tasuta strateegiakõne</a>
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privaatsuspoliitika</a>
+                <a href="#" class="footer-link">Kasutustingimused</a>
+                <a href="mailto:info@myvideoagency.ee" class="footer-link">info@myvideoagency.ee</a>
+                <a href="tel:+37256789012" class="footer-link">+372 567 890 12</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                © 2025 MyVideoAgency. Kõik õigused kaitstud.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle Animation System
+        class ParticleSystem {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.particles = [];
+                this.animationId = null;
+                
+                this.resizeCanvas();
+                this.createParticles();
+                this.animate();
+                
+                window.addEventListener('resize', () => this.resizeCanvas());
+            }
+            
+            resizeCanvas() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+            
+            createParticles() {
+                const particleCount = Math.floor((this.canvas.width * this.canvas.height) / 15000);
+                
+                for (let i = 0; i < particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        size: Math.random() * 2 + 1,
+                        speedX: (Math.random() - 0.5) * 0.5,
+                        speedY: (Math.random() - 0.5) * 0.5,
+                        opacity: Math.random() * 0.5 + 0.2
+                    });
+                }
+            }
+            
+            updateParticles() {
+                this.particles.forEach(particle => {
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    if (particle.x > this.canvas.width) particle.x = 0;
+                    if (particle.x < 0) particle.x = this.canvas.width;
+                    if (particle.y > this.canvas.height) particle.y = 0;
+                    if (particle.y < 0) particle.y = this.canvas.height;
+                });
+            }
+            
+            drawParticles() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.particles.forEach(particle => {
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(0, 255, 255, ${particle.opacity})`;
+                    this.ctx.fill();
+                });
+                
+                this.drawConnections();
+            }
+            
+            drawConnections() {
+                this.particles.forEach((particle, i) => {
+                    this.particles.slice(i + 1).forEach(otherParticle => {
+                        const distance = Math.sqrt(
+                            (particle.x - otherParticle.x) ** 2 + 
+                            (particle.y - otherParticle.y) ** 2
+                        );
+                        
+                        if (distance < 100) {
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(particle.x, particle.y);
+                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
+                            this.ctx.strokeStyle = `rgba(0, 255, 255, ${0.1 * (1 - distance / 100)})`;
+                            this.ctx.lineWidth = 1;
+                            this.ctx.stroke();
+                        }
+                    });
+                });
+            }
+            
+            animate() {
+                this.updateParticles();
+                this.drawParticles();
+                this.animationId = requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize particle system
+            const particleCanvas = document.getElementById('particles-canvas');
+            const particleSystem = new ParticleSystem(particleCanvas);
+
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                    
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        
+                        // Animate counters
+                        if (entry.target.querySelector('.case-metric')) {
+                            animateCounters(entry.target);
+                        }
+                        
+                        // Animate progress bars
+                        if (entry.target.querySelector('.progress-fill')) {
+                            animateProgressBars(entry.target);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.fade-in, .process-step').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Counter animation
+            function animateCounters(container) {
+                const counters = container.querySelectorAll('.case-metric');
+                
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (target >= 1000000) {
+                        counter.textContent = (current / 1000000).toFixed(1) + 'M';
+                    } else if (target >= 1000) {
+                        counter.textContent = (current / 1000).toFixed(0) + 'K';
+                    } else {
+                        counter.textContent = Math.floor(current) + (counter.textContent.includes('%') ? '%' : '');
+                    }
+                }, 16);
+            });
+        }
+
+            // Progress bar animation
+            function animateProgressBars(container) {
+                const progressBars = container.querySelectorAll('.progress-fill');
+                
+                progressBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 500);
+                });
+            }
+
+            // FAQ functionality
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('.faq-icon');
+                    
+                    answer.classList.toggle('open');
+                    icon.classList.toggle('rotate');
+                });
+            });
+
+            // Parallax scrolling effect
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                
+                const heroElement = document.querySelector('.hero');
+                if (heroElement) {
+                    heroElement.style.transform = `translateY(${rate}px)`;
+                }
+            });
+
+            // Navbar background on scroll
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    if (window.scrollY > 50) {
+                        navbar.style.background = 'rgba(10, 37, 64, 0.95)';
+                    } else {
+                        navbar.style.background = 'rgba(10, 37, 64, 0.9)';
+                    }
+                }
+            });
+
+            // Button hover effects
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add glow effect to cards on hover
+            document.querySelectorAll('.testimonial-card, .process-step, .case-study-card, .benefit-card, .pricing-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.boxShadow = '0 0 30px rgba(184, 212, 227, 0.3)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.boxShadow = '';
+                });
+            });
+
+            // Price Calculator Functionality
+            const videoSelect = document.getElementById('videoCount');
+            const creativeCopyCheckbox = document.getElementById('creativeCopy');
+            const postPlanningCheckbox = document.getElementById('postPlanning');
+            const copyPriceSpan = document.getElementById('copyPrice');
+            const baseTotalSpan = document.getElementById('baseTotal');
+            const copyTotalSpan = document.getElementById('copyTotal');
+            const copyLine = document.getElementById('copyLine');
+            const planningLine = document.getElementById('planningLine');
+            const grandTotalSpan = document.getElementById('grandTotal');
+
+            function updateCalculator() {
+                const selectedOption = videoSelect.options[videoSelect.selectedIndex];
+                const videoCount = parseInt(selectedOption.value);
+                const basePrice = parseInt(selectedOption.dataset.price);
+
+                // Update base price
+                baseTotalSpan.textContent = `€${basePrice}`;
+
+                // Calculate creative copy price
+                const copyPrice = videoCount * 50;
+                copyPriceSpan.textContent = `€${copyPrice}`;
+
+                // Update summary
+                let total = basePrice;
+
+                // Add creative copy if checked
+                if (creativeCopyCheckbox.checked) {
+                    copyTotalSpan.textContent = `€${copyPrice}`;
+                    copyLine.style.display = 'flex';
+                    total += copyPrice;
+                } else {
+                    copyLine.style.display = 'none';
+                }
+
+                // Add post planning if checked
+                if (postPlanningCheckbox.checked) {
+                    planningLine.style.display = 'flex';
+                    total += 250;
+                } else {
+                    planningLine.style.display = 'none';
+                }
+
+                // Update grand total
+                grandTotalSpan.textContent = `€${total}`;
+
+                // Update copy price description
+                const copyDescription = creativeCopyCheckbox.closest('.checkbox-group').querySelector('.option-description');
+                copyDescription.textContent = `€50 per video (${videoCount} videot = €${copyPrice})`;
+            }
+
+            // Event listeners for calculator
+            if (videoSelect) {
+                videoSelect.addEventListener('change', updateCalculator);
+            }
+            if (creativeCopyCheckbox) {
+                creativeCopyCheckbox.addEventListener('change', updateCalculator);
+            }
+            if (postPlanningCheckbox) {
+                postPlanningCheckbox.addEventListener('change', updateCalculator);
+            }
+
+            // Initialize calculator
+            updateCalculator();
+
+            // Performance optimization: Pause particles when tab is not visible
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    if (particleSystem.animationId) {
+                        cancelAnimationFrame(particleSystem.animationId);
+                    }
+                } else {
+                    particleSystem.animate();
+                }
+            });
+        }); // End of DOMContentLoaded
+    </script>
+</body>
+</html>

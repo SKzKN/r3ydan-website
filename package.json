@@ -1,0 +1,12 @@
+{
+  "name": "r3ydan-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "R3ydan studio website with a server-rendered contact form (Resend).",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
