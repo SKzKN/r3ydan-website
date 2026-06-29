@@ -10,6 +10,11 @@ const CONTACT_TO = process.env.CONTACT_TO || 'studio@r3ydan.com';
 // but lands in spam more often. Verify your own domain in Resend and set
 // RESEND_FROM (e.g. "R3ydan <studio@r3ydan.com>") once you're ready.
 const FROM_ADDRESS = process.env.RESEND_FROM || 'R3ydan Website <onboarding@resend.dev>';
+// Where to send visitors back to after the form posts here. Needed when this
+// server only handles /api/contact and the site itself is hosted elsewhere
+// (e.g. GitHub Pages) — a bare relative redirect would otherwise land on
+// this server's own origin instead of the real site.
+const FRONTEND_URL = (process.env.FRONTEND_URL || '').replace(/\/$/, '');
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -27,7 +32,7 @@ const MIME = {
 
 function serveStatic(req, res) {
   let urlPath = decodeURIComponent(req.url.split('?')[0]);
-  if (urlPath === '/') urlPath = '/R3ydan Website.html';
+  if (urlPath === '/') urlPath = '/index.html';
   const filePath = path.join(ROOT, urlPath);
   if (!filePath.startsWith(ROOT)) {
     res.writeHead(403);
@@ -78,6 +83,11 @@ function escapeHtml(s) {
   return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+function redirectToContact(res, ok) {
+  res.writeHead(302, { Location: `${FRONTEND_URL}/?sent=${ok ? '1' : '0'}#contact` });
+  res.end();
+}
+
 async function handleContact(req, res) {
   try {
     const raw = await readBody(req);
@@ -90,21 +100,18 @@ async function handleContact(req, res) {
     // Bots fill every field, including ones hidden from real visitors. Pretend
     // success so they don't learn the honeypot was detected.
     if (honeypot) {
-      res.writeHead(302, { Location: '/?sent=1#contact' });
-      res.end();
+      redirectToContact(res, true);
       return;
     }
 
     if (!name || !email || !message) {
-      res.writeHead(302, { Location: '/?sent=0#contact' });
-      res.end();
+      redirectToContact(res, false);
       return;
     }
 
     if (!RESEND_API_KEY) {
       console.error('[contact] RESEND_API_KEY is not set in the environment — cannot send email.');
-      res.writeHead(302, { Location: '/?sent=0#contact' });
-      res.end();
+      redirectToContact(res, false);
       return;
     }
 
@@ -128,17 +135,14 @@ async function handleContact(req, res) {
 
     if (!resp.ok) {
       console.error('[contact] Resend API error:', resp.status, await resp.text());
-      res.writeHead(302, { Location: '/?sent=0#contact' });
-      res.end();
+      redirectToContact(res, false);
       return;
     }
 
-    res.writeHead(302, { Location: '/?sent=1#contact' });
-    res.end();
+    redirectToContact(res, true);
   } catch (err) {
     console.error('[contact] Unexpected error:', err);
-    res.writeHead(302, { Location: '/?sent=0#contact' });
-    res.end();
+    redirectToContact(res, false);
   }
 }
 

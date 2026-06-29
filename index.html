@@ -1,1908 +1,759 @@
 <!DOCTYPE html>
-<html lang="et">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MyVideoAgency - Loome lühivideosid, mis kasvatavad brändide mõju sotsmeedias. Professionaalne video produktsioon Eestis.">
-    <meta name="keywords" content="video produktsioon, lühivideod, sotsiaalmeedia, turundus, Eesti">
-    <title>MyVideoAgency - Lühivideo Produktsioon</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        :root {
-            --bg-primary: #0A0A0A;
-            --bg-secondary: #151515;
-            --bg-card: #1A1A1A;
-            --accent-light: #E8F4F8;
-            --accent-blue: #B8D4E3;
-            --accent-subtle: #9BB5C4;
-            --text-primary: #F5F5F5;
-            --text-secondary: #B8B8B8;
-            --text-muted: #888888;
-            --gradient-primary: linear-gradient(135deg, #151515 0%, #0A0A0A 100%);
-            --gradient-card: linear-gradient(145deg, #1A1A1A 0%, #131313 100%);
-            --shadow-glow: 0 0 20px rgba(184, 212, 227, 0.15);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
-            --border-subtle: rgba(184, 212, 227, 0.1);
-        }
 
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
 
-        /* Particle Animation Background */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.6;
-        }
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(21, 21, 21, 0.9);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid var(--border-subtle);
-        }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent-light);
-            text-shadow: 0 0 10px rgba(184, 212, 227, 0.3);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-blue);
-            text-shadow: 0 0 8px rgba(184, 212, 227, 0.4);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-blue);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--accent-blue);
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 3px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: var(--gradient-primary);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 40%, rgba(184, 212, 227, 0.08) 0%, transparent 50%);
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-            min-height: 60vh;
-            padding-top: 10vh;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .hero-content h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, var(--text-primary), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-
-        /* CTA Button */
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-subtle));
-            color: var(--bg-primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        /* Hero Clients Section */
-        .hero-clients {
-            padding: 1rem 0 0 0;
-            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.3));
-        }
-
-        .clients-intro {
-            display: none;
-        }
-
-        .hero-logos {
-            margin: 0;
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 10px;
-            padding: 1.5rem 0;
-        }
-
-        .hero-logos .logo-item {
-            width: 180px;
-        }
-
-        .hero-logos .logo-placeholder {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(184, 212, 227, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem 1rem;
-            height: 100px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-logos .logo-placeholder:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(184, 212, 227, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .hero-logos .logo-placeholder i {
-            font-size: 1.8rem;
-            color: var(--accent-blue);
-            opacity: 0.9;
-        }
-
-        .hero-logos .logo-placeholder span {
-            color: var(--text-primary);
-            font-weight: 500;
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 6rem 0;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: var(--gradient-card);
-        }
-
-        /* Client Logos Animation */
-        .client-logos {
-            margin: 3rem 0;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 15px;
-            padding: 2rem 0;
-            position: relative;
-        }
-
-        .logo-track {
-            display: flex;
-            animation: scrollLogos 15s linear infinite;
-            gap: 4rem;
-        }
-
-        .logo-item {
-            flex-shrink: 0;
-            width: 200px;
-        }
-
-        .logo-placeholder {
-            background: var(--gradient-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 15px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .client-logo {
-            max-width: 100%;
-            max-height: 80px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            filter: brightness(0.9) contrast(1.1);
-            transition: all 0.3s ease;
-        }
-
-        .logo-placeholder:hover .client-logo {
-            filter: brightness(1.1) contrast(1.2);
-            transform: scale(1.05);
-        }
-
-        .logo-placeholder:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 30px rgba(184, 212, 227, 0.1);
-        }
-
-        @keyframes scrollLogos {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Process Section */
-        .process {
-            background: var(--bg-primary);
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .process-step {
-            background: var(--gradient-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        .process-step.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .process-step:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--accent-blue);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-subtle));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--bg-primary);
-        }
-
-        .step-icon {
-            font-size: 2rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-        }
-
-        .step-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .step-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Case Studies Section */
-        .case-studies {
-            background: var(--gradient-card);
-        }
-
-        .case-studies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .case-study-card {
-            background: var(--gradient-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .case-study-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--accent-blue);
-        }
-
-        /* Case Study Preview Overlay */
-        .case-preview {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(20px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-        }
-
-        .case-study-card:hover .case-preview {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .preview-content {
-            width: 90%;
-            max-width: 300px;
-            text-align: center;
-            transform: translateY(20px);
-            transition: transform 0.4s ease 0.1s;
-        }
-
-        .case-study-card:hover .preview-content {
-            transform: translateY(0);
-        }
-
-        .preview-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .preview-header h4 {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .preview-close {
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .preview-close:hover {
-            opacity: 1;
-        }
-
-        .preview-video-placeholder {
-            background: var(--gradient-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            gap: 0.5rem;
-        }
-
-        .preview-video-placeholder i {
-            color: var(--accent-blue);
-            font-size: 2rem;
-        }
-
-        .preview-video-placeholder span {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .preview-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-
-        .stat {
-            text-align: center;
-            flex: 1;
-        }
-
-        .stat-number {
-            display: block;
-            color: var(--accent-blue);
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.75rem;
-        }
-
-        .preview-description {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        .case-metric {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(184, 212, 227, 0.3);
-        }
-
-        .metric-label {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(184, 212, 227, 0.1);
-            border-radius: 2px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-subtle));
-            width: 0;
-            transition: width 2s ease;
-            border-radius: 2px;
-        }
-
-        .case-link {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .case-link:hover {
-            text-shadow: 0 0 8px rgba(184, 212, 227, 0.4);
-        }
-
-        /* Benefits Section */
-        .benefits {
-            background: var(--bg-primary);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-card {
-            background: var(--gradient-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(184, 212, 227, 0.05) 0%, transparent 50%);
-            animation: float 6s ease-in-out infinite;
-            opacity: 0;
-        }
-
-        .benefit-card:hover::before {
-            opacity: 1;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--accent-blue);
-        }
-
-        .benefit-icon {
-            font-size: 3rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-        }
-
-        .benefit-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .benefit-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Pricing Section */
-        .pricing {
-            background: var(--gradient-card);
-        }
-
-        .price-calculator {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--gradient-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: var(--shadow-card);
-        }
-
-        .calculator-content {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .base-package {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-subtle));
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            color: var(--bg-primary);
-        }
-
-        .base-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .base-description p {
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-        }
-
-        .base-price {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .options-section {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .option-group {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .option-label {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 1.1rem;
-        }
-
-        .option-select {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
-            padding: 1rem;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .option-select:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(184, 212, 227, 0.2);
-        }
-
-        .checkbox-options {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .checkbox-group {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .checkbox-group:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-2px);
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-            margin-bottom: 0.5rem;
-        }
-
-        .option-checkbox {
-            display: none;
-        }
-
-        .checkmark {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--border-subtle);
-            border-radius: 6px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .option-checkbox:checked + .checkmark {
-            background: var(--accent-blue);
-            border-color: var(--accent-blue);
-        }
-
-        .option-checkbox:checked + .checkmark::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--bg-primary);
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .checkbox-text {
-            flex: 1;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        .checkbox-price {
-            font-weight: 600;
-            color: var(--accent-blue);
-        }
-
-        .option-description {
-            margin: 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-left: 40px;
-        }
-
-        .price-summary {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 15px;
-            padding: 2rem;
-        }
-
-        .summary-line {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border-subtle);
-            margin-bottom: 0.5rem;
-        }
-
-        .summary-line:last-of-type {
-            border-bottom: none;
-            margin-bottom: 1rem;
-        }
-
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            padding-top: 1rem;
-            border-top: 2px solid var(--accent-blue);
-            margin-bottom: 1.5rem;
-        }
-
-        .calculator-cta {
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-            display: flex;
-        }
-
-        /* FAQ Section */
-        .faq {
-            margin-top: 3rem;
-        }
-
-        .faq-item {
-            background: var(--gradient-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: rgba(184, 212, 227, 0.03);
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-answer.open {
-            padding: 1.5rem;
-            max-height: 200px;
-        }
-
-        .faq-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .faq-icon.rotate {
-            transform: rotate(180deg);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--bg-secondary);
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .footer-cta {
-            margin-bottom: 2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--accent-blue);
-            text-shadow: 0 0 8px rgba(184, 212, 227, 0.4);
-        }
-
-        /* Loading Spinner */
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(0, 255, 255, 0.1);
-            border-left: 4px solid var(--accent-cyan);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--bg-secondary);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 2rem;
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .hero-container {
-                min-height: 50vh;
-                padding: 2rem;
-                padding-top: 8vh;
-            }
-
-            .hero-content {
-                max-width: 100%;
-            }
-
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .pricing-card.featured {
-                transform: none;
-            }
-
-            .process-grid,
-            .case-studies-grid,
-            .benefits-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .preview-content {
-                width: 95%;
-                max-width: 250px;
-            }
-
-            .preview-header h4 {
-                font-size: 1rem;
-            }
-
-            .preview-video-placeholder {
-                height: 100px;
-            }
-
-            .preview-video-placeholder i {
-                font-size: 1.5rem;
-            }
-
-            .preview-stats {
-                gap: 0.5rem;
-            }
-
-            .stat-number {
-                font-size: 1rem;
-            }
-
-            .stat-label {
-                font-size: 0.7rem;
-            }
-
-            .preview-description {
-                font-size: 0.8rem;
-            }
-
-            .logo-item {
-                width: 150px;
-            }
-
-            .hero-logos .logo-item {
-                width: 140px;
-            }
-
-            .hero-logos .logo-placeholder {
-                padding: 1rem 0.5rem;
-                height: 80px;
-            }
-
-            .hero-logos .client-logo {
-                max-height: 60px;
-            }
-
-            .logo-placeholder {
-                padding: 1.5rem 0.5rem;
-                height: 100px;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .price-calculator {
-                padding: 2rem 1.5rem;
-            }
-
-            .base-package {
-                padding: 1.5rem;
-            }
-
-            .base-title {
-                font-size: 1.25rem;
-            }
-
-            .base-price {
-                font-size: 1.75rem;
-            }
-
-            .checkbox-group {
-                padding: 1rem;
-            }
-
-            .option-description {
-                margin-left: 32px;
-                font-size: 0.8rem;
-            }
-
-            .price-summary {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero Title Animation */
-        .hero-title,
-        .hero-content p,
-        .hero-content .cta-button {
-            opacity: 0;
-        }
-
-        .hero-title {
-            animation: heroFadeIn 1.5s ease forwards;
-            animation-delay: 0.5s;
-        }
-
-        .hero-content p {
-            animation: heroFadeIn 1.5s ease forwards;
-            animation-delay: 1s;
-        }
-
-        .hero-content .cta-button {
-            animation: heroFadeIn 1.5s ease forwards;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes heroFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+<script src="assets/bundle/23891ca3-13c2-4934-8b69-ef508cc7c0c9.js"></script>
 </head>
 <body>
-    <!-- Particle Animation Canvas -->
-    <canvas id="particles-canvas"></canvas>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <style>/* vietnamese */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/bundle/184852d8-fc21-41b6-b44f-600c07feb245.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/bundle/5d5819c1-c47b-43d7-a04b-32cf5191f85a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/bundle/f298f6e9-152f-4c7e-bf83-d39cfb7c9b63.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/bundle/69753fad-4a3b-4e61-b1e9-30d0862c9037.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/bundle/660b86e1-8216-4772-b537-384ecd56b65a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/bundle/84d13336-b46a-4c5d-b218-ac7950104cb2.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/bundle/69753fad-4a3b-4e61-b1e9-30d0862c9037.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/bundle/660b86e1-8216-4772-b537-384ecd56b65a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/bundle/84d13336-b46a-4c5d-b218-ac7950104cb2.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/bundle/69753fad-4a3b-4e61-b1e9-30d0862c9037.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/bundle/660b86e1-8216-4772-b537-384ecd56b65a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/bundle/84d13336-b46a-4c5d-b218-ac7950104cb2.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/bundle/69753fad-4a3b-4e61-b1e9-30d0862c9037.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/bundle/660b86e1-8216-4772-b537-384ecd56b65a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/bundle/84d13336-b46a-4c5d-b218-ac7950104cb2.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+  <style>
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    html,body{ margin:0; padding:0; background:#0F1117; }
+    ::selection{ background:#E1FF2B; color:#0A0A0B; }
+    a{ color:inherit; text-decoration:none; }
+    .r3-field::placeholder{ color:rgba(244,244,242,.5); }
+    @keyframes r3marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes r3pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  </style>
+</helmet>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">MyVideoAgency</div>
-            <ul class="nav-links">
-                <li><a href="#hero" class="nav-link">Avaleht</a></li>
-                <li><a href="#process" class="nav-link">Protsess</a></li>
-                <li><a href="#case-studies" class="nav-link">Tööd</a></li>
-                <li><a href="#pricing" class="nav-link">Hinnad</a></li>
-            </ul>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+<div id="r3-root" style="--acc:#E1FF2B; --ink:#0A0A0B; background:#0F1117; color:#F4F4F2; font-family:'Space Grotesk', sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;">
+
+  <!-- ============ NAV ============ -->
+  <header style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px 5vw; background:rgba(15,17,23,0.72); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.07);">
+    <a href="#top"><span style="font-size:23px; color:#F4F4F2; display:inline-flex; align-items:baseline;"><img src="assets/logo-r3.png" alt="R3ydan" style="height:30px; width:auto; display:block;"></span></a>
+    <nav style="display:flex; align-items:center; gap:10px;">
+      <a href="#work" style="font-size:14px; font-weight:500; color:#B6B7BC; padding:10px 14px; border-radius:999px;" style-hover="color:#F4F4F2; background:rgba(255,255,255,0.06);">{{ t.navWork }}</a>
+      <a href="#services" style="font-size:14px; font-weight:500; color:#B6B7BC; padding:10px 14px; border-radius:999px;" style-hover="color:#F4F4F2; background:rgba(255,255,255,0.06);">{{ t.navServices }}</a>
+      <a href="#studio" style="font-size:14px; font-weight:500; color:#B6B7BC; padding:10px 14px; border-radius:999px;" style-hover="color:#F4F4F2; background:rgba(255,255,255,0.06);">{{ t.navStudio }}</a>
+      <div role="group" aria-label="Language" style="display:flex; align-items:center; gap:2px; margin-left:6px; padding:3px; background:rgba(255,255,255,0.06); border-radius:999px;">
+        <button onclick="{{ setLangEt }}" style="font-size:12px; font-weight:700; letter-spacing:0.02em; color:{{ etColor }}; background:{{ etBg }}; border:none; padding:6px 11px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:all .2s ease;">ET</button>
+        <button onclick="{{ setLangEn }}" style="font-size:12px; font-weight:700; letter-spacing:0.02em; color:{{ enColor }}; background:{{ enBg }}; border:none; padding:6px 11px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:all .2s ease;">EN</button>
+      </div>
+      <button onclick="{{ openReel }}" style="margin-left:8px; font-size:14px; font-weight:600; color:var(--ink); background:var(--acc); border:none; padding:11px 22px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:transform .2s ease, filter .2s ease;" style-hover="transform:translateY(-1px); filter:brightness(1.05);">{{ t.showreel }}</button>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title fade-in">Loome lühivideosid, mis kasvatavad brändide mõju sotsmeedias</h1>
-                <p class="fade-in">Meie kogenud produtsendid ja monteerijad aitavad Sinu turundustiimil tõusta uute kõrgusteni</p>
-                <a href="https://calendly.com" class="cta-button fade-in">Alusta tasuta strateegiakõnega!</a>
-            </div>
+  <!-- ============ SPLIT HERO ============ -->
+  <section id="top" data-screen-label="Hero" style="position:relative; height:calc(100vh - 70px); min-height:560px; display:flex; isolation:isolate;">
+
+    <!-- CAPTURE -->
+    <div data-hero="cap" onmouseenter="{{ enterCap }}" onmouseleave="{{ clearHover }}" onclick="{{ enterCap }}" style="position:relative; flex:{{ capFlex }} 1 0%; min-width:0; overflow:hidden; transition:flex-grow .6s cubic-bezier(.45,0,.12,1); cursor:pointer;">
+      <x-import component-from-global-scope="image-slot" from="assets/bundle/ac688d09-9a7e-463c-884a-d2c4c8b404b4.js#/image-slot.js" id="web-cap" src="assets/tex-1.png" shape="rect" placeholder="Capture still" style="position:absolute; inset:0; width:100%; height:100%;" hint-size="100%,100%"></x-import>
+      <img src="assets/thumb-cap.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(22px); transform:scale(1.1);">
+      <video id="web-cap-video" src="Film reydan leht.mp4" muted loop playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s ease;"></video>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,17,23,0.15) 30%, rgba(15,17,23,0.88) 100%); pointer-events:none;"></div>
+      <div aria-hidden="true" style="position:absolute; inset:0; background:#0F1117; opacity:{{ capDim }}; transition:opacity .6s ease; pointer-events:none;"></div>
+      <div aria-hidden="true" style="position:absolute; inset:0; box-shadow:inset 0 0 0 2px var(--acc), inset 0 0 60px 0 var(--acc); opacity:{{ capGlow }}; transition:opacity .6s ease; pointer-events:none;"></div>
+      <div style="position:absolute; left:clamp(24px,4vw,64px); right:24px; bottom:clamp(28px,5vw,60px); z-index:2; pointer-events:none;">
+        <div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:#B6B7BC; margin-bottom:14px;">{{ t.heroCapLabel }}</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(38px,6vw,96px); letter-spacing:-0.03em; line-height:0.9; color:#FBFBF9;">{{ t.heroCapTitle }}</div>
+        <div style="overflow:hidden; max-height:{{ capOpen }}; opacity:{{ capShow }}; transition:max-height .55s cubic-bezier(.4,0,.1,1), opacity .45s ease;">
+          <p style="margin:18px 0 0; max-width:40ch; font-size:16px; line-height:1.6; color:#D2D3D7;">{{ t.heroCapText }}</p>
+          <a href="#work" onclick="{{ filterCapture }}" style="display:inline-flex; align-items:center; gap:10px; margin-top:20px; font-size:15px; font-weight:600; color:var(--ink); background:var(--acc); padding:13px 22px; border-radius:999px; pointer-events:auto;">{{ t.heroCapCta }}</a>
         </div>
-        
-        <!-- Client Logos in Hero -->
-        <div class="hero-clients">
-            <div class="container">
-                <div class="client-logos hero-logos">
-                    <div class="logo-track">
-                        <div class="logo-item">
-                            <div class="logo-placeholder">
-                                <img src="11346894_arco-vara-kinnisvaraburoo-ou_31010806_a_xl.jpg" alt="Arco Vara" class="client-logo">
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder">
-                                <img src="optibet-logo-3D-Horizontal-04-white-bg-002.png" alt="Optibet" class="client-logo">
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder">
-                                <img src="timber.webp" alt="Timber" class="client-logo">
-                            </div>
-                        </div>
-                        <!-- Duplicate for seamless loop -->
-                        <div class="logo-item">
-                            <div class="logo-placeholder">
-                                <img src="11346894_arco-vara-kinnisvaraburoo-ou_31010806_a_xl.jpg" alt="Arco Vara" class="client-logo">
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder">
-                                <img src="optibet-logo-3D-Horizontal-04-white-bg-002.png" alt="Optibet" class="client-logo">
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder">
-                                <img src="timber.webp" alt="Timber" class="client-logo">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+
+    <!-- CENTER SEAM + LOGO -->
+    <div aria-hidden="true" style="position:absolute; left:{{ seamLeft }}; top:0; bottom:0; width:1px; background:rgba(255,255,255,0.16); z-index:3; pointer-events:none; transition:left .6s cubic-bezier(.45,0,.12,1);"></div>
+    <div style="position:absolute; left:{{ seamLeft }}; top:clamp(26px,4vw,44px); transform:translateX(-50%); z-index:4; pointer-events:none; text-align:center; white-space:nowrap; transition:left .6s cubic-bezier(.45,0,.12,1);">
+      <span style="font-size:clamp(22px,2.4vw,30px); color:#F4F4F2; display:inline-flex; align-items:baseline;"><img src="assets/logo-r3.png" alt="R3ydan" style="height:34px; width:auto; display:block;"></span>
+      <div style="font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#8A8D93; margin-top:12px;">{{ t.chooseASide }}</div>
+    </div>
+
+    <!-- CRAFT -->
+    <div data-hero="craft" onmouseenter="{{ enterCraft }}" onmouseleave="{{ clearHover }}" onclick="{{ enterCraft }}" style="position:relative; flex:{{ craftFlex }} 1 0%; min-width:0; overflow:hidden; transition:flex-grow .6s cubic-bezier(.45,0,.12,1); cursor:pointer;">
+      <x-import component-from-global-scope="image-slot" from="assets/bundle/ac688d09-9a7e-463c-884a-d2c4c8b404b4.js#/image-slot.js" id="web-craft" src="assets/tex-2.png" shape="rect" placeholder="Craft still" style="position:absolute; inset:0; width:100%; height:100%;" hint-size="100%,100%"></x-import>
+      <img src="assets/thumb-craft.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(22px); transform:scale(1.1);">
+      <video id="web-craft-video" src="Mont reydan leht.mp4" muted loop playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s ease;"></video>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,17,23,0.15) 30%, rgba(15,17,23,0.88) 100%); pointer-events:none;"></div>
+      <div aria-hidden="true" style="position:absolute; inset:0; background:#0F1117; opacity:{{ craftDim }}; transition:opacity .6s ease; pointer-events:none;"></div>
+      <div aria-hidden="true" style="position:absolute; inset:0; box-shadow:inset 0 0 0 2px var(--acc), inset 0 0 60px 0 var(--acc); opacity:{{ craftGlow }}; transition:opacity .6s ease; pointer-events:none;"></div>
+      <div style="position:absolute; right:clamp(24px,4vw,64px); left:24px; bottom:clamp(28px,5vw,60px); z-index:2; text-align:right; pointer-events:none;">
+        <div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:#B6B7BC; margin-bottom:14px;">{{ t.heroCraftLabel }}</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(38px,6vw,96px); letter-spacing:-0.03em; line-height:0.9; color:#FBFBF9;">{{ t.heroCraftTitle }}</div>
+        <div style="overflow:hidden; max-height:{{ craftOpen }}; opacity:{{ craftShow }}; transition:max-height .55s cubic-bezier(.4,0,.1,1), opacity .45s ease;">
+          <p style="margin:18px 0 0 auto; max-width:40ch; font-size:16px; line-height:1.6; color:#D2D3D7;">{{ t.heroCraftText }}</p>
+          <a href="#work" onclick="{{ filterCraft }}" style="display:inline-flex; align-items:center; gap:10px; margin-top:20px; font-size:15px; font-weight:600; color:var(--ink); background:var(--acc); padding:13px 22px; border-radius:999px; pointer-events:auto;">{{ t.heroCraftCta }}</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Case Studies Section -->
-    <section id="case-studies" class="section case-studies">
-        <div class="container">
-            <h2 class="section-title">Tööde näited</h2>
-            <p class="section-subtitle">Numbrid, mis räägivad enda eest</p>
-            <div class="case-studies-grid">
-                <div class="case-study-card fade-in">
-                    <div class="case-preview">
-                        <div class="preview-content">
-                            <div class="preview-header">
-                                <h4>TikTok Kampaania Case Study</h4>
-                                <div class="preview-close">&times;</div>
-                            </div>
-                            <div class="preview-body">
-                                <div class="preview-video-placeholder">
-                                    <i class="fas fa-play"></i>
-                                    <span>Demo Video</span>
-                                </div>
-                                <div class="preview-stats">
-                                    <div class="stat">
-                                        <span class="stat-number">20M</span>
-                                        <span class="stat-label">Vaatamisi</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-number">95%</span>
-                                        <span class="stat-label">Engagement</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-number">300%</span>
-                                        <span class="stat-label">ROI</span>
-                                    </div>
-                                </div>
-                                <p class="preview-description">E-kaubanduse ettevõtte jaoks loodud TikTok kampaania, mis saavutas viralse staatuse ja tõstis müüki 300%.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case-metric" data-target="20000000">0</div>
-                    <p class="metric-label">Vaatamisi</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="95"></div>
-                    </div>
-                    <p>E-kaubanduse ettevõte TikTok kampaania</p>
-                    <a href="#" class="case-link">Ava case study <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="case-study-card fade-in">
-                    <div class="case-preview">
-                        <div class="preview-content">
-                            <div class="preview-header">
-                                <h4>Instagram Reels Case Study</h4>
-                                <div class="preview-close">&times;</div>
-                            </div>
-                            <div class="preview-body">
-                                <div class="preview-video-placeholder">
-                                    <i class="fas fa-play"></i>
-                                    <span>Demo Video</span>
-                                </div>
-                                <div class="preview-stats">
-                                    <div class="stat">
-                                        <span class="stat-number">350%</span>
-                                        <span class="stat-label">Müügi kasv</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-number">2M</span>
-                                        <span class="stat-label">Reach</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-number">85%</span>
-                                        <span class="stat-label">Engagement</span>
-                                    </div>
-                                </div>
-                                <p class="preview-description">Moe brändi Instagram Reels seeria, mis tõstis müüki 350% ja saavutas üle 2 miljoni jõudmise.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case-metric" data-target="350">0%</div>
-                    <p class="metric-label">Müügi kasv</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="85"></div>
-                    </div>
-                    <p>Moe brändi Instagram Reels seeria</p>
-                    <a href="#" class="case-link">Ava case study <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="case-study-card fade-in">
-                    <div class="case-preview">
-                        <div class="preview-content">
-                            <div class="preview-header">
-                                <h4>YouTube Shorts Case Study</h4>
-                                <div class="preview-close">&times;</div>
-                            </div>
-                            <div class="preview-body">
-                                <div class="preview-video-placeholder">
-                                    <i class="fas fa-play"></i>
-                                    <span>Demo Video</span>
-                                </div>
-                                <div class="preview-stats">
-                                    <div class="stat">
-                                        <span class="stat-number">5M</span>
-                                        <span class="stat-label">Jõudmine</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-number">90%</span>
-                                        <span class="stat-label">Completion Rate</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-number">400%</span>
-                                        <span class="stat-label">Growth</span>
-                                    </div>
-                                </div>
-                                <p class="preview-description">Tehnoloogiaettevõtte YouTube Shorts kampaania, mis saavutas 5M jõudmise ja 90% lõpetamise määra.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case-metric" data-target="5000000">0</div>
-                    <p class="metric-label">Jõudmist</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="90"></div>
-                    </div>
-                    <p>Tehnoloogiaettevõtte YouTube Shorts</p>
-                    <a href="#" class="case-link">Ava case study <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+  <!-- ============ MARQUEE ============ -->
+  <section aria-hidden="true" style="overflow:hidden; padding:44px 0;">
+    <div style="display:flex; width:max-content; animation:r3marquee 32s linear infinite; will-change:transform;">
+      <span style="display:inline-flex; align-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(30px,4vw,52px); letter-spacing:-0.02em; color:#3A3B40; white-space:nowrap;">{{ t.mq1 }}&nbsp;&nbsp;✦&nbsp;&nbsp;<span style="color:#F4F4F2;">{{ t.mq2 }}</span>&nbsp;&nbsp;✦&nbsp;&nbsp;<span style="color:var(--acc);">{{ t.mq3 }}</span>&nbsp;&nbsp;✦&nbsp;&nbsp;{{ t.mq4 }}&nbsp;&nbsp;✦&nbsp;&nbsp;<span style="color:#F4F4F2;">{{ t.mq5 }}</span>&nbsp;&nbsp;✦&nbsp;&nbsp;{{ t.mq6 }}&nbsp;&nbsp;✦&nbsp;&nbsp;<span style="color:var(--acc);">{{ t.mq7 }}</span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+      <span style="display:inline-flex; align-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(30px,4vw,52px); letter-spacing:-0.02em; color:#3A3B40; white-space:nowrap;">{{ t.mq1 }}&nbsp;&nbsp;✦&nbsp;&nbsp;<span style="color:#F4F4F2;">{{ t.mq2 }}</span>&nbsp;&nbsp;✦&nbsp;&nbsp;<span style="color:var(--acc);">{{ t.mq3 }}</span>&nbsp;&nbsp;✦&nbsp;&nbsp;{{ t.mq4 }}&nbsp;&nbsp;✦&nbsp;&nbsp;<span style="color:#F4F4F2;">{{ t.mq5 }}</span>&nbsp;&nbsp;✦&nbsp;&nbsp;{{ t.mq6 }}&nbsp;&nbsp;✦&nbsp;&nbsp;<span style="color:var(--acc);">{{ t.mq7 }}</span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" data-screen-label="Services" style="padding:60px 5vw 80px;">
+    <div data-reveal="" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:9px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:#9A9DA4; margin-bottom:18px;"><span style="width:7px; height:7px; border-radius:50%; background:var(--acc);"></span>{{ t.servicesLabel }}</div>
+        <h2 style="margin:0; font-family:'Bricolage Grotesque', sans-serif; font-weight:800; font-size:clamp(34px,5.5vw,76px); line-height:0.98; letter-spacing:-0.025em; color:#FBFBF9;">{{ t.servicesTitle1 }}<br>{{ t.servicesTitle2 }}</h2>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div data-reveal="" style="background:#171A21; border:1px solid rgba(255,255,255,0.07); border-radius:24px; padding:44px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px;"><h3 style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:34px; letter-spacing:-0.02em; color:#FBFBF9;">{{ t.heroCapTitle }}</h3><span style="font-size:13px; font-weight:600; color:var(--ink); background:var(--acc); padding:5px 12px; border-radius:999px;">01</span></div>        <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:14px;">
+          <li style="display:flex; align-items:center; gap:12px; font-size:15px; color:#E4E4E2;"><span style="color:var(--acc);">→</span>{{ t.captureLi1 }}</li>
+          <li style="display:flex; align-items:center; gap:12px; font-size:15px; color:#E4E4E2;"><span style="color:var(--acc);">→</span>{{ t.captureLi2 }}</li>
+          <li style="display:flex; align-items:center; gap:12px; font-size:15px; color:#E4E4E2;"><span style="color:var(--acc);">→</span>{{ t.captureLi3 }}</li>
+        </ul>
+      </div>
+      <div data-reveal="" style="background:#171A21; border:1px solid rgba(255,255,255,0.07); border-radius:24px; padding:44px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px;"><h3 style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:34px; letter-spacing:-0.02em; color:#FBFBF9;">{{ t.heroCraftTitle }}</h3><span style="font-size:13px; font-weight:600; color:var(--ink); background:var(--acc); padding:5px 12px; border-radius:999px;">02</span></div>        <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:14px;">
+          <li style="display:flex; align-items:center; gap:12px; font-size:15px; color:#E4E4E2;"><span style="color:var(--acc);">→</span>{{ t.craftLi1 }}</li>
+          <li style="display:flex; align-items:center; gap:12px; font-size:15px; color:#E4E4E2;"><span style="color:var(--acc);">→</span>{{ t.craftLi2 }}</li>
+          <li style="display:flex; align-items:center; gap:12px; font-size:15px; color:#E4E4E2;"><span style="color:var(--acc);">→</span>{{ t.craftLi3 }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section id="work" data-screen-label="Work" style="padding:40px 5vw 90px;">
+    <div data-reveal="" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; flex-wrap:wrap; gap:24px;">
+      <h2 style="margin:0; font-family:'Bricolage Grotesque', sans-serif; font-weight:800; font-size:clamp(34px,5.5vw,76px); line-height:0.98; letter-spacing:-0.025em; color:#FBFBF9;">{{ t.workTitle }}</h2>
+      <div style="display:flex; gap:8px;">
+        <button onclick="{{ filterAll }}" style="font-size:14px; font-weight:600; background:{{ allBg }}; color:{{ allColor }}; border:1px solid rgba(255,255,255,0.14); padding:10px 20px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:all .2s ease;">{{ t.lblAll }}</button>
+        <button onclick="{{ filterCapture }}" style="font-size:14px; font-weight:600; background:{{ capBg }}; color:{{ capColor }}; border:1px solid rgba(255,255,255,0.14); padding:10px 20px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:all .2s ease;">{{ t.workCapTag }}</button>
+        <button onclick="{{ filterCraft }}" style="font-size:14px; font-weight:600; background:{{ craftBg }}; color:{{ craftColor }}; border:1px solid rgba(255,255,255,0.14); padding:10px 20px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:all .2s ease;">{{ t.heroCraftTitle }}</button>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:{{ gridTemplate }}; gap:18px;">
+      <sc-for list="{{ items }}" as="item" hint-placeholder-count="6">
+        <a href="#work" onclick="{{ item.onOpen }}" style="position:relative; display:block; border-radius:20px; overflow:hidden; aspect-ratio:4/3; background:#171A21; transition:transform .5s cubic-bezier(.2,.7,.2,1), filter .5s ease;" style-hover="transform:translateY(-6px); filter:brightness(1.1); z-index:3;">
+          <img id="{{ item.slotId }}" src="{{ item.tex }}" alt="{{ item.title }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,17,23,0) 42%, rgba(15,17,23,0.92) 100%); pointer-events:none;"></div>
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; opacity:{{ item.playOpacity }}; transition:opacity .3s ease;">
+            <span style="width:54px; height:54px; border-radius:50%; background:rgba(15,17,23,0.55); border:1.5px solid rgba(255,255,255,0.45); color:#FBFBF9; display:flex; align-items:center; justify-content:center; font-size:17px; backdrop-filter:blur(4px);">▶</span>
+          </div>
+          <div style="position:absolute; top:16px; left:16px; pointer-events:none;"><span style="font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); background:var(--acc); padding:5px 11px; border-radius:999px;">{{ item.tag }}</span></div>
+          <div style="position:absolute; top:16px; right:16px; pointer-events:none; opacity:{{ item.projectOpacity }}; transition:opacity .3s ease;"><span style="font-size:11px; font-weight:600; letter-spacing:0.04em; color:#FBFBF9; background:rgba(15,17,23,0.6); border:1px solid rgba(255,255,255,0.28); padding:5px 10px; border-radius:999px; backdrop-filter:blur(4px);">{{ item.countLabel }}</span></div>
+          <div style="position:absolute; left:22px; right:22px; bottom:20px; pointer-events:none;">
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:26px; letter-spacing:-0.02em; color:#FBFBF9; line-height:1.05;">{{ item.title }}</div>
+            <div style="font-size:13px; color:#B6B7BC; margin-top:6px;">{{ item.meta }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ STUDIO ============ -->
+  <section id="studio" data-screen-label="Studio" style="padding:90px 5vw;">
+    <div data-reveal="" style="background:#171A21; border:1px solid rgba(255,255,255,0.07); border-radius:28px; padding:clamp(40px,5vw,72px); display:grid; grid-template-columns:1.25fr 1fr; gap:64px; align-items:center;">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:9px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:#9A9DA4; margin-bottom:26px;"><span style="width:7px; height:7px; border-radius:50%; background:var(--acc);"></span>{{ t.studioLabel }}</div>
+        <h2 style="margin:0; font-family:'Bricolage Grotesque', sans-serif; font-weight:800; font-size:clamp(30px,4.4vw,58px); line-height:1.02; letter-spacing:-0.025em; color:#FBFBF9; max-width:16ch;">{{ t.studioTitle }}</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:24px; font-size:17px; line-height:1.65; color:#B6B7BC;">
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--acc); margin-bottom:3px;">{{ t.stStratT }}</div>
+            <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:1px;">
+              <li style="font-size:15px; line-height:1.4;">{{ t.stStrat1 }}</li>
+              <li style="font-size:15px; line-height:1.4;">{{ t.stStrat2 }}</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--acc); margin-bottom:3px;">{{ t.stProdT }}</div>
+            <ul style="margin:0; padding:0; list-style:none;">
+              <li style="font-size:15px; line-height:1.4;">{{ t.stProd1 }}</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--acc); margin-bottom:3px;">{{ t.stPostT }}</div>
+            <ul style="margin:0; padding:0; list-style:none;">
+              <li style="font-size:15px; line-height:1.4;">{{ t.stPost1 }}</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--acc); margin-bottom:3px;">{{ t.stCreativeT }}</div>
+            <ul style="margin:0; padding:0; list-style:none;">
+              <li style="font-size:15px; line-height:1.4;">{{ t.stCreative1 }}</li>
+            </ul>
+          </div>
         </div>
-    </section>
+        <a href="#contact" style="display:inline-flex; align-items:center; gap:10px; font-size:15px; font-weight:600; color:var(--acc); width:fit-content;" style-hover="gap:14px;">{{ t.studioCta }}</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Process Section -->
-    <section id="process" class="section process">
-        <div class="container">
-            <h2 class="section-title">Meie töökäik</h2>
-            <p class="section-subtitle">Lihtne ja tõhus protsess, mis toob tulemusi</p>
-            <div class="process-grid">
-                <div class="process-step fade-in">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="step-title">Strateegia</h3>
-                    <p class="step-description">Analüüsime Teie sihtgrupi ja konkurente, et luua tõhus videostrateegia</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3 class="step-title">Produktsioon</h3>
-                    <p class="step-description">Filmime professionaalse seadmestiku ja kogenud meeskonnaga</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-cut"></i>
-                    </div>
-                    <h3 class="step-title">Montaaž</h3>
-                    <p class="step-description">Loome köitva sisu, mis jääb vaatajatele meelde ja motiveerib tegutsema</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">4</div>
-                    <div class="step-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="step-title">Postitamine & analüüs</h3>
-                    <p class="step-description">Optimeerime postitamist ja jälgime tulemusi pidevaks parandamiseks</p>
-                </div>
-            </div>
+  <!-- ============ CTA ============ -->
+  <section id="contact" data-screen-label="Contact" style="padding:20px 5vw 90px;">
+    <div data-reveal="" style="background:var(--acc); color:var(--ink); border-radius:28px; padding:clamp(48px,7vw,104px) clamp(40px,6vw,80px); position:relative; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:48px; align-items:start;">
+      <div>
+      <div style="font-size:14px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; opacity:0.7; margin-bottom:24px;">{{ t.ctaLabel }}</div>
+      <h2 style="margin:0 0 40px; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(40px,8vw,116px); line-height:0.9; letter-spacing:-0.035em;">{{ t.ctaTitle1 }}<br>{{ t.ctaTitle2 }}</h2>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px;">
+        <a href="mailto:studio@r3ydan.com" style="font-size:16px; font-weight:600; color:var(--acc); background:var(--ink); padding:17px 32px; border-radius:999px; transition:transform .2s ease;" style-hover="transform:translateY(-2px);">studio@r3ydan.com</a>
+        <span style="font-size:16px; font-weight:500; opacity:0.7;">{{ t.ctaText }}</span>
+      </div>
+      </div>
+      <form action="https://r3ydan-backend.onrender.com/api/contact" method="POST" style="display:flex; flex-direction:column; gap:12px;">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
+        <input type="text" name="name" placeholder="{{ t.formName }}" required class="r3-field" style="width:100%; background:var(--ink); color:#F4F4F2; border:none; border-radius:14px; padding:15px 18px; font-size:15px; font-family:'Space Grotesk',sans-serif; outline:none; box-sizing:border-box;">
+        <input type="email" name="email" placeholder="{{ t.formEmail }}" required class="r3-field" style="width:100%; background:var(--ink); color:#F4F4F2; border:none; border-radius:14px; padding:15px 18px; font-size:15px; font-family:'Space Grotesk',sans-serif; outline:none; box-sizing:border-box;">
+        <textarea name="message" placeholder="{{ t.formMessage }}" required rows="4" class="r3-field" style="width:100%; background:var(--ink); color:#F4F4F2; border:none; border-radius:14px; padding:15px 18px; font-size:15px; font-family:'Space Grotesk',sans-serif; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+        <button type="submit" style="align-self:flex-start; font-size:16px; font-weight:600; color:var(--acc); background:var(--ink); padding:15px 28px; border:none; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:transform .2s ease;" style-hover="transform:translateY(-2px);">{{ t.formSend }}</button>
+        <div id="contact-status" style="display:none; font-size:14px; font-weight:600;"></div>
+      </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="border-top:1px solid rgba(255,255,255,0.08); padding:56px 5vw; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:32px;">
+    <span style="font-size:30px; color:#F4F4F2; display:inline-flex; align-items:baseline;"><img src="assets/logo-r3.png" alt="R3ydan" style="height:40px; width:auto; display:block;"></span>
+    <div style="display:flex; gap:28px; font-size:14px; color:#B6B7BC;">
+      <a href="#contact" style-hover="color:#F4F4F2;">Instagram</a>
+      <a href="#contact" style-hover="color:#F4F4F2;">YouTube</a>
+      <a href="#contact" style-hover="color:#F4F4F2;">Vimeo</a>
+    </div>
+    <div style="font-size:13px; color:#6E7177;">{{ t.footerCopy }}</div>
+  </footer>
+
+  <!-- ============ REEL OVERLAY ============ -->
+  <sc-if value="{{ reelOpen }}" hint-placeholder-val="{{ false }}">
+    <div onclick="{{ closeReel }}" style="position:fixed; inset:0; z-index:100; background:rgba(15,17,23,0.95); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; padding:6vw;">
+      <button onclick="{{ closeReel }}" style="position:absolute; top:28px; right:5vw; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); color:#F4F4F2; font-size:14px; font-weight:500; padding:10px 18px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk';">{{ t.reelClose }}</button>
+      <div style="width:100%; max-width:1100px; aspect-ratio:16/9; position:relative; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+        <x-import component-from-global-scope="image-slot" from="assets/bundle/ac688d09-9a7e-463c-884a-d2c4c8b404b4.js#/image-slot.js" id="web-reel-overlay" src="assets/tex-hero.png" shape="rect" placeholder="Drop your showreel cover" style="position:absolute; inset:0; width:100%; height:100%;" hint-size="100%,100%"></x-import>
+        <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+          <span style="width:80px; height:80px; border-radius:50%; background:var(--acc); color:var(--ink); display:flex; align-items:center; justify-content:center; font-size:24px;">▶</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </sc-if>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="section benefits">
-        <div class="container">
-            <h2 class="section-title">Miks valida meid?</h2>
-            <p class="section-subtitle">Kolm põhilist põhjust, miks me oleme parim valik</p>
-            <div class="benefits-grid">
-                <div class="benefit-card fade-in">
-                    <div class="benefit-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="benefit-title">Laienda tiimi</h3>
-                    <p class="benefit-description">Saad kohe ligipääsu professionaalsele videotiimile ilma täiendavaid töötajaid palkamata</p>
-                </div>
-                <div class="benefit-card fade-in">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="benefit-title">Kasvata vaatamisi</h3>
-                    <p class="benefit-description">Meie videod on optimeeritud algoritmidele ja genereerivad maksimaalset orgaanilist jõudmist</p>
-                </div>
-                <div class="benefit-card fade-in">
-                    <div class="benefit-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="benefit-title">Eristu massist</h3>
-                    <p class="benefit-description">Loomingulised ja professionaalsed videod, mis aitavad Sul konkurentidest eristuda</p>
-                </div>
-            </div>
+  <!-- ============ VIDEO LIGHTBOX ============ -->
+  <sc-if value="{{ videoLightboxOpen }}" hint-placeholder-val="{{ false }}">
+    <div onclick="{{ closeVideoLightbox }}" style="position:fixed; inset:0; z-index:100; background:rgba(15,17,23,0.95); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; padding:6vw;">
+      <button onclick="{{ closeVideoLightbox }}" style="position:absolute; top:28px; right:5vw; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); color:#F4F4F2; font-size:14px; font-weight:500; padding:10px 18px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk';">{{ t.reelClose }}</button>
+      <div onclick="{{ stopPropagation }}" style="width:100%; max-width:780px; max-height:86vh;">
+        <video id="video-lightbox-player" controls autoplay playsinline style="display:block; width:100%; max-height:86vh; border-radius:16px; background:#000;"></video>
+        <iframe id="video-lightbox-iframe" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen style="display:none; width:100%; aspect-ratio:16/9; max-height:86vh; border:0; border-radius:16px; background:#000;"></iframe>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ PROJECT GALLERY ============ -->
+  <sc-if value="{{ projectOpen }}" hint-placeholder-val="{{ false }}">
+    <div onclick="{{ closeProject }}" style="position:fixed; inset:0; z-index:95; background:rgba(15,17,23,0.96); backdrop-filter:blur(12px); overflow:auto; padding:6vw;">
+      <button onclick="{{ closeProject }}" style="position:fixed; top:28px; right:5vw; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); color:#F4F4F2; font-size:14px; font-weight:500; padding:10px 18px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; z-index:96;">{{ t.reelClose }}</button>
+      <div onclick="{{ stopPropagation }}" style="max-width:1100px; margin:0 auto;">
+        <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(28px,4vw,52px); letter-spacing:-0.02em; color:#FBFBF9; margin:0 0 28px;">{{ projectTitle }}</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:18px;">
+          <sc-for list="{{ projectVideos }}" as="pv" hint-placeholder-count="3">
+            <a href="#" onclick="{{ pv.onOpen }}" style="position:relative; display:block; border-radius:16px; overflow:hidden; aspect-ratio:4/3; background:#171A21; cursor:pointer;" style-hover="filter:brightness(1.1);">
+              <img src="{{ pv.tex }}" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,17,23,0) 45%, rgba(15,17,23,0.9) 100%);"></div>
+              <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;"><span style="width:50px; height:50px; border-radius:50%; background:rgba(15,17,23,0.55); border:1.5px solid rgba(255,255,255,0.45); color:#FBFBF9; display:flex; align-items:center; justify-content:center; font-size:16px; backdrop-filter:blur(4px);">▶</span></div>
+              <div style="position:absolute; left:16px; right:16px; bottom:14px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:18px; color:#FBFBF9;">{{ pv.title }}</div>
+            </a>
+          </sc-for>
         </div>
-    </section>
+      </div>
+    </div>
+  </sc-if>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="section pricing">
-        <div class="container">
-            <h2 class="section-title">Hinnakalkulaator</h2>
-            <p class="section-subtitle">Koostage oma ideaalne videoturunduse pakett</p>
-            
-            <div class="price-calculator">
-                <div class="calculator-content">
-                    <div class="base-package">
-                        <h3 class="base-title">Baaspakett</h3>
-                        <div class="base-description">
-                            <p>4 videot + 1 võttepäev</p>
-                            <div class="base-price">€500</div>
-                        </div>
-                    </div>
+</div>
+</x-dc>
 
-                    <div class="options-section">
-                        <div class="option-group">
-                            <label class="option-label">Videote arv</label>
-                            <select id="videoCount" class="option-select">
-                                <option value="4" data-price="500">4 videot - €500</option>
-                                <option value="6" data-price="600">6 videot - €600</option>
-                                <option value="8" data-price="800">8 videot - €800</option>
-                                <option value="12" data-price="1200">12 videot - €1200</option>
-                            </select>
-                        </div>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;gridColumns&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;2&quot;,&quot;3&quot;],&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Lightning Yellow&quot;,&quot;Electric Blue&quot;,&quot;Acid Lime&quot;,&quot;Hot Coral&quot;],&quot;default&quot;:&quot;Lightning Yellow&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const I18N = {
+  et: {
+    navWork: 'Tööd', navServices: 'Teenused', navStudio: 'Stuudio', showreel: 'Showreel',
+    heroCapLabel: '01 — Väljas', heroCapTitle: 'Filmimine', workCapTag: 'Filmimine + Järeltöötlus',
+    heroCapText: 'Drooni- ja õhufilmimine ning lühivormis sisu — loodud liikuma.',
+    heroCapCta: 'Vaata filmimistöid →',
+    chooseASide: 'Vali pool',
+    heroCraftLabel: '02 — Järeltöötluses', heroCraftTitle: 'Järeltöötlus',
+    heroCraftText: 'Montaaž, motion graafika ja 3D — toores materjal lõigatakse, gradeeritakse ja seatakse liikuma.',
+    heroCraftCta: 'Vaata järeltöötlustöid →',
+    mq1: 'Droon', mq2: 'Lühivorm', mq3: 'Aeropildistamine', mq4: 'Motion graafika', mq5: '3D', mq6: 'Värv', mq7: 'Montaaž',
+    servicesLabel: 'Mida me teeme', servicesTitle1: 'Kaks valdkonda,', servicesTitle2: 'üks stuudio.',
+    captureDesc: 'Väljas. Me lendame ja filmime — õhuvõtted, avakaadrid ja kiired lühivormis videod, mis on loodud sotsiaalmeedia jaoks.',
+    captureLi1: 'Drooni- ja õhufilmimine', captureLi2: 'Lühivormis sisu filmimine', captureLi3: 'Juhendamine võttepaigal',
+    craftDesc: 'Järeltöötluses. Me lõikame, gradeerime ja animeerime — toorest materjalist saab valmis teos motion disaini ja 3D abil.',
+    craftLi1: 'Montaaž ja värvikorrektsioon', craftLi2: 'Motion graafika', craftLi3: '3D ja kompositsioon',
+    workTitle: 'Valitud tööd', lblAll: 'Kõik',
+    studioLabel: 'Stuudio', studioTitle: 'Me filmime ja teostame oma tööd ise.',
+    studioP1: 'R3ydan on loodud ühest ideest: drooni lendajad peaksid olema needsamad, kes ka montaaži teevad. Ilma üleandmisteta, ilma kaduva nägemuseta.',
+    studioP2: 'Töötame brändide, loojate ja agentuuridega, kes vajavad materjali, mis näeb välja sihipäraselt filmitud ja hoolega teostatud.',
+    stStratT: 'Strateegia',
+    stStrat1: 'Analüüsime Teie sihtgruppi ja konkurente',
+    stStrat2: 'Koostame tõhusa videostrateegia',
+    stProdT: 'Produktsioon',
+    stProd1: 'Loome ideed, kirjutame stsenaariumi ning lavastame ja filmime võttepäeva selliselt, et ka teie kõige tõsisem kolleeg soovib peaosa saada',
+    stPostT: 'Järeltöötlus',
+    stPost1: 'Paigaldame kellad ja viled, mis helisevad ja vilisevad üle mitme maa ja mere',
+    stCreativeT: 'Loov juhtimine',
+    stCreative1: 'Postitamiste optimeerimine, tulemuste jälgimine ja analüüs. Tüürime sotsmeedia laineharjal, et sinu bränd tabaks kõiki pilke.',
+    studioCta: 'Alusta projekti →',
+    ctaLabel: 'Loome midagi', ctaTitle1: 'Loome', ctaTitle2: 'midagi.',
+    ctaText: 'Räägi meile, mida filmid.',
+    formName: 'Nimi', formEmail: 'E-post', formMessage: 'Sõnum', formSend: 'Saada →',
+    formSentOk: 'Täname! Sõnum on saadetud.', formSentErr: 'Midagi läks valesti. Proovi uuesti või kirjuta otse.',
+    footerCopy: '© 2026 R3ydan · Filmimine & Järeltöötlus',
+    reelClose: 'Sulge ✕',
+    work: {
+      w1: { title: 'Rannik', meta: 'Lühivormis seeria' },
+      w2: { title: 'Öövahetus', meta: 'Lühivormis seeria' },
+      w3: { title: 'Välimärkmed', meta: 'Lühivormis seeria' },
+      w4: { title: 'Klaasmaja', meta: 'Motion Graphics' },
+      w5: { title: 'Mäeahelik', meta: 'Motion Graphics' },
+      w6: { title: 'Render Pass', meta: 'Täispikk Youtube video' },
+    },
+  },
+  en: {
+    navWork: 'Work', navServices: 'Services', navStudio: 'Studio', showreel: 'Showreel',
+    heroCapLabel: '01 — In the field', heroCapTitle: 'Capture', workCapTag: 'Capture + Craft',
+    heroCapText: 'Drone & aerial cinematography and short-form content — shot to move.',
+    heroCapCta: 'See capture work →',
+    chooseASide: 'Choose a side',
+    heroCraftLabel: '02 — In post', heroCraftTitle: 'Craft',
+    heroCraftText: 'Editing, motion graphics & 3D — footage cut, graded and set in motion.',
+    heroCraftCta: 'See craft work →',
+    mq1: 'Drone', mq2: 'Short-Form', mq3: 'Aerial', mq4: 'Showreel', mq5: '3D', mq6: 'Colour', mq7: 'Editing',
+    servicesLabel: 'What we do', servicesTitle1: 'Two disciplines,', servicesTitle2: 'one studio.',
+    captureDesc: 'In the field. We fly and film — aerials, establishing shots and fast-turnaround short-form content built for the feed.',
+    captureLi1: 'Drone & aerial cinematography', captureLi2: 'Short-form content filming', captureLi3: 'On-location direction',
+    craftDesc: 'In post. We cut, grade and animate — turning raw footage into finished pieces with motion design and 3D.',
+    craftLi1: 'Editing & colour', craftLi2: 'Showreel', craftLi3: '3D & compositing',
+    workTitle: 'Selected work', lblAll: 'All',
+    studioLabel: 'The studio', studioTitle: 'We shoot and finish our own work.',
+    studioP1: 'R3ydan is built around one idea: the people who fly the drone should be the people who cut the edit. No hand-offs, no lost intent.',
+    studioP2: 'We work with brands, creators and agencies who need footage that looks shot with purpose and finished with care.',
+    stStratT: 'Strategy',
+    stStrat1: 'We analyse your audience and competitors',
+    stStrat2: 'We build an effective video strategy',
+    stProdT: 'Production',
+    stProd1: 'We develop the idea, write the script, and direct and shoot the production day so that even your most serious colleague wants the lead role',
+    stPostT: 'Post-production',
+    stPost1: 'We add the bells and whistles that ring out across land and sea',
+    stCreativeT: 'Creative direction',
+    stCreative1: 'Optimising posts, tracking and analysing results. We ride the crest of the social-media wave so your brand catches every eye.',
+    studioCta: 'Start a project →',
+    ctaLabel: "Let's make something", ctaTitle1: "Let's make", ctaTitle2: 'something.',
+    ctaText: "Tell us what you're shooting.",
+    formName: 'Name', formEmail: 'Email', formMessage: 'Message', formSend: 'Send →',
+    formSentOk: 'Thanks! Your message has been sent.', formSentErr: 'Something went wrong. Please try again or email us directly.',
+    footerCopy: '© 2026 R3ydan · Capture & Craft',
+    reelClose: 'Close ✕',
+    work: {
+      w1: { title: 'Coastline', meta: 'Aerial film · Brand' },
+      w2: { title: 'Night Shift', meta: 'Motion · 3D' },
+      w3: { title: 'Field Notes', meta: 'Short-form series' },
+      w4: { title: 'Glasshouse', meta: 'Title sequence' },
+      w5: { title: 'Ridgeline', meta: 'Drone · Travel' },
+      w6: { title: 'Render Pass', meta: '3D product spot' },
+    },
+  },
+};
 
-                        <div class="checkbox-options">
-                            <div class="checkbox-group">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="creativeCopy" class="option-checkbox">
-                                    <span class="checkmark"></span>
-                                    <span class="checkbox-text">Loovkirjutamine</span>
-                                    <span class="checkbox-price" id="copyPrice">€200</span>
-                                </label>
-                                <p class="option-description">€50 per video (4 videot = €200)</p>
-                            </div>
+class Component extends DCLogic {
+  state = { filter: 'all', reelOpen: false, hover: null, lang: 'et', videoLightboxOpen: false, videoLightboxSrc: null, videoLightboxPortrait: false, projectOpen: false, projectVideos: null, projectTitle: '' };
 
-                            <div class="checkbox-group">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="postPlanning" class="option-checkbox">
-                                    <span class="checkmark"></span>
-                                    <span class="checkbox-text">Postituste planeerimine ja haldus</span>
-                                    <span class="checkbox-price">€250</span>
-                                </label>
-                                <p class="option-description">Sotsiaalmeedia sisu planeerimine ja avaldamine</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="price-summary">
-                        <div class="summary-line">
-                            <span>Baaspakk:</span>
-                            <span id="baseTotal">€500</span>
-                        </div>
-                        <div class="summary-line" id="copyLine" style="display: none;">
-                            <span>Loovkirjutamine:</span>
-                            <span id="copyTotal">€0</span>
-                        </div>
-                        <div class="summary-line" id="planningLine" style="display: none;">
-                            <span>Postituste planeerimine:</span>
-                            <span>€250</span>
-                        </div>
-                        <div class="summary-total">
-                            <span>Kokku:</span>
-                            <span id="grandTotal">€500</span>
-                        </div>
-                        <a href="https://calendly.com" class="cta-button calculator-cta">Broneeri konsultatsioon</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Section -->
-            <div class="faq">
-                <h3 class="section-title" style="font-size: 2rem; margin-bottom: 2rem;">Korduma kippuvad küsimused</h3>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Kui kiiresti saame alustada?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Tavaliselt saame alustada 2-3 tööpäeva jooksul pärast lepingu sõlmimist ja esimese strateegiakõne läbiviimist.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Kas teete ka pikemaid videosid?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Jah, lisaks lühivideotele pakume ka pikemaid videolahendusi. Võtke ühendust, et arutada konkreetseid vajadusi.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Mida revisjoni ring sisaldab?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Revisjoni ring sisaldab video muudatusi vastavalt Teie tagasisidele - teksti, muusika, effektide või montaaži muutmist.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Kas saate garanteerida tulemusi?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Kuigi me ei saa garanteerida kindlaid numbreid, saame lubada kvaliteetset ja algoritmioptimeeritud sisu, mis maksimeerib Teie võimalusi.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-cta">
-                <h3 style="margin-bottom: 1rem;">Valmis alustama?</h3>
-                <a href="https://calendly.com" class="cta-button">Broneeri tasuta strateegiakõne</a>
-            </div>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Privaatsuspoliitika</a>
-                <a href="#" class="footer-link">Kasutustingimused</a>
-                <a href="mailto:info@myvideoagency.ee" class="footer-link">info@myvideoagency.ee</a>
-                <a href="tel:+37256789012" class="footer-link">+372 567 890 12</a>
-            </div>
-            <p style="color: var(--text-secondary); font-size: 0.9rem;">
-                © 2025 MyVideoAgency. Kõik õigused kaitstud.
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // Particle Animation System
-        class ParticleSystem {
-            constructor(canvas) {
-                this.canvas = canvas;
-                this.ctx = canvas.getContext('2d');
-                this.particles = [];
-                this.animationId = null;
-                
-                this.resizeCanvas();
-                this.createParticles();
-                this.animate();
-                
-                window.addEventListener('resize', () => this.resizeCanvas());
-            }
-            
-            resizeCanvas() {
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-            }
-            
-            createParticles() {
-                const particleCount = Math.floor((this.canvas.width * this.canvas.height) / 15000);
-                
-                for (let i = 0; i < particleCount; i++) {
-                    this.particles.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        size: Math.random() * 2 + 1,
-                        speedX: (Math.random() - 0.5) * 0.5,
-                        speedY: (Math.random() - 0.5) * 0.5,
-                        opacity: Math.random() * 0.5 + 0.2
-                    });
-                }
-            }
-            
-            updateParticles() {
-                this.particles.forEach(particle => {
-                    particle.x += particle.speedX;
-                    particle.y += particle.speedY;
-                    
-                    if (particle.x > this.canvas.width) particle.x = 0;
-                    if (particle.x < 0) particle.x = this.canvas.width;
-                    if (particle.y > this.canvas.height) particle.y = 0;
-                    if (particle.y < 0) particle.y = this.canvas.height;
-                });
-            }
-            
-            drawParticles() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                this.particles.forEach(particle => {
-                    this.ctx.beginPath();
-                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    this.ctx.fillStyle = `rgba(0, 255, 255, ${particle.opacity})`;
-                    this.ctx.fill();
-                });
-                
-                this.drawConnections();
-            }
-            
-            drawConnections() {
-                this.particles.forEach((particle, i) => {
-                    this.particles.slice(i + 1).forEach(otherParticle => {
-                        const distance = Math.sqrt(
-                            (particle.x - otherParticle.x) ** 2 + 
-                            (particle.y - otherParticle.y) ** 2
-                        );
-                        
-                        if (distance < 100) {
-                            this.ctx.beginPath();
-                            this.ctx.moveTo(particle.x, particle.y);
-                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
-                            this.ctx.strokeStyle = `rgba(0, 255, 255, ${0.1 * (1 - distance / 100)})`;
-                            this.ctx.lineWidth = 1;
-                            this.ctx.stroke();
-                        }
-                    });
-                });
-            }
-            
-            animate() {
-                this.updateParticles();
-                this.drawParticles();
-                this.animationId = requestAnimationFrame(() => this.animate());
-            }
+  componentDidMount() {
+    this._applyAccent();
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          this._io.unobserve(e.target);
         }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    requestAnimationFrame(() => {
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1)';
+        this._io.observe(el);
+      });
+    });
+    this._applyTex();
+    this._applyVideoHover();
+    this._applyContactStatus();
+    [120, 400, 900].forEach((t) => setTimeout(() => this._applyTex(), t));
+  }
 
-        // Initialize after DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize particle system
-            const particleCanvas = document.getElementById('particles-canvas');
-            const particleSystem = new ParticleSystem(particleCanvas);
+  componentDidUpdate() {
+    this._applyTex();
+    this._applyAccent();
+    this._applyVideoHover();
+    this._applyLightboxVideo();
+  }
 
-            // Mobile Menu Toggle
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+  }
 
-            mobileMenuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
+  _applyAccent() {
+    const ACC = {
+      'Lightning Yellow': '#E1FF2B',
+      'Electric Blue': '#5B8CFF',
+      'Acid Lime': '#C6FF3A',
+      'Hot Coral': '#FF6B4A',
+    };
+    const c = ACC[this.props.accent] || '#E1FF2B';
+    const root = document.getElementById('r3-root');
+    if (root) root.style.setProperty('--acc', c);
+  }
 
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                    
-                    navLinks.classList.remove('active');
-                });
-            });
+  _applyTex() {
+    const W = (typeof window !== 'undefined' && window.__resources) || {};
+    const map = {
+      'web-cap': W.tex1 || 'assets/tex-1.png',
+      'web-craft': W.tex2 || 'assets/tex-2.png',
+      'web-reel-overlay': W.texHero || 'assets/tex-hero.png',
+      w1: 'assets/thumb-w1.jpg', w2: 'assets/thumb-optibet.jpg', w3: W.tex3 || 'assets/tex-3.png',
+      w4: 'https://drive.google.com/thumbnail?id=1-mrFk7K8eIyDdIy-3kJTEAGZw0uotKlF&sz=w1000', w5: 'https://drive.google.com/thumbnail?id=1sNi1BH8tG8gLgv0yk6jhyS6z5KoIQVPw&sz=w1000', w6: 'assets/thumb-w6.jpg',
+    };
+    Object.keys(map).forEach((id) => {
+      const el = document.getElementById(id);
+      if (el && el.getAttribute('src') !== map[id]) el.setAttribute('src', map[id]);
+    });
+  }
 
-            // Intersection Observer for animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+  _applyContactStatus() {
+    const el = document.getElementById("contact-status");
+    if (!el) return;
+    const sent = new URLSearchParams(window.location.search).get("sent");
+    if (sent !== "1" && sent !== "0") return;
+    const t = I18N[this.state.lang === "en" ? "en" : "et"];
+    el.textContent = sent === "1" ? t.formSentOk : t.formSentErr;
+    el.style.display = "block";
+  }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        
-                        // Animate counters
-                        if (entry.target.querySelector('.case-metric')) {
-                            animateCounters(entry.target);
-                        }
-                        
-                        // Animate progress bars
-                        if (entry.target.querySelector('.progress-fill')) {
-                            animateProgressBars(entry.target);
-                        }
-                    }
-                });
-            }, observerOptions);
+  _applyLightboxVideo() {
+    const video = document.getElementById("video-lightbox-player");
+    const iframe = document.getElementById("video-lightbox-iframe");
+    if (!video || !iframe) return;
+    const src = this.state.videoLightboxSrc || "";
+    // YouTube/Vimeo/Google Drive embeds can't play in a native <video> — route them to the iframe.
+    const isYouTube = /(youtube\.com|youtube-nocookie\.com)\/embed\//.test(src);
+    const isEmbed = isYouTube || /player\.vimeo\.com\/video\/|drive\.google\.com\/file\//.test(src);
+    if (isEmbed) {
+      const embedSrc = isYouTube ? src + (src.includes("?") ? "&" : "?") + "autoplay=1&rel=0" : src;
+      if (iframe.getAttribute("src") !== embedSrc) iframe.setAttribute("src", embedSrc);
+      if (video.getAttribute("src")) video.removeAttribute("src");
+      if (this.state.videoLightboxPortrait) {
+        // Vertical clips (e.g. YouTube Shorts): tall 9:16 player, height-capped and centered.
+        iframe.style.aspectRatio = "9 / 16";
+        iframe.style.height = "86vh";
+        iframe.style.width = "auto";
+        iframe.style.maxWidth = "100%";
+        iframe.style.margin = "0 auto";
+      } else {
+        iframe.style.aspectRatio = "16 / 9";
+        iframe.style.height = "";
+        iframe.style.width = "100%";
+        iframe.style.maxWidth = "";
+        iframe.style.margin = "";
+      }
+      iframe.style.display = "block";
+      video.style.display = "none";
+    } else {
+      if (video.getAttribute("src") !== src) video.setAttribute("src", src);
+      if (iframe.getAttribute("src")) iframe.removeAttribute("src");
+      video.style.display = "block";
+      iframe.style.display = "none";
+    }
+  }
 
-            // Observe elements for animation
-            document.querySelectorAll('.fade-in, .process-step').forEach(el => {
-                observer.observe(el);
-            });
+  _applyVideoHover() {
+    // Hero video previews are driven by native hover listeners (see the
+    // hero-hover script before </body>), so the runtime no longer controls
+    // them here — this avoids click-state and hover fighting over playback.
+  }
 
-            // Counter animation
-            function animateCounters(container) {
-                const counters = container.querySelectorAll('.case-metric');
-                
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    const duration = 2000;
-                const increment = target / (duration / 16);
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    
-                    if (target >= 1000000) {
-                        counter.textContent = (current / 1000000).toFixed(1) + 'M';
-                    } else if (target >= 1000) {
-                        counter.textContent = (current / 1000).toFixed(0) + 'K';
-                    } else {
-                        counter.textContent = Math.floor(current) + (counter.textContent.includes('%') ? '%' : '');
-                    }
-                }, 16);
-            });
+  renderVals() {
+    const lang = this.state.lang === 'en' ? 'en' : 'et';
+    const t = I18N[lang];
+    const ALL = [
+      { slotId: 'w1', tex: 'assets/thumb-w1.jpg', title: 'Arco Vara x Landen Arendus', meta: t.work.w1.meta, cat: 'capture', tag: t.workCapTag,
+        videos: [
+          { tex: 'assets/thumb-w1.jpg', src: 'https://www.youtube.com/embed/kJERD5DL22w', portrait: true, title: 'Mustjuure linnakodud' },
+        ] },
+      { slotId: 'w2', tex: 'assets/thumb-optibet.jpg', title: 'Optibet x Liis Lemsalu', meta: t.work.w2.meta, cat: 'craft', tag: t.workCapTag,
+        videos: [
+          { tex: 'https://drive.google.com/thumbnail?id=1f_5nIURCNahJbAOtoM1gGznpkAwDqzkB&sz=w1000', src: 'https://drive.google.com/file/d/1f_5nIURCNahJbAOtoM1gGznpkAwDqzkB/preview', portrait: true, title: 'Optibet x Liis Lemsalu' },
+          { tex: 'https://drive.google.com/thumbnail?id=1S3HMQR0gxkJD17Fp-suH4D69aOeuVBRl&sz=w1000', src: 'https://drive.google.com/file/d/1S3HMQR0gxkJD17Fp-suH4D69aOeuVBRl/preview', portrait: true, title: 'Optibet x Liis Lemsalu' },
+          { tex: 'https://drive.google.com/thumbnail?id=1hz3HHnFwK5IGpXcTO1n7s7mMj8Zrx3j7&sz=w1000', src: 'https://drive.google.com/file/d/1hz3HHnFwK5IGpXcTO1n7s7mMj8Zrx3j7/preview', portrait: true, title: 'Optibet x Liis Lemsalu' },
+          { tex: 'https://drive.google.com/thumbnail?id=1uq4FHnqx10m2aMQdaS2NnFIyd1yPe_ro&sz=w1000', src: 'https://drive.google.com/file/d/1uq4FHnqx10m2aMQdaS2NnFIyd1yPe_ro/preview', portrait: true, title: 'Optibet x Liis Lemsalu' },
+        ] },
+      { slotId: 'w3', tex: 'assets/tex-3.png', title: 'Timber x Karel Piiroja', meta: t.work.w3.meta, cat: 'capture', tag: t.workCapTag,
+        videos: [
+          { tex: 'assets/tex-3.png', src: 'work-w3.mp4', title: 'Välimärkmed' },
+          { tex: 'assets/tex-5.png', src: 'work-w5.mp4', title: 'Timber x Karel Piiroja' },
+        ] },
+      { slotId: 'w4', tex: 'https://drive.google.com/thumbnail?id=1-mrFk7K8eIyDdIy-3kJTEAGZw0uotKlF&sz=w1000', title: 'Timber.ee outro', meta: t.work.w4.meta, cat: 'craft', tag: t.heroCraftTitle, video: 'https://drive.google.com/file/d/1-mrFk7K8eIyDdIy-3kJTEAGZw0uotKlF/preview', portrait: true },
+      { slotId: 'w5', tex: 'https://drive.google.com/thumbnail?id=1sNi1BH8tG8gLgv0yk6jhyS6z5KoIQVPw&sz=w1000', video: 'https://drive.google.com/file/d/1sNi1BH8tG8gLgv0yk6jhyS6z5KoIQVPw/preview', title: 'Motion Graphics', meta: t.work.w5.meta, cat: 'capture', tag: t.heroCraftTitle },
+      { slotId: 'w6', tex: 'assets/thumb-w6.jpg', video: 'https://www.youtube.com/embed/GMqnadlVxIo', title: 'FC Flora x Martin Himma', meta: t.work.w6.meta, cat: 'craft', tag: t.heroCraftTitle },
+    ];
+    ALL.forEach((item) => {
+      item.onOpen = (e) => {
+        e.preventDefault();
+        if (item.videos) {
+          this.setState({ projectOpen: true, projectVideos: item.videos, projectTitle: item.title });
+        } else if (item.video) {
+          this.setState({ videoLightboxOpen: true, videoLightboxSrc: item.video, videoLightboxPortrait: !!item.portrait });
         }
+      };
+      item.playOpacity = item.video ? 1 : 0;
+      item.projectOpacity = item.videos ? 1 : 0;
+      item.countLabel = item.videos ? ('⧉ ' + item.videos.length + (lang === 'et' ? ' videot' : ' videos')) : '';
+    });
+    const f = this.state.filter;
+    const items = f === 'all' ? ALL : ALL.filter((i) => i.cat === f);
+    const cols = this.props.gridColumns ?? 3;
 
-            // Progress bar animation
-            function animateProgressBars(container) {
-                const progressBars = container.querySelectorAll('.progress-fill');
-                
-                progressBars.forEach(bar => {
-                    const width = bar.getAttribute('data-width');
-                    setTimeout(() => {
-                        bar.style.width = width + '%';
-                    }, 500);
-                });
-            }
+    const projectVideos = (this.state.projectVideos || []).map((pv) => Object.assign({}, pv, {
+      onOpen: (e) => {
+        e.preventDefault();
+        this.setState({ videoLightboxOpen: true, videoLightboxSrc: pv.src, videoLightboxPortrait: !!pv.portrait });
+      },
+    }));
 
-            // FAQ functionality
-            document.querySelectorAll('.faq-question').forEach(question => {
-                question.addEventListener('click', () => {
-                    const answer = question.nextElementSibling;
-                    const icon = question.querySelector('.faq-icon');
-                    
-                    answer.classList.toggle('open');
-                    icon.classList.toggle('rotate');
-                });
-            });
+    const onBg = 'var(--acc)', onColor = 'var(--ink)';
+    const offBg = 'transparent', offColor = '#B6B7BC';
 
-            // Parallax scrolling effect
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * -0.5;
-                
-                const heroElement = document.querySelector('.hero');
-                if (heroElement) {
-                    heroElement.style.transform = `translateY(${rate}px)`;
-                }
-            });
+    const h = this.state.hover;
+    const capFlexV = h === 'cap' ? 1.85 : h === 'craft' ? 0.7 : 1;
+    const craftFlexV = h === 'craft' ? 1.85 : h === 'cap' ? 0.7 : 1;
+    const seamLeftV = (capFlexV / (capFlexV + craftFlexV) * 100) + '%';
 
-            // Navbar background on scroll
-            window.addEventListener('scroll', () => {
-                const navbar = document.querySelector('.navbar');
-                if (navbar) {
-                    if (window.scrollY > 50) {
-                        navbar.style.background = 'rgba(10, 37, 64, 0.95)';
-                    } else {
-                        navbar.style.background = 'rgba(10, 37, 64, 0.9)';
-                    }
-                }
-            });
+    return {
+      t,
+      setLangEt: () => this.setState({ lang: 'et' }),
+      setLangEn: () => this.setState({ lang: 'en' }),
+      etBg: lang === 'et' ? onBg : offBg,
+      etColor: lang === 'et' ? onColor : offColor,
+      enBg: lang === 'en' ? onBg : offBg,
+      enColor: lang === 'en' ? onColor : offColor,
+      items,
+      gridTemplate: `repeat(${cols}, 1fr)`,
+      allBg: f === 'all' ? onBg : offBg,
+      allColor: f === 'all' ? onColor : offColor,
+      capBg: f === 'capture' ? onBg : offBg,
+      capColor: f === 'capture' ? onColor : offColor,
+      craftBg: f === 'craft' ? onBg : offBg,
+      craftColor: f === 'craft' ? onColor : offColor,
+      filterAll: () => this.setState({ filter: 'all' }),
+      filterCapture: () => this.setState({ filter: 'capture' }),
+      filterCraft: () => this.setState({ filter: 'craft' }),
+      reelOpen: this.state.reelOpen,
+      openReel: () => this.setState({ reelOpen: true }),
+      closeReel: () => this.setState({ reelOpen: false }),
+      videoLightboxOpen: this.state.videoLightboxOpen,
+      videoLightboxSrc: this.state.videoLightboxSrc,
+      closeVideoLightbox: () => this.setState({ videoLightboxOpen: false }),
+      projectOpen: this.state.projectOpen,
+      projectTitle: this.state.projectTitle,
+      projectVideos,
+      closeProject: () => this.setState({ projectOpen: false }),
+      stopPropagation: (e) => e.stopPropagation(),
+      // split-hero interaction
+      capFlex: capFlexV,
+      craftFlex: craftFlexV,
+      seamLeft: seamLeftV,
+      capDim: h === 'craft' ? 0.5 : 0,
+      craftDim: h === 'cap' ? 0.5 : 0,
+      capGlow: h === 'cap' ? 0.6 : 0,
+      craftGlow: h === 'craft' ? 0.6 : 0,
+      capOpen: h === 'cap' ? '220px' : '0px',
+      craftOpen: h === 'craft' ? '220px' : '0px',
+      capShow: h === 'cap' ? 1 : 0,
+      craftShow: h === 'craft' ? 1 : 0,
+      enterCap: () => this.setState({ hover: 'cap' }),
+      enterCraft: () => this.setState({ hover: 'craft' }),
+      clearHover: () => this.setState({ hover: null }),
+    };
+  }
+}
+</script>
 
-            // Button hover effects
-            document.querySelectorAll('.cta-button').forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    button.style.transform = 'translateY(-3px) scale(1.05)';
-                });
-                
-                button.addEventListener('mouseleave', () => {
-                    button.style.transform = 'translateY(0) scale(1)';
-                });
-            });
 
-            // Add glow effect to cards on hover
-            document.querySelectorAll('.testimonial-card, .process-step, .case-study-card, .benefit-card, .pricing-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.boxShadow = '0 0 30px rgba(184, 212, 227, 0.3)';
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.boxShadow = '';
-                });
-            });
-
-            // Price Calculator Functionality
-            const videoSelect = document.getElementById('videoCount');
-            const creativeCopyCheckbox = document.getElementById('creativeCopy');
-            const postPlanningCheckbox = document.getElementById('postPlanning');
-            const copyPriceSpan = document.getElementById('copyPrice');
-            const baseTotalSpan = document.getElementById('baseTotal');
-            const copyTotalSpan = document.getElementById('copyTotal');
-            const copyLine = document.getElementById('copyLine');
-            const planningLine = document.getElementById('planningLine');
-            const grandTotalSpan = document.getElementById('grandTotal');
-
-            function updateCalculator() {
-                const selectedOption = videoSelect.options[videoSelect.selectedIndex];
-                const videoCount = parseInt(selectedOption.value);
-                const basePrice = parseInt(selectedOption.dataset.price);
-
-                // Update base price
-                baseTotalSpan.textContent = `€${basePrice}`;
-
-                // Calculate creative copy price
-                const copyPrice = videoCount * 50;
-                copyPriceSpan.textContent = `€${copyPrice}`;
-
-                // Update summary
-                let total = basePrice;
-
-                // Add creative copy if checked
-                if (creativeCopyCheckbox.checked) {
-                    copyTotalSpan.textContent = `€${copyPrice}`;
-                    copyLine.style.display = 'flex';
-                    total += copyPrice;
-                } else {
-                    copyLine.style.display = 'none';
-                }
-
-                // Add post planning if checked
-                if (postPlanningCheckbox.checked) {
-                    planningLine.style.display = 'flex';
-                    total += 250;
-                } else {
-                    planningLine.style.display = 'none';
-                }
-
-                // Update grand total
-                grandTotalSpan.textContent = `€${total}`;
-
-                // Update copy price description
-                const copyDescription = creativeCopyCheckbox.closest('.checkbox-group').querySelector('.option-description');
-                copyDescription.textContent = `€50 per video (${videoCount} videot = €${copyPrice})`;
-            }
-
-            // Event listeners for calculator
-            if (videoSelect) {
-                videoSelect.addEventListener('change', updateCalculator);
-            }
-            if (creativeCopyCheckbox) {
-                creativeCopyCheckbox.addEventListener('change', updateCalculator);
-            }
-            if (postPlanningCheckbox) {
-                postPlanningCheckbox.addEventListener('change', updateCalculator);
-            }
-
-            // Initialize calculator
-            updateCalculator();
-
-            // Performance optimization: Pause particles when tab is not visible
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    if (particleSystem.animationId) {
-                        cancelAnimationFrame(particleSystem.animationId);
-                    }
-                } else {
-                    particleSystem.animate();
-                }
-            });
-        }); // End of DOMContentLoaded
-    </script>
-</body>
-</html>
+<script>
+/* Hero hover-to-play: this dc-runtime doesn't bind onmouseenter/onmouseleave,
+   so the split-hero video previews are wired natively via event delegation.
+   Hovering a side fades in + plays its muted video; leaving pauses + resets. */
+(function () {
+  function vid(side) { return document.getElementById(side === 'cap' ? 'web-cap-video' : 'web-craft-video'); }
+  function play(side) { var v = vid(side); if (v) { v.style.opacity = '1'; var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+  function stop(side) { var v = vid(side); if (v) { v.style.opacity = '0'; v.pause(); try { v.currentTime = 0; } catch (e) {} } }
+  var current = null;
+  document.addEventListener('mouseover', function (e) {
+    var host = e.target && e.target.closest ? e.target.closest('[data-hero]') : null;
+    var side = host ? host.getAttribute('data-hero') : null;
+    if (side === current) return;
+    if (current) stop(current);
+    current = side;
+    if (side) play(side);
+  });
+  document.addEventListener('mouseout', function (e) {
+    if (!e.relatedTarget && current) { stop(current); current = null; }
+  });
+})();
+</script>
+</body></html>
