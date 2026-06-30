@@ -175,12 +175,12 @@
     <nav style="display:flex; align-items:center; gap:10px;">
       <a href="#work" style="font-size:14px; font-weight:500; color:#B6B7BC; padding:10px 14px; border-radius:999px;" style-hover="color:#F4F4F2; background:rgba(255,255,255,0.06);">{{ t.navWork }}</a>
       <a href="#services" style="font-size:14px; font-weight:500; color:#B6B7BC; padding:10px 14px; border-radius:999px;" style-hover="color:#F4F4F2; background:rgba(255,255,255,0.06);">{{ t.navServices }}</a>
-      <a href="#studio" style="font-size:14px; font-weight:500; color:#B6B7BC; padding:10px 14px; border-radius:999px;" style-hover="color:#F4F4F2; background:rgba(255,255,255,0.06);">{{ t.navStudio }}</a>
+      <a href="#" style="font-size:14px; font-weight:500; color:#B6B7BC; padding:10px 14px; border-radius:999px;" style-hover="color:#F4F4F2; background:rgba(255,255,255,0.06);">{{ t.navStudio }}</a>
       <div role="group" aria-label="Language" style="display:flex; align-items:center; gap:2px; margin-left:6px; padding:3px; background:rgba(255,255,255,0.06); border-radius:999px;">
         <button onclick="{{ setLangEt }}" style="font-size:12px; font-weight:700; letter-spacing:0.02em; color:{{ etColor }}; background:{{ etBg }}; border:none; padding:6px 11px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:all .2s ease;">ET</button>
         <button onclick="{{ setLangEn }}" style="font-size:12px; font-weight:700; letter-spacing:0.02em; color:{{ enColor }}; background:{{ enBg }}; border:none; padding:6px 11px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:all .2s ease;">EN</button>
       </div>
-      <button onclick="{{ openReel }}" style="margin-left:8px; font-size:14px; font-weight:600; color:var(--ink); background:var(--acc); border:none; padding:11px 22px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:transform .2s ease, filter .2s ease;" style-hover="transform:translateY(-1px); filter:brightness(1.05);">{{ t.showreel }}</button>
+      <a href="#contact" style="margin-left:8px; font-size:14px; font-weight:600; color:var(--ink); background:var(--acc); border:none; padding:11px 22px; border-radius:999px; cursor:pointer; font-family:'Space Grotesk'; transition:transform .2s ease, filter .2s ease;" style-hover="transform:translateY(-1px); filter:brightness(1.05);">{{ t.navContact }}</a>
     </nav>
   </header>
 
@@ -343,7 +343,7 @@
       <div style="font-size:14px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; opacity:0.7; margin-bottom:24px;">{{ t.ctaLabel }}</div>
       <h2 style="margin:0 0 40px; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(40px,8vw,116px); line-height:0.9; letter-spacing:-0.035em;">{{ t.ctaTitle1 }}<br>{{ t.ctaTitle2 }}</h2>
       <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px;">
-        <a href="mailto:studio@r3ydan.com" style="font-size:16px; font-weight:600; color:var(--acc); background:var(--ink); padding:17px 32px; border-radius:999px; transition:transform .2s ease;" style-hover="transform:translateY(-2px);">studio@r3ydan.com</a>
+        <a href="mailto:info@r3ydan.ee" style="font-size:16px; font-weight:600; color:var(--acc); background:var(--ink); padding:17px 32px; border-radius:999px; transition:transform .2s ease;" style-hover="transform:translateY(-2px);">info@r3ydan.ee</a>
         <span style="font-size:16px; font-weight:500; opacity:0.7;">{{ t.ctaText }}</span>
       </div>
       </div>
@@ -420,20 +420,20 @@
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;gridColumns&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;2&quot;,&quot;3&quot;],&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Lightning Yellow&quot;,&quot;Electric Blue&quot;,&quot;Acid Lime&quot;,&quot;Hot Coral&quot;],&quot;default&quot;:&quot;Lightning Yellow&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 const I18N = {
   et: {
-    navWork: 'Tööd', navServices: 'Teenused', navStudio: 'Stuudio', showreel: 'Showreel',
-    heroCapLabel: '01 — Väljas', heroCapTitle: 'Filmimine', workCapTag: 'Filmimine + Järeltöötlus',
-    heroCapText: 'Drooni- ja õhufilmimine ning lühivormis sisu — loodud liikuma.',
+    navWork: 'Tööd', navServices: 'Teenused', navStudio: 'Stuudio', navContact: 'Kontakt', showreel: 'Showreel',
+    heroCapLabel: '01', heroCapTitle: 'Filmimine', workCapTag: 'Filmimine + Järeltöötlus',
+    heroCapText: '',
     heroCapCta: 'Vaata filmimistöid →',
     chooseASide: 'Vali pool',
-    heroCraftLabel: '02 — Järeltöötluses', heroCraftTitle: 'Järeltöötlus',
-    heroCraftText: 'Montaaž, motion graafika ja 3D — toores materjal lõigatakse, gradeeritakse ja seatakse liikuma.',
+    heroCraftLabel: '02', heroCraftTitle: 'Järeltöötlus',
+    heroCraftText: '',
     heroCraftCta: 'Vaata järeltöötlustöid →',
     mq1: 'Droon', mq2: 'Lühivorm', mq3: 'Aeropildistamine', mq4: 'Motion graafika', mq5: '3D', mq6: 'Värv', mq7: 'Montaaž',
-    servicesLabel: 'Mida me teeme', servicesTitle1: 'Kaks valdkonda,', servicesTitle2: 'üks stuudio.',
+    servicesLabel: 'Mida me teeme', servicesTitle1: 'Kaks valdkonda', servicesTitle2: '',
     captureDesc: 'Väljas. Me lendame ja filmime — õhuvõtted, avakaadrid ja kiired lühivormis videod, mis on loodud sotsiaalmeedia jaoks.',
-    captureLi1: 'Drooni- ja õhufilmimine', captureLi2: 'Lühivormis sisu filmimine', captureLi3: 'Juhendamine võttepaigal',
+    captureLi1: 'Droonikaadrid', captureLi2: 'Lühivormis sisu filmimine', captureLi3: 'Juhendamine võttepaigal',
     craftDesc: 'Järeltöötluses. Me lõikame, gradeerime ja animeerime — toorest materjalist saab valmis teos motion disaini ja 3D abil.',
-    craftLi1: 'Montaaž ja värvikorrektsioon', craftLi2: 'Motion graafika', craftLi3: '3D ja kompositsioon',
+    craftLi1: 'Montaaž ja värvikorrektsioon', craftLi2: 'Motion graafika', craftLi3: '3D ja AI sisu',
     workTitle: 'Valitud tööd', lblAll: 'Kõik',
     studioLabel: 'Stuudio', studioTitle: 'Me filmime ja teostame oma tööd ise.',
     studioP1: 'R3ydan on loodud ühest ideest: drooni lendajad peaksid olema needsamad, kes ka montaaži teevad. Ilma üleandmisteta, ilma kaduva nägemuseta.',
@@ -448,7 +448,7 @@ const I18N = {
     stCreativeT: 'Loov juhtimine',
     stCreative1: 'Postitamiste optimeerimine, tulemuste jälgimine ja analüüs. Tüürime sotsmeedia laineharjal, et sinu bränd tabaks kõiki pilke.',
     studioCta: 'Alusta projekti →',
-    ctaLabel: 'Loome midagi', ctaTitle1: 'Loome', ctaTitle2: 'midagi.',
+    ctaLabel: 'Kontakt', ctaTitle1: 'Loome', ctaTitle2: 'midagi.',
     ctaText: 'Räägi meile, mida filmid.',
     formName: 'Nimi', formEmail: 'E-post', formMessage: 'Sõnum', formSend: 'Saada →',
     formSentOk: 'Täname! Sõnum on saadetud.', formSentErr: 'Midagi läks valesti. Proovi uuesti või kirjuta otse.',
@@ -464,20 +464,20 @@ const I18N = {
     },
   },
   en: {
-    navWork: 'Work', navServices: 'Services', navStudio: 'Studio', showreel: 'Showreel',
-    heroCapLabel: '01 — In the field', heroCapTitle: 'Capture', workCapTag: 'Capture + Craft',
-    heroCapText: 'Drone & aerial cinematography and short-form content — shot to move.',
+    navWork: 'Work', navServices: 'Services', navStudio: 'Studio', navContact: 'Contact', showreel: 'Showreel',
+    heroCapLabel: '01', heroCapTitle: 'Capture', workCapTag: 'Capture + Craft',
+    heroCapText: '',
     heroCapCta: 'See capture work →',
     chooseASide: 'Choose a side',
-    heroCraftLabel: '02 — In post', heroCraftTitle: 'Craft',
-    heroCraftText: 'Editing, motion graphics & 3D — footage cut, graded and set in motion.',
+    heroCraftLabel: '02', heroCraftTitle: 'Craft',
+    heroCraftText: '',
     heroCraftCta: 'See craft work →',
     mq1: 'Drone', mq2: 'Short-Form', mq3: 'Aerial', mq4: 'Showreel', mq5: '3D', mq6: 'Colour', mq7: 'Editing',
-    servicesLabel: 'What we do', servicesTitle1: 'Two disciplines,', servicesTitle2: 'one studio.',
+    servicesLabel: 'What we do', servicesTitle1: 'Two disciplines', servicesTitle2: '',
     captureDesc: 'In the field. We fly and film — aerials, establishing shots and fast-turnaround short-form content built for the feed.',
-    captureLi1: 'Drone & aerial cinematography', captureLi2: 'Short-form content filming', captureLi3: 'On-location direction',
+    captureLi1: 'Drone shots', captureLi2: 'Short-form content filming', captureLi3: 'On-location direction',
     craftDesc: 'In post. We cut, grade and animate — turning raw footage into finished pieces with motion design and 3D.',
-    craftLi1: 'Editing & colour', craftLi2: 'Showreel', craftLi3: '3D & compositing',
+    craftLi1: 'Editing & colour', craftLi2: 'Showreel', craftLi3: '3D & AI content',
     workTitle: 'Selected work', lblAll: 'All',
     studioLabel: 'The studio', studioTitle: 'We shoot and finish our own work.',
     studioP1: 'R3ydan is built around one idea: the people who fly the drone should be the people who cut the edit. No hand-offs, no lost intent.',
@@ -492,7 +492,7 @@ const I18N = {
     stCreativeT: 'Creative direction',
     stCreative1: 'Optimising posts, tracking and analysing results. We ride the crest of the social-media wave so your brand catches every eye.',
     studioCta: 'Start a project →',
-    ctaLabel: "Let's make something", ctaTitle1: "Let's make", ctaTitle2: 'something.',
+    ctaLabel: 'Contact', ctaTitle1: "Let's make", ctaTitle2: 'something.',
     ctaText: "Tell us what you're shooting.",
     formName: 'Name', formEmail: 'Email', formMessage: 'Message', formSend: 'Send →',
     formSentOk: 'Thanks! Your message has been sent.', formSentErr: 'Something went wrong. Please try again or email us directly.',
@@ -566,7 +566,7 @@ class Component extends DCLogic {
       'web-cap': W.tex1 || 'assets/tex-1.png',
       'web-craft': W.tex2 || 'assets/tex-2.png',
       'web-reel-overlay': W.texHero || 'assets/tex-hero.png',
-      w1: 'assets/thumb-w1.jpg', w2: 'assets/thumb-optibet.jpg', w3: W.tex3 || 'assets/tex-3.png',
+      w1: 'assets/thumb-w1.jpg', w2: 'assets/thumb-optibet.jpg', w3: 'assets/thumb-w3.jpg',
       w4: 'https://drive.google.com/thumbnail?id=1-mrFk7K8eIyDdIy-3kJTEAGZw0uotKlF&sz=w1000', w5: 'https://drive.google.com/thumbnail?id=1sNi1BH8tG8gLgv0yk6jhyS6z5KoIQVPw&sz=w1000', w6: 'assets/thumb-w6.jpg',
     };
     Object.keys(map).forEach((id) => {
@@ -642,7 +642,7 @@ class Component extends DCLogic {
           { tex: 'https://drive.google.com/thumbnail?id=1hz3HHnFwK5IGpXcTO1n7s7mMj8Zrx3j7&sz=w1000', src: 'https://drive.google.com/file/d/1hz3HHnFwK5IGpXcTO1n7s7mMj8Zrx3j7/preview', portrait: true, title: 'Optibet x Liis Lemsalu' },
           { tex: 'https://drive.google.com/thumbnail?id=1uq4FHnqx10m2aMQdaS2NnFIyd1yPe_ro&sz=w1000', src: 'https://drive.google.com/file/d/1uq4FHnqx10m2aMQdaS2NnFIyd1yPe_ro/preview', portrait: true, title: 'Optibet x Liis Lemsalu' },
         ] },
-      { slotId: 'w3', tex: 'assets/tex-3.png', title: 'Timber x Karel Piiroja', meta: t.work.w3.meta, cat: 'capture', tag: t.workCapTag,
+      { slotId: 'w3', tex: 'assets/thumb-w3.jpg', title: 'Timber x Karel Piiroja', meta: t.work.w3.meta, cat: 'capture', tag: t.workCapTag,
         videos: [
           { tex: 'assets/tex-3.png', src: 'work-w3.mp4', title: 'Välimärkmed' },
           { tex: 'assets/tex-5.png', src: 'work-w5.mp4', title: 'Timber x Karel Piiroja' },
