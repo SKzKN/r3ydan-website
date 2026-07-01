@@ -733,6 +733,71 @@ class Component extends DCLogic {
 
 
 <script>
+(function () {
+  var BACKEND = 'https://r3ydan-website.onrender.com';
+  var STORE_KEY = 'r3_pending_contact';
+  var retryTimer = null;
+
+  function showStatus(msg, color) {
+    var el = document.getElementById('contact-status');
+    if (!el) return;
+    el.textContent = msg;
+    el.style.color = color || 'var(--acc)';
+    el.style.display = 'block';
+  }
+
+  function trySend(data, cb) {
+    fetch(BACKEND + '/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (j) { cb(j && j.ok === true); })
+    .catch(function () { cb(false); });
+  }
+
+  function startRetry() {
+    if (retryTimer) return;
+    var attempts = 0;
+    retryTimer = setInterval(function () {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (!raw) { clearInterval(retryTimer); retryTimer = null; return; }
+      attempts++;
+      if (attempts > 36) { clearInterval(retryTimer); retryTimer = null; return; }
+      trySend(JSON.parse(raw), function (ok) {
+        if (ok) { localStorage.removeItem(STORE_KEY); clearInterval(retryTimer); retryTimer = null; }
+      });
+    }, 5000);
+  }
+
+  // Wake Render the moment anyone opens the page
+  fetch(BACKEND + '/api/ping').catch(function () {});
+
+  // Resume any pending submission left over from a previous session
+  if (localStorage.getItem(STORE_KEY)) startRetry();
+
+  // Intercept the contact form
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form.action || form.action.indexOf('/api/contact') === -1) return;
+    e.preventDefault();
+    var fd = new FormData(form);
+    var data = {
+      name: fd.get('name') || '',
+      email: fd.get('email') || '',
+      message: fd.get('message') || '',
+      _gotcha: fd.get('_gotcha') || ''
+    };
+    localStorage.setItem(STORE_KEY, JSON.stringify(data));
+    showStatus('Sõnum saadetud! Võtame sinuga varsti ühendust.', 'var(--acc)');
+    form.reset();
+    startRetry();
+  });
+})();
+</script>
+
+<script>
 /* Hero hover-to-play: this dc-runtime doesn't bind onmouseenter/onmouseleave,
    so the split-hero video previews are wired natively via event delegation.
    Hovering a side fades in + plays its muted video; leaving pauses + resets. */

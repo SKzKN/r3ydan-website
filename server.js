@@ -83,9 +83,15 @@ function escapeHtml(s) {
   return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-function redirectToContact(res, ok) {
-  res.writeHead(302, { Location: `${FRONTEND_URL}/?sent=${ok ? '1' : '0'}#contact` });
-  res.end();
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+function respondJSON(res, ok) {
+  res.writeHead(ok ? 200 : 500, { 'Content-Type': 'application/json', ...CORS_HEADERS });
+  res.end(JSON.stringify({ ok }));
 }
 
 async function handleContact(req, res) {
@@ -100,18 +106,18 @@ async function handleContact(req, res) {
     // Bots fill every field, including ones hidden from real visitors. Pretend
     // success so they don't learn the honeypot was detected.
     if (honeypot) {
-      redirectToContact(res, true);
+      respondJSON(res, true);
       return;
     }
 
     if (!name || !email || !message) {
-      redirectToContact(res, false);
+      respondJSON(res, false);
       return;
     }
 
     if (!RESEND_API_KEY) {
       console.error('[contact] RESEND_API_KEY is not set in the environment — cannot send email.');
-      redirectToContact(res, false);
+      respondJSON(res, false);
       return;
     }
 
@@ -135,19 +141,30 @@ async function handleContact(req, res) {
 
     if (!resp.ok) {
       console.error('[contact] Resend API error:', resp.status, await resp.text());
-      redirectToContact(res, false);
+      respondJSON(res, false);
       return;
     }
 
-    redirectToContact(res, true);
+    respondJSON(res, true);
   } catch (err) {
     console.error('[contact] Unexpected error:', err);
-    redirectToContact(res, false);
+    respondJSON(res, false);
   }
 }
 
 const server = http.createServer((req, res) => {
-  if (req.method === 'POST' && req.url.split('?')[0] === '/api/contact') {
+  const urlPath = req.url.split('?')[0];
+  if (req.method === 'OPTIONS' && urlPath.startsWith('/api/')) {
+    res.writeHead(204, CORS_HEADERS);
+    res.end();
+    return;
+  }
+  if (req.method === 'GET' && urlPath === '/api/ping') {
+    res.writeHead(200, { 'Content-Type': 'application/json', ...CORS_HEADERS });
+    res.end('{"ok":true}');
+    return;
+  }
+  if (req.method === 'POST' && urlPath === '/api/contact') {
     handleContact(req, res);
     return;
   }
