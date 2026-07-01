@@ -790,8 +790,10 @@ class Component extends DCLogic {
       _gotcha: fd.get('_gotcha') || ''
     };
     localStorage.setItem(STORE_KEY, JSON.stringify(data));
-    showStatus('Sõnum saadetud! Võtame sinuga varsti ühendust.', 'var(--acc)');
     form.reset();
+    setTimeout(function () {
+      showStatus('Sõnum saadetud! Võtame sinuga varsti ühendust.', 'var(--acc)');
+    }, 50);
     startRetry();
   });
 })();
