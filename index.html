@@ -74,6 +74,8 @@ h1{margin:0;font-size:clamp(38px,5vw,64px);line-height:1.05;font-weight:500;lett
 .field:focus{border-color:var(--fg)}
 .note{font-size:14px;line-height:1.5;color:var(--faint)}
 .thanks{margin:0;padding:12px 0;font-size:17px;font-weight:500;line-height:1.45}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.form-error{margin:0;width:100%;font-size:14px;line-height:1.45;color:#c4311f}
 .proof{display:flex;flex-wrap:wrap;gap:8px 20px;padding-top:4px;font-size:14px;color:var(--muted)}
 .proof b{color:var(--fg);font-weight:600}
 
@@ -193,6 +195,7 @@ h2{margin:0;font-size:clamp(30px,4vw,48px);line-height:1.1;font-weight:500;lette
 .cta .field{border-color:transparent}
 .cta .btn:focus-visible,.cta .field:focus-visible{outline-color:#fff}
 .cta .thanks{color:#fff}
+.cta .form-error{color:#ffb4a8}
 .footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--faint);font-size:14px}
 .footer div{display:flex;gap:24px}
 </style>
@@ -228,10 +231,12 @@ h2{margin:0;font-size:clamp(30px,4vw,48px);line-height:1.1;font-weight:500;lette
   <div class="hero-copy">
     <h1>{{ L.h1 }}</h1>
     <p class="lead">{{ L.lead }}</p>
-    <form onSubmit="{{ submit }}" class="form">
+    <form onSubmit="{{ submit }}" class="form" data-source="hero">
       <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
-        <input type="email" required="required" placeholder="{{ L.email }}" aria-label="{{ L.email }}" class="field"></input>
-        <button type="submit" class="btn btn-lg">{{ L.cta }}</button>
+        <input type="email" name="email" required="required" maxlength="254" autocomplete="email" placeholder="{{ L.email }}" aria-label="{{ L.email }}" class="field"></input>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp"></input>
+        <button type="submit" class="btn btn-lg">{{ sendLabel }}</button>
+        <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}"><p class="form-error" role="alert">{{ L.formError }}</p></sc-if>
       </sc-if>
       <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
         <p class="thanks">{{ L.thanks }}</p>
@@ -447,10 +452,12 @@ h2{margin:0;font-size:clamp(30px,4vw,48px);line-height:1.1;font-weight:500;lette
 <section id="start" class="cta">
   <h2>{{ L.ctaTitle }}</h2>
   <p>{{ L.ctaBody }}</p>
-  <form onSubmit="{{ submit }}" class="form">
+  <form onSubmit="{{ submit }}" class="form" data-source="footer">
     <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
-      <input type="email" required="required" placeholder="{{ L.email }}" aria-label="{{ L.email }}" class="field"></input>
-      <button type="submit" class="btn btn-lg">{{ L.cta }}</button>
+      <input type="email" name="email" required="required" maxlength="254" autocomplete="email" placeholder="{{ L.email }}" aria-label="{{ L.email }}" class="field"></input>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp"></input>
+      <button type="submit" class="btn btn-lg">{{ sendLabel }}</button>
+      <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}"><p class="form-error" role="alert">{{ L.formError }}</p></sc-if>
     </sc-if>
     <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
       <p class="thanks">{{ L.thanks }}</p>
@@ -499,6 +506,8 @@ class Component extends DCLogic {
       "navCta": "Free test edit",
       "navLogin": "Client login",
       "cta": "Get a free test edit",
+      "sending": "Sending…",
+      "formError": "That didn't go through. Please try again in a moment.",
       "banner": "Early access: your first edit is free.",
       "h1": "Post every day. We'll handle the editing.",
       "lead": "Monthly editing for founders and experts. Send your footage, get back ready-to-post shorts, YouTube videos and podcasts.",
@@ -592,6 +601,8 @@ class Component extends DCLogic {
       "navCta": "Tasuta proovimontaaž",
       "navLogin": "Logi sisse",
       "cta": "Saa tasuta proovimontaaž",
+      "sending": "Saadan…",
+      "formError": "Saatmine ebaõnnestus. Proovi hetke pärast uuesti.",
       "banner": "Varajane ligipääs: sinu esimene montaaž on tasuta.",
       "h1": "Postita iga päev. Monteerimise teeme meie.",
       "lead": "Igakuine montaaž ettevõtjatele ja ekspertidele. Saada oma materjal ja saad tagasi postitamiseks valmis lühivideod, YouTube'i videod ja podcastid.",
@@ -685,6 +696,8 @@ class Component extends DCLogic {
       "navCta": "Montage test gratuit",
       "navLogin": "Espace client",
       "cta": "Obtenir un montage test gratuit",
+      "sending": "Envoi…",
+      "formError": "L'envoi a échoué. Réessayez dans un instant.",
       "banner": "Accès anticipé : votre premier montage est offert.",
       "h1": "Publiez chaque jour. On s'occupe du montage.",
       "lead": "Le montage mensuel des fondateurs et experts. Envoyez vos rushes, recevez des vidéos courtes, des vidéos YouTube et des podcasts prêts à publier.",
@@ -778,6 +791,8 @@ class Component extends DCLogic {
       "navCta": "Gratis-Testschnitt",
       "navLogin": "Kundenlogin",
       "cta": "Kostenlosen Testschnitt sichern",
+      "sending": "Wird gesendet …",
+      "formError": "Das hat nicht geklappt. Bitte versuchen Sie es gleich noch einmal.",
       "banner": "Early Access: Ihr erster Schnitt ist kostenlos.",
       "h1": "Posten Sie jeden Tag. Den Schnitt übernehmen wir.",
       "lead": "Monatlicher Videoschnitt für Gründer und Experten. Schicken Sie Ihr Material und erhalten Sie fertige Kurzvideos, YouTube-Videos und Podcasts.",
@@ -864,6 +879,8 @@ class Component extends DCLogic {
   state = {
     t: 0,
     joined: false,
+    sending: false,
+    failed: false,
     // ?lang= in the address wins, then the visitor's last choice, otherwise English.
     lang: (() => {
       const known = ['en', 'et', 'fr', 'de'];
@@ -948,7 +965,25 @@ class Component extends DCLogic {
       timecode: `00:0${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`,
       stage: L.stages[Math.min(4, Math.floor(t * 5))],
       joined: this.state.joined, notJoined: !this.state.joined,
-      submit: e => { e.preventDefault(); this.setState({ joined: true }); },
+      failed: this.state.failed,
+      sendLabel: this.state.sending ? L.sending : L.cta,
+      // Sign-ups go to the client portal, which saves them, emails the studio and
+      // sends the visitor the upload link (r3ydan-portal/src/app/api/leads/route.ts).
+      submit: e => {
+        e.preventDefault();
+        if (this.state.sending) return;
+        const form = e.currentTarget || e.target;
+        const data = new FormData(form);
+        this.setState({ sending: true, failed: false });
+        const api = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://localhost:3000/api/leads' : 'https://portal.r3ydan.ee/api/leads';
+        fetch(api, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: data.get('email'), website: data.get('website'), lang: this.state.lang, source: form.dataset.source || null }),
+        })
+          .then(r => { if (!r.ok) throw new Error(String(r.status)); this.setState({ sending: false, joined: true }); })
+          .catch(() => this.setState({ sending: false, failed: true }));
+      },
       L,
       portalFeats: L.portalFeats.map(([title, body]) => ({ title, body })),
       // Client portal, opened in the visitor's language.
