@@ -1,176 +1,937 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reydan · Video editing subscription for founders and experts</title>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/r3ydan-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Monthly editing for founders and experts. Send your footage, get back ready-to-post shorts, YouTube videos and podcasts.">
+<link rel="alternate" hreflang="en" href="https://r3ydan.ee/?lang=en">
+<link rel="alternate" hreflang="et" href="https://r3ydan.ee/?lang=et">
+<link rel="alternate" hreflang="fr" href="https://r3ydan.ee/?lang=fr">
+<link rel="alternate" hreflang="de" href="https://r3ydan.ee/?lang=de">
+<link rel="alternate" hreflang="x-default" href="https://r3ydan.ee/">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#0f0e0c;color:#efe9df;font-family:'Bricolage Grotesque',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:#efe9df;text-decoration:none}a:hover{color:#e8a67f}
+/* White page, neutral greys, near-black text. Green only on buttons and links. */
+:root{--fg:#1a1a1a;--muted:#505866;--faint:#6b7280;--line:#e0e6eb;--line-2:#c9d1da;--soft:#f5f6f8;--green:#108a00;--green-2:#0f7500}
 *{box-sizing:border-box}
-input::placeholder{color:#6b655b}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:#fff;color:var(--fg);font-family:'Inter Tight',system-ui,sans-serif;font-size:16px;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:#d1dffa}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+section[id]{scroll-margin-top:16px}
+
+.nav{display:flex;align-items:center;gap:16px 32px;min-height:64px}
+.logo{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:600;letter-spacing:-.03em}
+.nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;white-space:nowrap}
+.nav-links a:hover,.footer a:hover{color:var(--green)}
+.nav .seg{margin-left:auto}
+@media (max-width:1040px){.nav-links{display:none}}
+@media (max-width:560px){.nav .nav-cta{display:none}}
+.nav-login{font-size:14px;font-weight:500;white-space:nowrap;transition:color .15s}
+.nav-login:hover{color:var(--green)}
+@media (max-width:560px){.nav{gap:12px}.nav .seg-btn{padding:5px 8px}.nav-login{font-size:13px}}
+@media (max-width:359px){.nav .nav-login{display:none}}
+.seg{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:#f2f2f4}
+.seg-btn{border:0;background:transparent;border-radius:999px;padding:5px 11px;font:inherit;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:color .15s,background .15s}
+.seg-btn:hover{color:var(--fg)}
+.seg-btn:focus-visible{outline:2px solid var(--fg);outline-offset:1px}
+.seg-on{background:#fff;color:var(--fg);box-shadow:0 1px 2px rgba(26,26,26,.12)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:6px 24px;border-radius:999px;border:2px solid var(--green);background:var(--green);color:#fff;font:inherit;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,color .15s}
+.btn:hover{background:var(--green-2);border-color:var(--green-2)}
+.btn:focus-visible,.field:focus-visible,.link:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.btn-lg{min-height:48px;padding:8px 28px;font-size:16px}
+.btn-ghost{background:#fff;color:var(--green);border-color:var(--green)}
+.btn-ghost:hover{background:#f3f9f1;color:var(--green-2);border-color:var(--green-2)}
+.link{color:var(--green);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.link:hover{color:var(--green-2)}
+
+.banner{display:flex;justify-content:space-between;align-items:center;gap:8px 24px;flex-wrap:wrap;margin-top:12px;padding:18px 24px;border-radius:16px;background:linear-gradient(90deg,#f3f9e1,#e4f5e1 55%,#def3e7);font-size:17px;font-weight:500}
+.banner a{font-size:14px;text-decoration:underline;text-underline-offset:3px}
+.banner a:hover{color:var(--green)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(40px,6vw,80px) 0 clamp(48px,7vw,96px)}
+.hero-copy{display:grid;gap:24px;justify-items:start}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+h1{margin:0;font-size:clamp(38px,5vw,64px);line-height:1.05;font-weight:500;letter-spacing:-.02em;text-wrap:balance;overflow-wrap:break-word}
+.lead{margin:0;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--muted);max-width:46ch;text-wrap:pretty}
+.form{display:flex;gap:8px;flex-wrap:wrap;width:100%;max-width:520px}
+.field{flex:1 1 220px;min-width:0;height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--line-2);background:#fff;color:var(--fg);font:inherit;font-size:16px;outline:none;transition:border-color .15s}
+.field::placeholder{color:var(--faint)}
+.field:hover{border-color:#adb8c2}
+.field:focus{border-color:var(--fg)}
+.note{font-size:14px;line-height:1.5;color:var(--faint)}
+.thanks{margin:0;padding:12px 0;font-size:17px;font-weight:500;line-height:1.45}
+.proof{display:flex;flex-wrap:wrap;gap:8px 20px;padding-top:4px;font-size:14px;color:var(--muted)}
+.proof b{color:var(--fg);font-weight:600}
+
+.stage{border-radius:24px;background:var(--soft);padding:clamp(14px,2.2vw,28px);display:grid;gap:16px}
+.pair{display:flex;justify-content:center;align-items:center;gap:clamp(8px,1.4vw,16px)}
+.phone{position:relative;flex:1 1 0;min-width:0;max-width:250px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--faint)}
+.phone video,.phone iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.tag{position:absolute;left:10px;top:10px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--fg);font-size:12px;font-weight:500}
+.tag-done{background:var(--fg);color:#fff}
+.arrow{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:15px}
+.timeline{position:relative;background:#fff;border-radius:16px;padding:14px 16px 16px;display:grid;gap:8px}
+.tl-head{display:flex;justify-content:space-between;font-size:13px;line-height:20px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tl-row{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center}
+.tl-label{font-size:12px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-track{position:relative;height:18px;background:var(--soft);border-radius:4px}
+.tl-clip{position:absolute;top:3px;bottom:3px;border-radius:3px;transition:opacity .6s}
+.playhead{position:absolute;top:40px;bottom:14px;width:2px;border-radius:2px;background:var(--fg)}
+
+.section{padding:clamp(48px,7vw,96px) 0;display:grid;gap:40px}
+.section-head{display:grid;gap:12px}
+.kicker{font-size:14px;font-weight:500;color:var(--muted)}
+h2{margin:0;font-size:clamp(30px,4vw,48px);line-height:1.1;font-weight:500;letter-spacing:-.01em;max-width:22ch;text-wrap:balance;overflow-wrap:break-word}
+.sub{margin:0;font-size:18px;line-height:1.55;color:var(--muted);max-width:56ch;text-wrap:pretty}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:32px}
+.stat{border-top:1px solid var(--line-2);padding-top:20px;display:grid;gap:10px;align-content:start}
+.stat-n{font-size:clamp(44px,5.5vw,64px);line-height:1;font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat-l{color:var(--muted);line-height:1.5;max-width:30ch}
+.story{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.story-card{background:var(--soft);border-radius:16px;padding:28px 24px;display:grid;gap:10px;align-content:start}
+.story-label{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.story-card p{margin:0;line-height:1.6;text-wrap:pretty}
+.also{display:grid;gap:16px}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.tile{background:var(--soft);border-radius:16px;padding:28px 24px;display:grid;gap:10px;align-content:start;transition:background .15s}
+.tile:hover{background:#eceff2}
+.tile-title{font-size:20px;font-weight:500}
+.tile-body{color:var(--muted);line-height:1.55;text-wrap:pretty}
+.portal{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;column-gap:clamp(32px,5vw,72px)}
+@media (max-width:900px){.portal{grid-template-columns:minmax(0,1fr)}}
+.portal-copy{display:grid;gap:28px}
+.portal-feats{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.portal-feats li{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start}
+.portal-check{width:28px;height:28px;border-radius:50%;background:#e8f6e6;color:var(--green);display:flex;align-items:center;justify-content:center}
+.portal-feats b{display:block;font-size:17px;font-weight:500;margin-bottom:3px}
+.portal-feats div span{color:var(--muted);line-height:1.5;text-wrap:pretty}
+.portal-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
+.portal-shots{position:relative;padding-bottom:40px;padding-left:clamp(0px,3vw,32px)}
+.pshot{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 24px 48px -24px rgba(16,24,40,.28)}
+.pbar{height:30px;display:flex;align-items:center;gap:6px;padding:0 12px;background:var(--soft);border-bottom:1px solid var(--line)}
+.pbar i{width:8px;height:8px;border-radius:50%;background:var(--line-2)}
+.pbar span{margin-left:10px;font-size:11px;color:var(--faint);background:#fff;border:1px solid var(--line);border-radius:99px;padding:1px 10px}
+.pshot img{display:block;width:100%;height:auto}
+.pphone{position:absolute;left:0;bottom:0;width:28%;max-width:170px;min-width:96px;border:5px solid #111;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 20px 40px -16px rgba(16,24,40,.45)}
+.pphone img{display:block;width:100%;height:auto}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px}
+.step{border-top:1px solid var(--line-2);padding-top:24px;display:grid;gap:12px;align-content:start}
+.step-n{width:36px;height:36px;border-radius:50%;background:var(--fg);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
+.step h3{margin:0;font-size:22px;font-weight:500}
+.step p{margin:0;color:var(--muted);line-height:1.55;text-wrap:pretty}
+
+.logos{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee{display:flex;gap:16px;width:max-content;animation:reydan-marquee 30s linear infinite}
+.logo-card{flex:none;width:240px;height:112px;border-radius:16px;border:1px solid var(--line);background:#fff;padding:20px 28px;display:flex;align-items:center;justify-content:center;gap:12px}
 @keyframes reydan-marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 8px))}}
+@media (prefers-reduced-motion:reduce){.marquee{animation:none}}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:stretch}
+.plan{border:1px solid var(--line-2);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;gap:20px;background:#fff}
+.plan-on{border:2px solid var(--fg);padding:27px 23px}
+.plan-top{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:26px}
+.plan-name{font-size:20px;font-weight:500}
+.badge{padding:4px 10px;border-radius:999px;background:var(--fg);color:#fff;font-size:12px;font-weight:500;white-space:nowrap}
+.plan-desc{margin:0;color:var(--muted);line-height:1.5;min-height:3em}
+.price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.price b{font-size:clamp(40px,4.5vw,48px);line-height:1;font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.price span{color:var(--muted)}
+.price b.quote{font-size:clamp(28px,3vw,34px);letter-spacing:-.02em}
+.feats{list-style:none;margin:0;padding:20px 0 0;border-top:1px solid var(--line);display:grid;gap:12px;flex:1;align-content:start}
+.feats li{display:grid;grid-template-columns:18px 1fr;gap:10px;line-height:1.45}
+.feats svg{margin-top:2px}
+.plan .btn{width:100%}
+.plans-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 32px;font-size:15px;line-height:1.5;color:var(--muted)}
+.plans-foot p{margin:0;max-width:62ch}
+
+.compare{border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3vw,32px);display:grid;gap:20px}
+.compare h3{margin:0;font-size:22px;font-weight:500;letter-spacing:-.01em}
+.cmp-rows{display:grid;gap:16px}
+.cmp-row{display:grid;gap:6px}
+.cmp-top{display:flex;justify-content:space-between;align-items:baseline;gap:4px 16px;flex-wrap:wrap;font-size:15px;line-height:1.4}
+.cmp-name{font-weight:500}
+.cmp-detail{color:var(--faint);font-size:14px}
+.cmp-price{font-variant-numeric:tabular-nums;white-space:nowrap}
+.cmp-track{height:12px;border-radius:0 4px 4px 0;background:transparent}
+.cmp-bar{height:100%;border-radius:0 4px 4px 0;background:var(--line-2)}
+.cmp-us .cmp-bar{background:var(--fg)}
+.cmp-us .cmp-price{font-weight:600}
+.compare .note{margin:0;font-size:13px}
+
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:40px clamp(40px,6vw,96px);align-items:start}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}}
+.faq{border-top:1px solid var(--line-2)}
+.faq details{border-bottom:1px solid var(--line-2)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:19px;font-weight:500;line-height:1.35;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:400;color:var(--muted)}
+.faq details[open] summary::after{content:"\2212"}
+.faq summary:hover{color:var(--green)}
+.faq summary:focus-visible{outline:2px solid var(--fg);outline-offset:4px;border-radius:4px}
+.faq details p{margin:0 0 22px;max-width:62ch;color:var(--muted);line-height:1.6;text-wrap:pretty}
+
+.cta{border-radius:24px;background:var(--fg);color:#fff;padding:clamp(48px,7vw,88px) clamp(20px,4vw,48px);display:grid;gap:24px;justify-items:center;text-align:center;margin:clamp(24px,4vw,48px) 0 40px}
+.cta h2{max-width:20ch}
+.cta p{margin:0;color:rgba(255,255,255,.72);font-size:18px;line-height:1.55;max-width:46ch}
+.cta .form{justify-content:center}
+.cta .field{border-color:transparent}
+.cta .btn:focus-visible,.cta .field:focus-visible{outline-color:#fff}
+.cta .thanks{color:#fff}
+.footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--faint);font-size:14px}
+.footer div{display:flex;gap:24px}
 </style>
 </helmet>
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0f0e0c"></rect><circle cx="50" cy="50" r="20" fill="none" stroke="#e8a67f" stroke-width="4"></circle></svg></template>
-<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ffffff"></rect><circle cx="50" cy="50" r="22" fill="none" stroke="#1a1a1a" stroke-width="8"></circle><circle cx="50" cy="50" r="8" fill="#108a00"></circle></svg></template>
+<div class="wrap">
 
-<nav style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 0;flex-wrap:wrap">
-  <a href="#" style="display:flex;align-items:center;gap:10px;font-weight:500;font-size:21px;letter-spacing:-0.01em">
-    <span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #e8a67f;display:block"></span>Reydan
+<nav class="nav">
+  <a href="#" class="logo">
+    <img src="assets/r3ydan-mark.svg" width="22" height="24" alt="" aria-hidden="true">Reydan
   </a>
-  <div style="display:flex;gap:28px;align-items:center;font-size:15px;flex-wrap:wrap">
-    <a href="#how" style="color:#a39c90">How it works</a>
-    <a href="#waitlist" style="padding:10px 18px;border:1px solid #3a362f;border-radius:999px">Join the waitlist</a>
+  <div class="nav-links">
+    <a href="#results">{{ L.navResults }}</a>
+    <a href="#how">{{ L.navHow }}</a>
+    <a href="#plans">{{ L.navPlans }}</a>
+    <a href="#faq">{{ L.navFaq }}</a>
   </div>
+  <div class="seg" role="group" aria-label="Language">
+    <sc-for list="{{ langs }}" as="l" hint-placeholder-count="4">
+      <button type="button" class="{{ l.cls }}" onClick="{{ l.pick }}" aria-pressed="{{ l.on }}" title="{{ l.name }}">{{ l.code }}</button>
+    </sc-for>
+  </div>
+  <a href="{{ portalUrl }}" class="nav-login">{{ L.navLogin }}</a>
+  <a href="#start" class="btn nav-cta">{{ L.navCta }}</a>
 </nav>
 
-<header style="padding:clamp(64px,11vw,150px) 0 72px;display:grid;gap:32px;justify-items:start">
-  <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#e8a67f;text-transform:uppercase;letter-spacing:0.14em">New service · Early access</span>
-  <h1 style="margin:0;font-size:clamp(44px,7.5vw,104px);line-height:0.98;letter-spacing:-0.04em;font-weight:300;max-width:15ch;text-wrap:balance">Publish-ready videos, <span style="color:#e8a67f">the same day</span> you shoot.</h1>
-  <p style="margin:0;font-size:clamp(18px,1.5vw,21px);line-height:1.6;color:#a39c90;max-width:52ch;text-wrap:pretty">Send us your raw footage. You get back a finished, captioned, on-brand edit in every format you need, in hours instead of weeks.</p>
-  <form onSubmit="{{ submit }}" style="display:flex;gap:8px;flex-wrap:wrap;width:100%;max-width:520px;margin-top:8px">
-    <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
-      <input type="email" required="required" placeholder="Work email" style="flex:1 1 240px;min-width:0;padding:16px 22px;border-radius:999px;border:1px solid #3a362f;background:#161512;color:#efe9df;font:inherit;font-size:16px;outline:none"></input>
-      <button type="submit" style="padding:16px 26px;border-radius:999px;border:0;background:#efe9df;color:#0f0e0c;font:inherit;font-size:16px;font-weight:500;cursor:pointer">Join the waitlist</button>
-    </sc-if>
-    <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:0;padding:16px 0;color:#e8a67f;font-size:17px">Thank you. We'll be in touch when your access is ready.</p>
-    </sc-if>
-  </form>
-  <span style="font-size:14px;color:#6b655b">For independent creators and enterprise teams.</span>
+<div class="banner">
+  <span>{{ L.banner }}</span>
+  <a href="#start">{{ L.cta }} ›</a>
+</div>
+
+<header class="hero">
+  <div class="hero-copy">
+    <h1>{{ L.h1 }}</h1>
+    <p class="lead">{{ L.lead }}</p>
+    <form onSubmit="{{ submit }}" class="form">
+      <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
+        <input type="email" required="required" placeholder="{{ L.email }}" aria-label="{{ L.email }}" class="field"></input>
+        <button type="submit" class="btn btn-lg">{{ L.cta }}</button>
+      </sc-if>
+      <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
+        <p class="thanks">{{ L.thanks }}</p>
+      </sc-if>
+    </form>
+    <span class="note">{{ L.note }} <a href="#plans" class="link">{{ L.seePlans }}</a></span>
+    <div class="proof">
+      <span><b>433K</b> {{ L.proofShorts }}</span>
+      <span><b>{{ xViews }}</b> {{ L.proofX }}</span>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="pair">
+      <div class="phone">
+        <span>{{ L.raw }}</span>
+        <sc-if value="{{ raw.file }}" hint-placeholder-val="{{ false }}"><video src="{{ raw.src }}" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline"></video></sc-if>
+        <sc-if value="{{ raw.embed }}" hint-placeholder-val="{{ false }}"><iframe src="{{ raw.src }}" allow="autoplay; encrypted-media" title="{{ L.raw }}"></iframe></sc-if>
+        <span class="tag">{{ L.raw }}</span>
+      </div>
+      <span aria-hidden="true" class="arrow">→</span>
+      <div class="phone">
+        <span>{{ L.done }}</span>
+        <sc-if value="{{ edit.file }}" hint-placeholder-val="{{ false }}"><video src="{{ edit.src }}" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline"></video></sc-if>
+        <sc-if value="{{ edit.embed }}" hint-placeholder-val="{{ false }}"><iframe src="{{ edit.src }}" allow="autoplay; encrypted-media" title="{{ L.done }}"></iframe></sc-if>
+        <span class="tag tag-done">{{ L.done }}</span>
+      </div>
+    </div>
+    <div class="timeline" aria-hidden="true">
+      <div class="tl-head"><span>{{ timecode }}</span><span>{{ stage }}</span></div>
+      <sc-for list="{{ tracks }}" as="track" hint-placeholder-count="4">
+        <div class="tl-row">
+          <span class="tl-label">{{ track.label }}</span>
+          <div class="tl-track">
+            <sc-for list="{{ track.clips }}" as="clip" hint-placeholder-count="3">
+              <div class="tl-clip" style="left:{{ clip.left }};width:{{ clip.width }};background:{{ clip.bg }};opacity:{{ clip.opacity }}"></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      <div class="playhead" style="left:calc(16px + 84px + (100% - 32px - 84px) * {{ playhead }})"></div>
+    </div>
+  </div>
 </header>
 
-<section style="border:1px solid #24221d;border-radius:14px;background:#141310;overflow:hidden;margin-bottom:clamp(96px,14vw,180px)">
-  <div style="display:flex;justify-content:center;align-items:center;gap:clamp(10px,3vw,40px);padding:clamp(16px,4vw,48px) clamp(16px,3vw,24px);border-bottom:1px solid #24221d;background:radial-gradient(ellipse at center,#1a1815 0%,#141310 70%)">
-    <div style="position:relative;flex:0 1 280px;min-width:0;aspect-ratio:9/16;background:repeating-linear-gradient(135deg,#1a1815 0 12px,#171613 12px 24px);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6b655b;border:1px solid #2e2b25;border-radius:14px;overflow:hidden">
-      <span>raw footage</span>
-      <sc-if value="{{ raw.file }}" hint-placeholder-val="{{ false }}"><video src="{{ raw.src }}" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video></sc-if>
-      <sc-if value="{{ raw.embed }}" hint-placeholder-val="{{ false }}"><iframe src="{{ raw.src }}" allow="autoplay; encrypted-media" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></sc-if>
-      <span style="position:absolute;left:12px;top:12px;padding:5px 10px;border-radius:999px;background:rgba(15,14,12,.75);color:#a39c90;font-size:11px">Raw footage</span>
-    </div>
-    <span aria-hidden="true" style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:clamp(14px,2vw,20px);color:#e8a67f">→</span>
-    <div style="position:relative;flex:0 1 280px;min-width:0;aspect-ratio:9/16;background:repeating-linear-gradient(135deg,#1d1814 0 12px,#1a1612 12px 24px);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#a47a60;border:1px solid #3a2e25;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px rgba(232,166,127,.08),0 20px 60px -20px rgba(232,166,127,.25)">
-      <span>finished edit</span>
-      <sc-if value="{{ edit.file }}" hint-placeholder-val="{{ false }}"><video src="{{ edit.src }}" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video></sc-if>
-      <sc-if value="{{ edit.embed }}" hint-placeholder-val="{{ false }}"><iframe src="{{ edit.src }}" allow="autoplay; encrypted-media" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></sc-if>
-      <span style="position:absolute;left:12px;top:12px;padding:5px 10px;border-radius:999px;background:rgba(15,14,12,.75);color:#e8a67f;font-size:11px">Finished edit</span>
-    </div>
+<section id="results" class="section">
+  <div class="section-head">
+    <span class="kicker">{{ L.navResults }}</span>
+    <h2>{{ L.resultsTitle }}</h2>
+    <p class="sub">{{ L.resultsLead }}</p>
   </div>
-  <div style="padding:20px 24px 24px;display:grid;gap:10px;position:relative">
-    <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6b655b;margin-bottom:6px">
-      <span>{{ timecode }}</span><span>{{ stage }}</span>
-    </div>
-    <sc-for list="{{ tracks }}" as="track" hint-placeholder-count="4">
-      <div style="display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b655b">{{ track.label }}</span>
-        <div style="position:relative;height:24px;background:#1a1815;border-radius:4px">
-          <sc-for list="{{ track.clips }}" as="clip" hint-placeholder-count="3">
-            <div style="position:absolute;top:3px;bottom:3px;left:{{ clip.left }};width:{{ clip.width }};background:{{ clip.bg }};border-radius:3px;opacity:{{ clip.opacity }};transition:opacity .6s"></div>
-          </sc-for>
-        </div>
-      </div>
-    </sc-for>
-    <div style="position:absolute;top:44px;bottom:20px;left:calc(24px + 76px + (100% - 48px - 76px) * {{ playhead }});width:1px;background:#e8a67f"></div>
-  </div>
-</section>
-
-<section id="get" style="margin-bottom:clamp(96px,14vw,180px);display:grid;gap:56px">
-  <div style="display:grid;gap:16px">
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#e8a67f;text-transform:uppercase;letter-spacing:0.14em">What you get</span>
-    <h2 style="margin:0;font-size:clamp(34px,4.5vw,58px);letter-spacing:-0.03em;font-weight:300;line-height:1.05;max-width:18ch">Everything you need to publish, in one delivery.</h2>
-  </div>
-  <div style="display:flex;flex-wrap:wrap;gap:1px;background:#24221d;border:1px solid #24221d;border-radius:14px;overflow:hidden">
-    <sc-for list="{{ gets }}" as="g" hint-placeholder-count="5">
-      <div style="flex:1 1 300px;background:#0f0e0c;padding:32px 28px;display:grid;gap:10px;align-content:start">
-        <span style="font-size:22px;font-weight:400;letter-spacing:-0.015em">{{ g.title }}</span>
-        <span style="color:#a39c90;font-size:16px;line-height:1.6;text-wrap:pretty">{{ g.body }}</span>
+  <div class="stats">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+      <div class="stat">
+        <span class="stat-n">{{ s.n }}</span>
+        <span class="stat-l">{{ s.l }}</span>
       </div>
     </sc-for>
   </div>
+  <div class="story">
+    <div class="story-card">
+      <span class="story-label">{{ L.challengeLabel }}</span>
+      <p>{{ L.challenge }}</p>
+    </div>
+    <div class="story-card">
+      <span class="story-label">{{ L.didLabel }}</span>
+      <p>{{ L.did }}</p>
+    </div>
+  </div>
+  <a href="case-study/" class="link">{{ L.caseLink }} →</a>
+  <div class="also">
+    <span class="kicker">{{ L.alsoFor }}</span>
+    <div class="logos">
+      <div class="marquee">
+        <div class="logo-card"><img src="uploads/12646598_timber-as_27002257_a_xl.jpg" alt="Timber.ee" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
+        <div class="logo-card"><img src="uploads/OptibetLogo-vertical.webp" alt="Optibet" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
+        <div class="logo-card"><img src="uploads/Arco-Vara_uus_logo.png" alt="Arco Vara" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
+        <div class="logo-card"><img src="assets/pioneer-media-mark.png" alt="Pioneer Media" style="width:52px;height:52px;object-fit:contain;flex:none"></img><span style="font-size:20px;font-weight:500;color:#05244D">Pioneer Media</span></div>
+        <div class="logo-card"><img src="uploads/unnamed.jpg" alt="Martin Himma" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none"></img><div style="display:grid;gap:2px"><span style="font-size:17px;font-weight:500">Martin Himma</span><span style="font-size:13px;color:#6b7280">YouTube</span></div></div>
+        <div class="logo-card"><img src="uploads/12646598_timber-as_27002257_a_xl.jpg" alt="Timber.ee" aria-hidden="true" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
+        <div class="logo-card"><img src="uploads/OptibetLogo-vertical.webp" alt="Optibet" aria-hidden="true" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
+        <div class="logo-card"><img src="uploads/Arco-Vara_uus_logo.png" alt="Arco Vara" aria-hidden="true" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
+        <div class="logo-card"><img src="assets/pioneer-media-mark.png" alt="Pioneer Media" aria-hidden="true" style="width:52px;height:52px;object-fit:contain;flex:none"></img><span style="font-size:20px;font-weight:500;color:#05244D">Pioneer Media</span></div>
+        <div class="logo-card"><img src="uploads/unnamed.jpg" alt="Martin Himma" aria-hidden="true" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none"></img><div style="display:grid;gap:2px"><span style="font-size:17px;font-weight:500">Martin Himma</span><span style="font-size:13px;color:#6b7280">YouTube</span></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="how" style="margin-bottom:clamp(96px,14vw,180px);display:grid;gap:56px">
-  <div style="display:grid;gap:16px">
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#e8a67f;text-transform:uppercase;letter-spacing:0.14em">How it works</span>
-    <h2 style="margin:0;font-size:clamp(34px,4.5vw,58px);letter-spacing:-0.03em;font-weight:300;line-height:1.05;max-width:18ch">Three steps from footage to final cut.</h2>
+<section id="how" class="section">
+  <div class="section-head">
+    <span class="kicker">{{ L.navHow }}</span>
+    <h2>{{ L.howTitle }}</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px">
+  <div class="steps">
     <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
-      <div style="border-top:1px solid #3a362f;padding-top:28px;display:grid;gap:14px;align-content:start">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#6b655b">{{ s.n }}</span>
-        <h3 style="margin:0;font-size:24px;font-weight:400;letter-spacing:-0.015em">{{ s.title }}</h3>
-        <p style="margin:0;color:#a39c90;font-size:17px;line-height:1.6;text-wrap:pretty">{{ s.body }}</p>
+      <div class="step">
+        <span class="step-n">{{ s.n }}</span>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.body }}</p>
       </div>
     </sc-for>
   </div>
 </section>
 
-<section id="clients" style="margin-bottom:clamp(96px,14vw,180px);display:grid;gap:56px">
-  <div style="display:grid;gap:16px">
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#e8a67f;text-transform:uppercase;letter-spacing:0.14em">Clients</span>
-    <h2 style="margin:0;font-size:clamp(34px,4.5vw,58px);letter-spacing:-0.03em;font-weight:300;line-height:1.05;max-width:18ch">Trusted by creators and brands worldwide.</h2>
+<section id="portal" class="section portal">
+  <div class="portal-copy">
+    <div class="section-head">
+      <span class="kicker">{{ L.portalKicker }}</span>
+      <h2>{{ L.portalTitle }}</h2>
+      <p class="sub">{{ L.portalSub }}</p>
+    </div>
+    <ul class="portal-feats">
+      <sc-for list="{{ portalFeats }}" as="f" hint-placeholder-count="3">
+        <li><span class="portal-check"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><div><b>{{ f.title }}</b><span>{{ f.body }}</span></div></li>
+      </sc-for>
+    </ul>
+    <div class="portal-links">
+      <a href="assets/reydan-client-portal-tour.pdf" target="_blank" rel="noopener" class="btn btn-ghost">{{ L.portalPdf }}</a>
+      <a href="{{ portalUrl }}" class="link">{{ L.navLogin }}</a>
+    </div>
   </div>
-  <div style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
-    <div style="display:flex;gap:16px;width:max-content;animation:reydan-marquee 30s linear infinite">
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center"><img src="uploads/12646598_timber-as_27002257_a_xl.jpg" alt="Timber.ee" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center"><img src="uploads/OptibetLogo-vertical.webp" alt="Optibet" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center"><img src="uploads/Arco-Vara_uus_logo.png" alt="Arco Vara" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center;gap:12px"><img src="assets/pioneer-media-mark.png" alt="Pioneer Media" style="width:56px;height:56px;object-fit:contain;flex:none"></img><span style="font-size:22px;font-weight:500;letter-spacing:-0.01em;color:#05244D">Pioneer Media</span></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center;gap:14px"><img src="uploads/unnamed.jpg" alt="Martin Himma" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none"></img><div style="display:grid;gap:2px"><span style="font-size:18px;font-weight:500;color:#0f0e0c">Martin Himma</span><span style="font-size:13px;font-family:'IBM Plex Mono',monospace;color:#5a544b">YouTube</span></div></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center"><img src="uploads/12646598_timber-as_27002257_a_xl.jpg" alt="Timber.ee" aria-hidden="true" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center"><img src="uploads/OptibetLogo-vertical.webp" alt="Optibet" aria-hidden="true" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center"><img src="uploads/Arco-Vara_uus_logo.png" alt="Arco Vara" aria-hidden="true" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply"></img></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center;gap:12px"><img src="assets/pioneer-media-mark.png" alt="Pioneer Media" aria-hidden="true" style="width:56px;height:56px;object-fit:contain;flex:none"></img><span style="font-size:22px;font-weight:500;letter-spacing:-0.01em;color:#05244D">Pioneer Media</span></div>
-      <div style="flex:none;width:260px;border-radius:12px;background:#efe9df;height:120px;padding:22px 30px;display:flex;align-items:center;justify-content:center;gap:14px"><img src="uploads/unnamed.jpg" alt="Martin Himma" aria-hidden="true" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none"></img><div style="display:grid;gap:2px"><span style="font-size:18px;font-weight:500;color:#0f0e0c">Martin Himma</span><span style="font-size:13px;font-family:'IBM Plex Mono',monospace;color:#5a544b">YouTube</span></div></div>
+  <div class="portal-shots">
+    <div class="pshot">
+      <div class="pbar" aria-hidden="true"><i></i><i></i><i></i><span>portal.r3ydan.ee</span></div>
+      <img src="assets/portal-review.jpg" width="1600" height="1368" loading="lazy" alt="{{ L.portalAlt }}">
+    </div>
+    <div class="pphone" aria-hidden="true"><img src="assets/portal-mobile.jpg" width="450" height="850" loading="lazy" alt=""></div>
+  </div>
+</section>
+
+<section id="get" class="section">
+  <div class="section-head">
+    <span class="kicker">{{ L.getKicker }}</span>
+    <h2>{{ L.getTitle }}</h2>
+  </div>
+  <div class="tiles">
+    <sc-for list="{{ gets }}" as="g" hint-placeholder-count="6">
+      <div class="tile">
+        <span class="tile-title">{{ g.title }}</span>
+        <span class="tile-body">{{ g.body }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="plans" class="section">
+  <div class="section-head">
+    <span class="kicker">{{ L.navPlans }}</span>
+    <h2>{{ L.plansTitle }}</h2>
+  </div>
+  <div class="plans">
+    <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+      <div class="{{ p.cls }}">
+        <div class="plan-top">
+          <span class="plan-name">{{ p.name }}</span>
+          <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}"><span class="badge">{{ L.recommended }}</span></sc-if>
+        </div>
+        <p class="plan-desc">{{ p.desc }}</p>
+        <div class="price"><b class="{{ p.priceCls }}">{{ p.price }}</b><span>{{ p.per }}</span></div>
+        <ul class="feats">
+          <sc-for list="{{ p.feats }}" as="f" hint-placeholder-count="4">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>{{ f.t }}</span></li>
+          </sc-for>
+        </ul>
+        <a href="#start" class="{{ p.btn }}">{{ p.cta }}</a>
+      </div>
+    </sc-for>
+  </div>
+  <div class="plans-foot">
+    <p>{{ L.allPlans }}</p>
+    <p>{{ L.custom }} <a href="#start" class="link">{{ L.customLink }}</a></p>
+  </div>
+  <sc-if value="{{ showCompare }}" hint-placeholder-val="{{ false }}">
+  <div class="compare">
+    <div class="section-head" style="gap:8px">
+      <span class="kicker">{{ L.compareKicker }}</span>
+      <h3>{{ compareTitle }}</h3>
+    </div>
+    <div class="cmp-rows">
+      <sc-for list="{{ compare }}" as="c" hint-placeholder-count="5">
+        <div class="{{ c.cls }}">
+          <div class="cmp-top">
+            <span><span class="cmp-name">{{ c.name }}</span> <span class="cmp-detail">· {{ c.detail }}</span></span>
+            <span class="cmp-price">{{ c.price }}</span>
+          </div>
+          <div class="cmp-track" aria-hidden="true"><div class="cmp-bar" style="width:{{ c.width }}"></div></div>
+        </div>
+      </sc-for>
+    </div>
+    <p class="note">{{ compareNote }}</p>
+  </div>
+  </sc-if>
+</section>
+
+<section id="faq" class="section">
+  <div class="split">
+    <div class="section-head">
+      <span class="kicker">{{ L.navFaq }}</span>
+      <h2>{{ L.faqTitle }}</h2>
+    </div>
+    <div class="faq">
+      <sc-for list="{{ faq }}" as="q" hint-placeholder-count="5">
+        <details>
+          <summary>{{ q.q }}</summary>
+          <p>{{ q.a }}</p>
+        </details>
+      </sc-for>
     </div>
   </div>
 </section>
 
-<section id="waitlist" style="border-top:1px solid #24221d;padding:clamp(72px,10vw,128px) 0;display:grid;gap:28px;justify-items:center;text-align:center">
-  <h2 style="margin:0;font-size:clamp(38px,6vw,80px);letter-spacing:-0.04em;font-weight:300;line-height:1;max-width:14ch;text-wrap:balance">Be among the first to use it.</h2>
-  <p style="margin:0;color:#a39c90;font-size:18px;line-height:1.6;max-width:44ch">We're opening access in small groups. Join the waitlist and we'll reach out personally.</p>
-  <form onSubmit="{{ submit }}" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%;max-width:520px">
+<section id="start" class="cta">
+  <h2>{{ L.ctaTitle }}</h2>
+  <p>{{ L.ctaBody }}</p>
+  <form onSubmit="{{ submit }}" class="form">
     <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
-      <input type="email" required="required" placeholder="Work email" style="flex:1 1 240px;min-width:0;padding:16px 22px;border-radius:999px;border:1px solid #3a362f;background:#161512;color:#efe9df;font:inherit;font-size:16px;outline:none"></input>
-      <button type="submit" style="padding:16px 26px;border-radius:999px;border:0;background:#e8a67f;color:#0f0e0c;font:inherit;font-size:16px;font-weight:500;cursor:pointer">Join the waitlist</button>
+      <input type="email" required="required" placeholder="{{ L.email }}" aria-label="{{ L.email }}" class="field"></input>
+      <button type="submit" class="btn btn-lg">{{ L.cta }}</button>
     </sc-if>
     <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:0;padding:16px 0;color:#e8a67f;font-size:17px">Thank you. We'll be in touch when your access is ready.</p>
+      <p class="thanks">{{ L.thanks }}</p>
     </sc-if>
   </form>
 </section>
 
-<footer style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid #24221d;color:#6b655b;font-size:13px;font-family:'IBM Plex Mono',monospace">
+<footer class="footer">
   <span>© 2026 Reydan</span>
-  <div style="display:flex;gap:24px"><a href="#" style="color:#6b655b">Privacy</a><a href="#" style="color:#6b655b">Contact</a></div>
+  <div><a href="{{ portalUrl }}">{{ L.navLogin }}</a><a href="#">{{ L.privacy }}</a><a href="#">{{ L.contact }}</a></div>
 </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;rawVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/orbital-raw.mp4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Showcase videos&quot;},&quot;editVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/orbital-edit.mp4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Showcase videos&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;rawVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/short70-raw.mp4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Showcase videos&quot;},&quot;editVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/short70-edit.mp4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Showcase videos&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { t: 0, joined: false };
+  // PLANS: prices (EUR per month) and short videos per month.
+  // price: null shows "On request" with an "Ask for a quote" button instead of a price.
+  // The texts for each plan are in i18n below.
+  plans = [
+    { price: 280, videos: 8 },
+    { price: null, videos: 30, featured: true },
+    { price: null, videos: 60 },
+  ];
+
+  // COMPARISON GRAPH: price of one video = monthly plan price / videos in that plan.
+  // Ours uses the cheapest plan that has a price. Competitors: monthly USD price and videos
+  // included, from their pricing pages on 13 Nov 2026. Re-check before publishing; prices change.
+  // Texts for each row are in "compareDetails" below, in the same order.
+  competitors = [
+    { name: 'Veedyou', usd: 2399, videos: 50 },      // Growth: up to 50 shorts
+    { name: 'Tasty Edits', usd: 2400, videos: 30 },  // 30 videos at $80 each
+    { name: 'ContentBuck', usd: 2999, videos: 45 },  // Growth: 40 shorts + 5 long videos
+  ];
+
+  // Copy for every language. To add one, copy the "en" block and translate it.
+  // In "plans", {n} is replaced with the plan's number of videos.
+  i18n = {
+    "en": {
+      "name": "English",
+      "intl": "en-GB",
+      "title": "Reydan · Video editing subscription for founders and experts",
+      "navResults": "Results",
+      "navHow": "How it works",
+      "navPlans": "Plans",
+      "navFaq": "FAQ",
+      "navCta": "Free test edit",
+      "navLogin": "Client login",
+      "cta": "Get a free test edit",
+      "banner": "Early access: your first edit is free.",
+      "h1": "Post every day. We'll handle the editing.",
+      "lead": "Monthly editing for founders and experts. Send your footage, get back ready-to-post shorts, YouTube videos and podcasts.",
+      "email": "Your email",
+      "note": "Free test edit from your next video. No card, no commitment.",
+      "seePlans": "See plans",
+      "proofShorts": "Shorts views in 90 days for one client",
+      "proofX": "views on X",
+      "thanks": "Thanks! We'll email you an upload link for your free test edit.",
+      "raw": "Raw footage",
+      "done": "Finished edit",
+      "tracks": ["V1", "B-roll", "Captions", "Audio"],
+      "stages": ["Selecting takes", "Refining pace", "Placing b-roll", "Captioning", "Mixing audio"],
+      "resultsTitle": "From near-zero Shorts to 433K views in 90 days.",
+      "resultsLead": "Short-form editing for investor and entrepreneur Jo Bhakdi (Pioneerlands), July to October 2026.",
+      "stats": [
+        ["433K", "Shorts views in 90 days"],
+        ["1.3M+", "views on X over the same period"],
+        ["102K", "views on one clip, which drew a public reply from Elon Musk"]
+      ],
+      "challengeLabel": "The challenge",
+      "challenge": "Dense, numbers-heavy analysis on tech and markets, hard to package for short-form. The Shorts channel had almost no views.",
+      "didLabel": "What we did",
+      "did": "Captioned vertical videos of about a minute, each built around one hook and one number. Exactly two Shorts a day, each one posted on both YouTube and X.",
+      "caseLink": "Read the full case study",
+      "alsoFor": "Also editing for",
+      "howTitle": "Your editing team, on a monthly plan.",
+      "steps": [
+        ["Pick a plan", "Choose how many videos you want each month. Want to see our work first? Start with a free test edit."],
+        ["Send footage whenever you shoot", "Upload raw clips to your client portal. Add brand guidelines or a reference video once, and we use them every time."],
+        ["Get your edits", "Review drafts in your portal, comment on the exact moment, approve and post."]
+      ],
+      "portalKicker": "Client portal",
+      "portalTitle": "Every video, one place.",
+      "portalSub": "Each client gets their own portal. Follow every project, review drafts and download finished videos, without long email threads.",
+      "portalFeats": [["Comment to the second", "Pause the draft, write your note, and it's pinned to that exact moment."], ["Approve in one click", "Happy with the cut? Approve it. Want changes? Send all your notes at once."], ["Always up to date", "See what's with you and what's with us, and download finished videos anytime."]],
+      "portalPdf": "See the portal tour (PDF)",
+      "portalAlt": "Reviewing a draft in the Reydan client portal",
+      "getKicker": "Every month",
+      "getTitle": "Everything you need to keep posting.",
+      "gets": [
+        ["A steady stream of posts", "Short, captioned edits, each built around one strong hook, ready to post every day."],
+        ["Every platform", "Versions for YouTube, Reels, TikTok, LinkedIn and X, reframed to keep the subject in shot."],
+        ["Captions in your style", "Accurate subtitles in your brand style, in the languages your audience speaks."],
+        ["Your brand, every time", "Fonts, colours, intros and lower thirds used consistently on every video."],
+        ["Long-form too", "Full YouTube videos, podcast episodes, interviews and webinars, edited start to finish, with shorts cut from them."],
+        ["One place for everything", "Track every video, comment on drafts to the second and download finals in your own client portal."]
+      ],
+      "plansTitle": "Simple monthly plans. Cancel anytime.",
+      "perMonth": "/ month",
+      "recommended": "Recommended",
+      "planCta": "Start with a free edit",
+      "onRequest": "On request",
+      "quoteCta": "Ask for a quote",
+      "plans": [
+        ["Starter", "For getting into a regular rhythm.", ["{n} short videos a month", "A dedicated editor", "Access to your client portal", "Vertical formats for Shorts, Reels and TikTok"]],
+        ["Growth", "For posting every day.", ["{n} short videos a month", "Every format, including LinkedIn and X", "A dedicated editor", "Access to your client portal"]],
+        ["Daily", "Two posts a day, like Pioneerlands.", ["{n} short videos a month", "Every format, including LinkedIn and X", "A dedicated editor", "Access to your client portal", "Monthly review of hooks and results"]]
+      ],
+      "allPlans": "Every plan includes captions, brand styling, revisions and your client portal, and you can cancel anytime.",
+      "custom": "Long-form YouTube videos, podcast episodes or webinars?",
+      "customLink": "Ask for a quote",
+      "compareKicker": "How we compare",
+      "compareTitle": "What one short video costs.",
+      "reydanDetail": "{plan} plan: {price} a month for {n} videos",
+      "compareDetails": ["Growth plan: {price} a month for {n} shorts", "{price} a month for {n} videos", "Growth plan: {price} a month for 40 shorts + 5 long videos"],
+      "compareNote": "Monthly plan price divided by the number of videos it includes. Competitor prices in US dollars from their pricing pages on 13 Nov 2026. Reydan in euros.",
+      "perVideo": "/ video",
+      "faqTitle": "Common questions.",
+      "faq": [
+        ["What kind of videos do you edit?", "Mostly people talking to camera: podcasts, interviews, founder updates and explainers. We cut them into short clips for YouTube Shorts, Reels, TikTok, LinkedIn and X, and edit full-length versions too."],
+        ["Do you edit long-form videos?", "Yes: full YouTube videos, video podcast episodes, interviews and webinars. Long form is priced separately from the monthly plans. Tell us what you make and how often, and we'll send you a quote."],
+        ["How fast do I get my videos?", "It depends on the length of the video and your plan. We agree a turnaround with you when you start, and you can follow every video in your client portal."],
+        ["How does the free test edit work?", "Leave your email and we'll send you an upload link. Send the footage for one video and get a finished edit back, free. No card needed."],
+        ["Can I change or cancel my plan?", "Yes. Plans run month to month: move up or down, or cancel before your next billing date."],
+        ["Who owns the videos?", "You do. Everything we deliver is yours to post, reuse and keep."]
+      ],
+      "ctaTitle": "See what we'd do with your next video.",
+      "ctaBody": "Send us one video's footage and get a finished edit back, free. If you like it, pick a plan.",
+      "privacy": "Privacy",
+      "contact": "Contact"
+    },
+    "et": {
+      "name": "Eesti",
+      "intl": "et-EE",
+      "title": "Reydan · Videomontaaž kuupaketina ettevõtjatele ja ekspertidele",
+      "navResults": "Tulemused",
+      "navHow": "Kuidas see töötab",
+      "navPlans": "Paketid",
+      "navFaq": "KKK",
+      "navCta": "Tasuta proovimontaaž",
+      "navLogin": "Logi sisse",
+      "cta": "Saa tasuta proovimontaaž",
+      "banner": "Varajane ligipääs: sinu esimene montaaž on tasuta.",
+      "h1": "Postita iga päev. Monteerimise teeme meie.",
+      "lead": "Igakuine montaaž ettevõtjatele ja ekspertidele. Saada oma materjal ja saad tagasi postitamiseks valmis lühivideod, YouTube'i videod ja podcastid.",
+      "email": "Sinu e-post",
+      "note": "Tasuta proovimontaaž sinu järgmisest videost. Ilma kaardi ja kohustusteta.",
+      "seePlans": "Vaata pakette",
+      "proofShorts": "Shortsi vaatamist 90 päevaga ühele kliendile",
+      "proofX": "vaatamist X-is",
+      "thanks": "Aitäh! Saadame sulle e-postiga lingi, kuhu saad tasuta proovimontaaži jaoks materjali üles laadida.",
+      "raw": "Toormaterjal",
+      "done": "Valmis video",
+      "tracks": ["V1", "B-roll", "Subtiitrid", "Heli"],
+      "stages": ["Parimate võtete valimine", "Tempo lihvimine", "B-rolli lisamine", "Subtiitrite lisamine", "Heli miksimine"],
+      "resultsTitle": "Peaaegu nullist 433 000 Shortsi vaatamiseni 90 päevaga.",
+      "resultsLead": "Lühivideote montaaž investorile ja ettevõtjale Jo Bhakdile (Pioneerlands), juulist oktoobrini 2026.",
+      "stats": [
+        ["433K", "Shortsi vaatamist 90 päevaga"],
+        ["1,3M+", "vaatamist X-is samal perioodil"],
+        ["102K", "vaatamist ühel klipil, millele vastas avalikult Elon Musk"]
+      ],
+      "challengeLabel": "Väljakutse",
+      "challenge": "Tihe ja numbriterohke analüüs tehnoloogiast ja turgudest, mida on raske lühivideoks vormida. Shortsi kanalil polnud peaaegu ühtegi vaatamist.",
+      "didLabel": "Mida me tegime",
+      "did": "Umbes minutipikkused subtiitritega vertikaalvideod, igaüks üles ehitatud ühe konksu ja ühe numbri ümber. Täpselt kaks Shortsi päevas, iga video postitati nii YouTube'i kui ka X-i.",
+      "caseLink": "Loe kogu juhtumiuuringut",
+      "alsoFor": "Monteerime ka neile",
+      "howTitle": "Sinu monteerimistiim kuupaketiga.",
+      "steps": [
+        ["Vali pakett", "Vali, mitu videot kuus soovid. Tahad enne meie tööd näha? Alusta tasuta proovimontaažiga."],
+        ["Saada materjal, kui filmid", "Laadi toorklipid üles oma kliendiportaali. Brändijuhised või näidisvideo lisad ühe korra ja me kasutame neid iga kord."],
+        ["Saa oma videod", "Vaata mustandeid portaalis, kommenteeri täpselt õiget hetke, kinnita ja postita."]
+      ],
+      "portalKicker": "Kliendiportaal",
+      "portalTitle": "Kõik videod ühes kohas.",
+      "portalSub": "Iga klient saab oma portaali. Jälgi projekte, vaata mustandeid ja laadi valmis videod alla ilma pikkade e-kirjade vahetuseta.",
+      "portalFeats": [["Kommentaarid sekundi täpsusega", "Peata mustand, kirjuta märkus ja see kinnitub täpselt sellele hetkele."], ["Kinnita ühe klikiga", "Montaaž meeldib? Kinnita. Soovid muudatusi? Saada kõik märkused korraga."], ["Alati ülevaade", "Näed, mis on sinu ja mis meie käes, ning saad valmis videod igal ajal alla laadida."]],
+      "portalPdf": "Vaata portaali tutvustust (PDF, inglise keeles)",
+      "portalAlt": "Mustandi ülevaatus Reydani kliendiportaalis",
+      "getKicker": "Igal kuul",
+      "getTitle": "Kõik, mida vajad, et postitamine ei katkeks.",
+      "gets": [
+        ["Pidev postituste voog", "Lühikesed subtiitritega videod, igaüks ühe tugeva konksu ümber, valmis iga päev postitamiseks."],
+        ["Kõik platvormid", "Versioonid YouTube'i, Reelsi, TikToki, LinkedIni ja X-i jaoks, kadreeritud nii, et esineja püsib kaadris."],
+        ["Subtiitrid sinu stiilis", "Täpsed subtiitrid sinu brändi stiilis ja keeltes, mida su publik räägib."],
+        ["Sinu bränd igas videos", "Fondid, värvid, introd ja alatiitrid on igas videos ühtmoodi."],
+        ["Ka pikad videod", "Terved YouTube'i videod, podcastiepisoodid, intervjuud ja veebinarid algusest lõpuni monteeritud, koos neist lõigatud lühiklippidega."],
+        ["Kõik ühes kohas", "Jälgi iga videot, kommenteeri mustandeid sekundi täpsusega ja laadi valmis failid alla oma kliendiportaalist."]
+      ],
+      "plansTitle": "Lihtsad kuupaketid. Lõpeta, millal soovid.",
+      "perMonth": "/ kuus",
+      "recommended": "Soovitatud",
+      "planCta": "Alusta tasuta montaažiga",
+      "onRequest": "Kokkuleppel",
+      "quoteCta": "Küsi hinnapakkumist",
+      "plans": [
+        ["Starter", "Regulaarse rütmi leidmiseks.", ["{n} lühivideot kuus", "Sinu oma monteerija", "Ligipääs kliendiportaalile", "Vertikaalformaadid Shortsi, Reelsi ja TikToki jaoks"]],
+        ["Growth", "Iga päev postitamiseks.", ["{n} lühivideot kuus", "Kõik formaadid, ka LinkedIn ja X", "Sinu oma monteerija", "Ligipääs kliendiportaalile"]],
+        ["Daily", "Kaks postitust päevas, nagu Pioneerlandsil.", ["{n} lühivideot kuus", "Kõik formaadid, ka LinkedIn ja X", "Sinu oma monteerija", "Ligipääs kliendiportaalile", "Igakuine konksude ja tulemuste ülevaade"]]
+      ],
+      "allPlans": "Igas paketis on subtiitrid, brändi stiil, parandused ja kliendiportaal ning paketi saad lõpetada igal ajal.",
+      "custom": "Pikad YouTube'i videod, podcastiepisoodid või veebinarid?",
+      "customLink": "Küsi hinnapakkumist",
+      "compareKicker": "Võrdlus",
+      "compareTitle": "Mis maksab üks lühivideo.",
+      "reydanDetail": "{plan}-pakett: {price} kuus {n} video eest",
+      "compareDetails": ["Growth-pakett: {price} kuus {n} lühivideo eest", "{price} kuus {n} video eest", "Growth-pakett: {price} kuus 40 lühivideo + 5 pika video eest"],
+      "compareNote": "Kuupaketi hind jagatud paketis olevate videote arvuga. Konkurentide hinnad USA dollarites nende hinnalehtedelt seisuga 13.11.2026. Reydani hinnad eurodes.",
+      "perVideo": "/ video",
+      "faqTitle": "Korduma kippuvad küsimused.",
+      "faq": [
+        ["Milliseid videoid te monteerite?", "Peamiselt kaamerasse rääkimist: podcastid, intervjuud, ettevõtjate uudised ja selgitavad videod. Teeme neist lühiklipid YouTube Shortsi, Reelsi, TikToki, LinkedIni ja X-i jaoks ning monteerime ka täispikad versioonid."],
+        ["Kas monteerite ka pikki videoid?", "Jah: terved YouTube'i videod, videopodcastide episoodid, intervjuud ja veebinarid. Pikkade videote hind on kuupakettidest eraldi. Kirjuta, mida ja kui tihti teed, ja saadame hinnapakkumise."],
+        ["Kui kiiresti videod valmis saan?", "See sõltub video pikkusest ja paketist. Lepime tähtaja kokku alustades ning iga video käiku saad jälgida oma kliendiportaalis."],
+        ["Kuidas tasuta proovimontaaž käib?", "Jäta oma e-post ja saadame sulle üleslaadimislingi. Saada ühe video materjal ja saad tasuta valmis montaaži tagasi. Kaarti pole vaja."],
+        ["Kas saan paketti vahetada või lõpetada?", "Jah. Paketid kehtivad kuu kaupa: vaheta suurema või väiksema vastu või lõpeta enne järgmist arveldusperioodi."],
+        ["Kellele videod kuuluvad?", "Sulle. Kõik, mis me üle anname, on sinu oma postitamiseks, taaskasutamiseks ja hoidmiseks."]
+      ],
+      "ctaTitle": "Vaata, mida teeksime sinu järgmise videoga.",
+      "ctaBody": "Saada meile ühe video materjal ja saad tasuta valmis montaaži. Kui meeldib, vali pakett.",
+      "privacy": "Privaatsus",
+      "contact": "Kontakt"
+    },
+    "fr": {
+      "name": "Français",
+      "intl": "fr-FR",
+      "title": "Reydan · Le montage vidéo par abonnement pour fondateurs et experts",
+      "navResults": "Résultats",
+      "navHow": "Comment ça marche",
+      "navPlans": "Formules",
+      "navFaq": "FAQ",
+      "navCta": "Montage test gratuit",
+      "navLogin": "Espace client",
+      "cta": "Obtenir un montage test gratuit",
+      "banner": "Accès anticipé : votre premier montage est offert.",
+      "h1": "Publiez chaque jour. On s'occupe du montage.",
+      "lead": "Le montage mensuel des fondateurs et experts. Envoyez vos rushes, recevez des vidéos courtes, des vidéos YouTube et des podcasts prêts à publier.",
+      "email": "Votre e-mail",
+      "note": "Un montage test gratuit à partir de votre prochaine vidéo. Sans carte, sans engagement.",
+      "seePlans": "Voir les formules",
+      "proofShorts": "vues sur Shorts en 90 jours pour un client",
+      "proofX": "vues sur X",
+      "thanks": "Merci ! Nous vous envoyons par e-mail un lien pour importer vos rushes pour le montage test gratuit.",
+      "raw": "Rushes",
+      "done": "Montage final",
+      "tracks": ["V1", "B-roll", "Sous-titres", "Audio"],
+      "stages": ["Sélection des prises", "Ajustement du rythme", "Ajout du b-roll", "Sous-titrage", "Mixage audio"],
+      "resultsTitle": "De presque zéro à 433 000 vues sur Shorts en 90 jours.",
+      "resultsLead": "Montage de formats courts pour l'investisseur et entrepreneur Jo Bhakdi (Pioneerlands), de juillet à octobre 2026.",
+      "stats": [
+        ["433K", "vues sur Shorts en 90 jours"],
+        ["1,3M+", "vues sur X sur la même période"],
+        ["102K", "vues pour un seul clip, qui a reçu une réponse publique d'Elon Musk"]
+      ],
+      "challengeLabel": "Le défi",
+      "challenge": "Des analyses denses et chiffrées sur la tech et les marchés, difficiles à adapter en format court. La chaîne Shorts n'avait presque aucune vue.",
+      "didLabel": "Ce que nous avons fait",
+      "did": "Des vidéos verticales sous-titrées d'environ une minute, chacune construite autour d'une accroche et d'un chiffre. Exactement deux Shorts par jour, chacun publié à la fois sur YouTube et sur X.",
+      "caseLink": "Lire l'étude de cas complète",
+      "alsoFor": "Nous montons aussi pour",
+      "howTitle": "Votre équipe de montage, en abonnement mensuel.",
+      "steps": [
+        ["Choisissez une formule", "Choisissez le nombre de vidéos par mois. Envie de voir notre travail d'abord ? Commencez par un montage test gratuit."],
+        ["Envoyez vos rushes dès que vous tournez", "Importez vos clips bruts dans votre portail client. Ajoutez une seule fois votre charte graphique ou une vidéo de référence, nous les réutilisons à chaque fois."],
+        ["Recevez vos vidéos", "Visionnez les versions dans votre portail, commentez le moment précis, validez et publiez."]
+      ],
+      "portalKicker": "Portail client",
+      "portalTitle": "Toutes vos vidéos, au même endroit.",
+      "portalSub": "Chaque client a son propre portail. Suivez vos projets, validez les versions et téléchargez les vidéos finales, sans longs échanges d'e-mails.",
+      "portalFeats": [["Des commentaires à la seconde près", "Mettez la vidéo en pause, écrivez votre note : elle est épinglée à ce moment précis."], ["Validez en un clic", "Le montage vous plaît ? Validez. Des changements ? Envoyez toutes vos notes d'un coup."], ["Toujours à jour", "Voyez ce qui est chez vous et ce qui est chez nous, et téléchargez vos vidéos à tout moment."]],
+      "portalPdf": "Découvrir le portail (PDF, en anglais)",
+      "portalAlt": "Validation d'une version dans le portail client Reydan",
+      "getKicker": "Chaque mois",
+      "getTitle": "Tout ce qu'il faut pour publier sans interruption.",
+      "gets": [
+        ["Un flux régulier de publications", "Des vidéos courtes et sous-titrées, chacune construite autour d'une accroche forte, prêtes à publier chaque jour."],
+        ["Toutes les plateformes", "Des versions pour YouTube, Reels, TikTok, LinkedIn et X, recadrées pour garder le sujet à l'image."],
+        ["Des sous-titres à votre style", "Des sous-titres précis, dans le style de votre marque et dans les langues de votre audience."],
+        ["Votre marque, partout", "Polices, couleurs, intros et bandeaux titres appliqués de façon cohérente sur chaque vidéo."],
+        ["Formats longs aussi", "Des vidéos YouTube complètes, épisodes de podcast, interviews et webinaires, montés de A à Z, avec les clips courts qui en sont tirés."],
+        ["Tout au même endroit", "Suivez chaque vidéo, commentez les versions à la seconde près et téléchargez les fichiers finaux dans votre portail client."]
+      ],
+      "plansTitle": "Des formules mensuelles simples. Sans engagement.",
+      "perMonth": "/ mois",
+      "recommended": "Recommandé",
+      "planCta": "Commencer par un montage gratuit",
+      "onRequest": "Sur devis",
+      "quoteCta": "Demander un devis",
+      "plans": [
+        ["Starter", "Pour prendre un rythme régulier.", ["{n} vidéos courtes par mois", "Un monteur dédié", "Accès à votre portail client", "Formats verticaux pour Shorts, Reels et TikTok"]],
+        ["Growth", "Pour publier chaque jour.", ["{n} vidéos courtes par mois", "Tous les formats, y compris LinkedIn et X", "Un monteur dédié", "Accès à votre portail client"]],
+        ["Daily", "Deux publications par jour, comme Pioneerlands.", ["{n} vidéos courtes par mois", "Tous les formats, y compris LinkedIn et X", "Un monteur dédié", "Accès à votre portail client", "Un bilan mensuel des accroches et des résultats"]]
+      ],
+      "allPlans": "Toutes les formules incluent les sous-titres, votre charte, les retouches et le portail client, et sont résiliables à tout moment.",
+      "custom": "Des vidéos YouTube longues, des épisodes de podcast ou des webinaires ?",
+      "customLink": "Demandez un devis",
+      "compareKicker": "Comparatif",
+      "compareTitle": "Le prix d'une vidéo courte.",
+      "reydanDetail": "Formule {plan} : {price} par mois pour {n} vidéos",
+      "compareDetails": ["Formule Growth : {price} par mois pour {n} vidéos courtes", "{price} par mois pour {n} vidéos", "Formule Growth : {price} par mois pour 40 vidéos courtes + 5 vidéos longues"],
+      "compareNote": "Prix de l'abonnement mensuel divisé par le nombre de vidéos incluses. Prix des concurrents en dollars US, tels qu'affichés sur leurs pages de tarifs le 13/11/2026. Prix Reydan en euros.",
+      "perVideo": "/ vidéo",
+      "faqTitle": "Questions fréquentes.",
+      "faq": [
+        ["Quel type de vidéos montez-vous ?", "Surtout des prises de parole face caméra : podcasts, interviews, messages de dirigeants et vidéos explicatives. Nous en tirons des clips courts pour YouTube Shorts, Reels, TikTok, LinkedIn et X, et nous montons aussi les versions longues."],
+        ["Montez-vous des formats longs ?", "Oui : vidéos YouTube complètes, épisodes de podcast vidéo, interviews et webinaires. Les formats longs sont facturés à part des abonnements mensuels. Dites-nous ce que vous produisez et à quel rythme, et nous vous enverrons un devis."],
+        ["Quels sont les délais de livraison ?", "Cela dépend de la durée de la vidéo et de votre formule. Nous convenons d'un délai avec vous au démarrage, et vous suivez chaque vidéo dans votre portail client."],
+        ["Comment fonctionne le montage test gratuit ?", "Laissez votre e-mail, nous vous envoyons un lien d'import. Envoyez les rushes d'une vidéo et recevez gratuitement un montage finalisé. Aucune carte requise."],
+        ["Puis-je changer de formule ou résilier ?", "Oui. Les formules sont mensuelles : passez à une formule supérieure ou inférieure, ou résiliez avant la prochaine échéance."],
+        ["À qui appartiennent les vidéos ?", "À vous. Tout ce que nous livrons vous appartient : publiez-le, réutilisez-le, gardez-le."]
+      ],
+      "ctaTitle": "Voyez ce que nous ferions de votre prochaine vidéo.",
+      "ctaBody": "Envoyez-nous les rushes d'une vidéo et recevez un montage finalisé, offert. Si le résultat vous convainc, choisissez une formule.",
+      "privacy": "Confidentialité",
+      "contact": "Contact"
+    },
+    "de": {
+      "name": "Deutsch",
+      "intl": "de-DE",
+      "title": "Reydan · Videoschnitt im Abo für Gründer und Experten",
+      "navResults": "Ergebnisse",
+      "navHow": "So funktioniert's",
+      "navPlans": "Pakete",
+      "navFaq": "FAQ",
+      "navCta": "Gratis-Testschnitt",
+      "navLogin": "Kundenlogin",
+      "cta": "Kostenlosen Testschnitt sichern",
+      "banner": "Early Access: Ihr erster Schnitt ist kostenlos.",
+      "h1": "Posten Sie jeden Tag. Den Schnitt übernehmen wir.",
+      "lead": "Monatlicher Videoschnitt für Gründer und Experten. Schicken Sie Ihr Material und erhalten Sie fertige Kurzvideos, YouTube-Videos und Podcasts.",
+      "email": "Ihre E-Mail-Adresse",
+      "note": "Kostenloser Testschnitt aus Ihrem nächsten Video. Ohne Karte, ohne Verpflichtung.",
+      "seePlans": "Pakete ansehen",
+      "proofShorts": "Shorts-Aufrufe in 90 Tagen für einen Kunden",
+      "proofX": "Aufrufe auf X",
+      "thanks": "Vielen Dank! Wir schicken Ihnen per E-Mail einen Upload-Link für Ihren kostenlosen Testschnitt.",
+      "raw": "Rohmaterial",
+      "done": "Fertiger Schnitt",
+      "tracks": ["V1", "B-Roll", "Untertitel", "Audio"],
+      "stages": ["Takes auswählen", "Tempo verfeinern", "B-Roll einfügen", "Untertitel setzen", "Ton mischen"],
+      "resultsTitle": "Von fast null auf 433.000 Shorts-Aufrufe in 90 Tagen.",
+      "resultsLead": "Kurzvideo-Schnitt für den Investor und Unternehmer Jo Bhakdi (Pioneerlands), Juli bis Oktober 2026.",
+      "stats": [
+        ["433K", "Shorts-Aufrufe in 90 Tagen"],
+        ["1,3M+", "Aufrufe auf X im selben Zeitraum"],
+        ["102K", "Aufrufe für einen einzigen Clip, auf den Elon Musk öffentlich antwortete"]
+      ],
+      "challengeLabel": "Die Herausforderung",
+      "challenge": "Dichte, zahlenlastige Analysen zu Technologie und Märkten, schwer ins Kurzformat zu bringen. Der Shorts-Kanal hatte kaum Aufrufe.",
+      "didLabel": "Was wir gemacht haben",
+      "did": "Untertitelte Hochformat-Videos von etwa einer Minute, jedes um einen Hook und eine Zahl gebaut. Genau zwei Shorts pro Tag, jedes auf YouTube und auf X gepostet.",
+      "caseLink": "Ganze Fallstudie lesen",
+      "alsoFor": "Wir schneiden auch für",
+      "howTitle": "Ihr Schnittteam im Monatsabo.",
+      "steps": [
+        ["Paket wählen", "Legen Sie fest, wie viele Videos Sie pro Monat möchten. Sie wollen zuerst unsere Arbeit sehen? Starten Sie mit einem kostenlosen Testschnitt."],
+        ["Material senden, wann immer Sie drehen", "Laden Sie Ihre Rohclips in Ihr Kundenportal hoch. Markenrichtlinien oder ein Referenzvideo fügen Sie einmal hinzu, wir nutzen sie jedes Mal."],
+        ["Ihre Videos erhalten", "Sehen Sie Entwürfe im Portal an, kommentieren Sie die genaue Stelle, geben Sie frei und posten Sie."]
+      ],
+      "portalKicker": "Kundenportal",
+      "portalTitle": "Alle Videos an einem Ort.",
+      "portalSub": "Jeder Kunde bekommt ein eigenes Portal. Verfolgen Sie Ihre Projekte, prüfen Sie Entwürfe und laden Sie fertige Videos herunter, ohne lange E-Mail-Ketten.",
+      "portalFeats": [["Feedback sekundengenau", "Video pausieren, Notiz schreiben: Sie wird genau an diesem Moment angeheftet."], ["Freigabe mit einem Klick", "Gefällt Ihnen der Schnitt? Freigeben. Änderungen gewünscht? Alle Notizen auf einmal senden."], ["Immer im Bild", "Sehen Sie, was bei Ihnen und was bei uns liegt, und laden Sie fertige Videos jederzeit herunter."]],
+      "portalPdf": "Portal-Tour ansehen (PDF, Englisch)",
+      "portalAlt": "Entwurf prüfen im Reydan-Kundenportal",
+      "getKicker": "Jeden Monat",
+      "getTitle": "Alles, was Sie brauchen, um dranzubleiben.",
+      "gets": [
+        ["Ein stetiger Strom an Posts", "Kurze, untertitelte Videos, jedes um einen starken Hook gebaut, bereit zum täglichen Posten."],
+        ["Jede Plattform", "Versionen für YouTube, Reels, TikTok, LinkedIn und X, neu kadriert, damit das Motiv im Bild bleibt."],
+        ["Untertitel in Ihrem Stil", "Präzise Untertitel im Stil Ihrer Marke, in den Sprachen Ihres Publikums."],
+        ["Ihre Marke, konsequent", "Schriften, Farben, Intros und Bauchbinden, einheitlich in jedem Video."],
+        ["Auch Langformate", "Komplette YouTube-Videos, Podcast-Folgen, Interviews und Webinare, von Anfang bis Ende geschnitten, samt den Kurzclips daraus."],
+        ["Alles an einem Ort", "Verfolgen Sie jedes Video, kommentieren Sie Entwürfe sekundengenau und laden Sie die fertigen Dateien in Ihrem Kundenportal herunter."]
+      ],
+      "plansTitle": "Einfache Monatspakete. Jederzeit kündbar.",
+      "perMonth": "/ Monat",
+      "recommended": "Empfohlen",
+      "planCta": "Mit Gratis-Schnitt starten",
+      "onRequest": "Auf Anfrage",
+      "quoteCta": "Angebot anfragen",
+      "plans": [
+        ["Starter", "Für einen regelmäßigen Rhythmus.", ["{n} Kurzvideos pro Monat", "Ein fester Editor", "Zugang zu Ihrem Kundenportal", "Hochformate für Shorts, Reels und TikTok"]],
+        ["Growth", "Für tägliches Posten.", ["{n} Kurzvideos pro Monat", "Alle Formate, auch LinkedIn und X", "Ein fester Editor", "Zugang zu Ihrem Kundenportal"]],
+        ["Daily", "Zwei Posts pro Tag, wie bei Pioneerlands.", ["{n} Kurzvideos pro Monat", "Alle Formate, auch LinkedIn und X", "Ein fester Editor", "Zugang zu Ihrem Kundenportal", "Monatlicher Check von Hooks und Ergebnissen"]]
+      ],
+      "allPlans": "Jedes Paket enthält Untertitel, Ihr Branding, Korrekturen und das Kundenportal und ist jederzeit kündbar.",
+      "custom": "Lange YouTube-Videos, Podcast-Folgen oder Webinare?",
+      "customLink": "Angebot anfragen",
+      "compareKicker": "Im Vergleich",
+      "compareTitle": "Was ein Kurzvideo kostet.",
+      "reydanDetail": "{plan}-Paket: {price} im Monat für {n} Videos",
+      "compareDetails": ["Growth-Paket: {price} im Monat für {n} Kurzvideos", "{price} im Monat für {n} Videos", "Growth-Paket: {price} im Monat für 40 Kurzvideos + 5 Langvideos"],
+      "compareNote": "Monatlicher Paketpreis geteilt durch die Anzahl der enthaltenen Videos. Preise der Wettbewerber in US-Dollar laut ihren Preisseiten am 13.11.2026. Reydan in Euro.",
+      "perVideo": "/ Video",
+      "faqTitle": "Häufige Fragen.",
+      "faq": [
+        ["Welche Videos schneiden Sie?", "Vor allem Inhalte, in denen jemand in die Kamera spricht: Podcasts, Interviews, Updates von Gründern und Erklärvideos. Daraus machen wir kurze Clips für YouTube Shorts, Reels, TikTok, LinkedIn und X und schneiden auch die Langversionen."],
+        ["Schneiden Sie auch lange Videos?", "Ja: komplette YouTube-Videos, Video-Podcast-Folgen, Interviews und Webinare. Langformate werden getrennt von den Monatspaketen berechnet. Sagen Sie uns, was Sie produzieren und wie oft, und wir schicken Ihnen ein Angebot."],
+        ["Wie schnell bekomme ich meine Videos?", "Das hängt von der Länge des Videos und Ihrem Paket ab. Wir vereinbaren zum Start eine Lieferzeit mit Ihnen, und jedes Video verfolgen Sie in Ihrem Kundenportal."],
+        ["Wie funktioniert der kostenlose Testschnitt?", "Hinterlassen Sie Ihre E-Mail-Adresse, wir schicken Ihnen einen Upload-Link. Senden Sie das Material eines Videos und Sie erhalten kostenlos einen fertigen Schnitt. Keine Karte nötig."],
+        ["Kann ich das Paket wechseln oder kündigen?", "Ja. Die Pakete laufen monatlich: Wechseln Sie nach oben oder unten oder kündigen Sie vor dem nächsten Abrechnungszeitraum."],
+        ["Wem gehören die Videos?", "Ihnen. Alles, was wir liefern, gehört Ihnen – zum Posten, Wiederverwenden und Behalten."]
+      ],
+      "ctaTitle": "Sehen Sie, was wir aus Ihrem nächsten Video machen.",
+      "ctaBody": "Schicken Sie uns das Material eines Videos und erhalten Sie kostenlos einen fertigen Schnitt. Wenn er überzeugt, wählen Sie ein Paket.",
+      "privacy": "Datenschutz",
+      "contact": "Kontakt"
+    }
+  };
+  state = {
+    t: 0,
+    joined: false,
+    // ?lang= in the address wins, then the visitor's last choice, otherwise English.
+    lang: (() => {
+      const known = ['en', 'et', 'fr', 'de'];
+      const pick = v => known.find(k => (v || '').toLowerCase().startsWith(k));
+      try {
+        const saved = pick(new URLSearchParams(location.search).get('lang')) || pick(localStorage.getItem('reydan-lang'));
+        if (saved) return saved;
+      } catch (e) {}
+      return 'en';
+    })(),
+  };
+  applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.title = this.i18n[lang].title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', this.i18n[lang].lead);
+  }
+  setLang(lang) {
+    this.setState({ lang });
+    this.applyLang(lang);
+    try {
+      localStorage.setItem('reydan-lang', lang);
+      const url = new URL(location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+    } catch (e) {}
+  }
   componentDidMount() {
+    this.applyLang(this.state.lang);
     this.iv = setInterval(() => { if (this.props.animate ?? true) this.setState(s => ({ t: (s.t + 0.0025) % 1 })); }, 40);
   }
   componentWillUnmount() { clearInterval(this.iv); }
+  compareVals(L, money) {
+    const ours = this.plans.find(p => p.price != null);
+    if (!ours) return { showCompare: false, compareTitle: '', compareNote: '', compare: [] };
+    const each = (cur, v) => new Intl.NumberFormat(L.intl, { style: 'currency', currency: cur, minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(v);
+    const usd = new Intl.NumberFormat(L.intl, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+    const fill = (t, v) => t.replace('{plan}', v.plan ?? '').replace('{price}', v.price).replace('{n}', v.n);
+    const rows = [
+      { name: 'Reydan', per: ours.price / ours.videos, cur: 'EUR', us: true,
+        detail: fill(L.reydanDetail, { plan: L.plans[this.plans.indexOf(ours)][0], price: money.format(ours.price), n: ours.videos }) },
+      ...this.competitors.map((c, k) => ({ name: c.name, per: c.usd / c.videos, cur: 'USD',
+        detail: fill(L.compareDetails[k], { price: usd.format(c.usd), n: c.videos }) })),
+    ].sort((a, b) => a.per - b.per);
+    const max = Math.max(...rows.map(r => r.per)) / 0.9;
+    return {
+      showCompare: true,
+      compareTitle: L.compareTitle,
+      compareNote: L.compareNote,
+      compare: rows.map(r => ({
+        name: r.name, detail: r.detail,
+        price: each(r.cur, Math.round(r.per * 100) / 100) + ' ' + L.perVideo,
+        width: Math.min(100, r.per / max * 100).toFixed(1) + '%',
+        cls: 'cmp-row' + (r.us ? ' cmp-us' : ''),
+      })),
+    };
+  }
   renderVals() {
     const t = this.state.t;
+    const L = this.i18n[this.state.lang];
     const mk = (spans, bg) => spans.map(([l, w]) => ({ left: l + '%', width: w + '%', bg, opacity: l / 100 < t ? 1 : 0.22 }));
     const tracks = [
-      { label: 'V1', clips: mk([[0, 14], [15, 9], [25, 18], [44, 11], [56, 20], [77, 12], [90, 10]], '#cfc7b8') },
-      { label: 'B-roll', clips: mk([[8, 6], [30, 9], [52, 7], [70, 8], [86, 6]], '#7d766a') },
-      { label: 'Captions', clips: mk([[1, 10], [12, 8], [22, 12], [36, 9], [47, 14], [63, 10], [75, 11], [88, 10]], '#e8a67f') },
-      { label: 'Audio', clips: mk([[0, 100]], '#403b34') },
+      { label: L.tracks[0], clips: mk([[0, 14], [15, 9], [25, 18], [44, 11], [56, 20], [77, 12], [90, 10]], '#1a1a1a') },
+      { label: L.tracks[1], clips: mk([[8, 6], [30, 9], [52, 7], [70, 8], [86, 6]], '#adb8c2') },
+      { label: L.tracks[2], clips: mk([[1, 10], [12, 8], [22, 12], [36, 9], [47, 14], [63, 10], [75, 11], [88, 10]], '#108a00') },
+      { label: L.tracks[3], clips: mk([[0, 100]], '#d4dbe2') },
     ];
     const secs = Math.floor(t * 118);
-    const stages = ['Selecting takes', 'Refining pace', 'Placing b-roll', 'Captioning', 'Mixing audio'];
     const vid = url => {
       url = (url || '').trim();
       if (!url) return { file: false, embed: false, src: '' };
@@ -180,25 +941,46 @@ class Component extends DCLogic {
       if (vm) return { file: false, embed: true, src: `https://player.vimeo.com/video/${vm[1]}?autoplay=1&muted=1&loop=1&background=1` };
       return { file: true, embed: false, src: url };
     };
+    const money = new Intl.NumberFormat(L.intl, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
     return {
       raw: vid(this.props.rawVideo), edit: vid(this.props.editVideo),
       tracks, playhead: t,
       timecode: `00:0${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`,
-      stage: stages[Math.min(4, Math.floor(t * 5))],
+      stage: L.stages[Math.min(4, Math.floor(t * 5))],
       joined: this.state.joined, notJoined: !this.state.joined,
       submit: e => { e.preventDefault(); this.setState({ joined: true }); },
-      gets: [
-        { title: 'A finished edit', body: 'Best takes, clean pacing, no dead air. Ready to post as delivered.' },
-        { title: 'Every format', body: 'Versions for YouTube, Reels, TikTok and LinkedIn, reframed to keep the subject in shot.' },
-        { title: 'Captions included', body: 'Accurate subtitles in your brand style, in the languages your audience speaks.' },
-        { title: 'Your brand, applied', body: 'Fonts, colours, intros and lower thirds used consistently on every video.' },
-        { title: 'Revisions on request', body: 'Ask for changes in plain language and get an updated cut back quickly.' },
-      ],
-      steps: [
-        { n: '01', title: 'You send footage', body: 'Upload raw clips and, if you have them, brand guidelines or a reference video. That is all we need.' },
-        { n: '02', title: 'We edit', body: 'We build the cut: best takes, pacing, captions, b-roll and sound, to the standard Reydan is known for.' },
-        { n: '03', title: 'You publish', body: 'Receive your videos in every format, ready to post. Request changes any time.' },
-      ],
+      L,
+      portalFeats: L.portalFeats.map(([title, body]) => ({ title, body })),
+      // Client portal, opened in the visitor's language.
+      portalUrl: 'https://portal.r3ydan.ee/login?lang=' + this.state.lang,
+      langs: ['en', 'et', 'fr', 'de'].map(id => ({
+        code: id.toUpperCase(),
+        name: this.i18n[id].name,
+        on: String(id === this.state.lang),
+        cls: 'seg-btn' + (id === this.state.lang ? ' seg-on' : ''),
+        pick: () => this.setLang(id),
+      })),
+      stats: L.stats.map(([n, l]) => ({ n, l })),
+      xViews: L.stats[1][0],
+      gets: L.gets.map(([title, body]) => ({ title, body })),
+      steps: L.steps.map(([title, body], i) => ({ n: '0' + (i + 1), title, body })),
+      plans: this.plans.map((p, i) => {
+        const [name, desc, feats] = L.plans[i];
+        const priced = p.price != null;
+        return {
+          name, desc,
+          price: priced ? money.format(p.price) : L.onRequest,
+          per: priced ? L.perMonth : '',
+          priceCls: priced ? '' : 'quote',
+          cta: priced ? L.planCta : L.quoteCta,
+          feats: feats.map(f => ({ t: f.replace('{n}', p.videos) })),
+          featured: !!p.featured,
+          cls: 'plan' + (p.featured ? ' plan-on' : ''),
+          btn: 'btn' + (p.featured ? '' : ' btn-ghost'),
+        };
+      }),
+      faq: L.faq.map(([q, a]) => ({ q, a })),
+      ...this.compareVals(L, money),
     };
   }
 }
