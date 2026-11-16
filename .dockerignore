@@ -1,0 +1,12 @@
+# Only the public site goes into the image.
+.git
+.gitignore
+.claude
+.dockerignore
+Dockerfile
+fly.toml
+CNAME
+server.js
+package.json
+node_modules
+originals
