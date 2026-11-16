@@ -408,7 +408,6 @@ h2{margin:0;font-size:clamp(30px,4vw,48px);line-height:1.1;font-weight:500;lette
   </div>
   <div class="plans-foot">
     <p>{{ L.allPlans }}</p>
-    <p>{{ L.deposit }}</p>
     <p>{{ L.custom }} <a href="#start" class="link">{{ L.customLink }}</a></p>
   </div>
   <sc-if value="{{ showCompare }}" hint-placeholder-val="{{ false }}">
@@ -569,7 +568,6 @@ class Component extends DCLogic {
         ["Daily", "Two posts a day, like Pioneerlands.", ["{n} short videos a month", "Every format, including LinkedIn and X", "A dedicated editor", "Access to your client portal", "Monthly review of hooks and results"]]
       ],
       "allPlans": "Every plan includes captions, brand styling, revisions and your client portal, and you can cancel anytime.",
-      "deposit": "Every project starts once 50% of the total invoice is paid.",
       "custom": "Long-form YouTube videos, podcast episodes or webinars?",
       "customLink": "Ask for a quote",
       "compareKicker": "How we compare",
@@ -584,7 +582,6 @@ class Component extends DCLogic {
         ["Do you edit long-form videos?", "Yes: full YouTube videos, video podcast episodes, interviews and webinars. Long form is priced separately from the monthly plans. Tell us what you make and how often, and we'll send you a quote."],
         ["How fast do I get my videos?", "It depends on the length of the video and your plan. We agree a turnaround with you when you start, and you can follow every video in your client portal."],
         ["How does the free test edit work?", "Leave your email and we'll send you an upload link. Send the footage for one video and get a finished edit back, free. No card needed."],
-        ["How does payment work?", "Before we start any project, we ask for 50% of the total invoice up front. Work begins as soon as that payment arrives."],
         ["Can I change or cancel my plan?", "Yes. Plans run month to month: move up or down, or cancel before your next billing date."],
         ["Who owns the videos?", "You do. Everything we deliver is yours to post, reuse and keep."]
       ],
@@ -666,7 +663,6 @@ class Component extends DCLogic {
         ["Daily", "Kaks postitust päevas, nagu Pioneerlandsil.", ["{n} lühivideot kuus", "Kõik formaadid, ka LinkedIn ja X", "Sinu oma monteerija", "Ligipääs kliendiportaalile", "Igakuine konksude ja tulemuste ülevaade"]]
       ],
       "allPlans": "Igas paketis on subtiitrid, brändi stiil, parandused ja kliendiportaal ning paketi saad lõpetada igal ajal.",
-      "deposit": "Iga projekt algab pärast seda, kui 50% kogu arve summast on tasutud.",
       "custom": "Pikad YouTube'i videod, podcastiepisoodid või veebinarid?",
       "customLink": "Küsi hinnapakkumist",
       "compareKicker": "Võrdlus",
@@ -681,7 +677,6 @@ class Component extends DCLogic {
         ["Kas monteerite ka pikki videoid?", "Jah: terved YouTube'i videod, videopodcastide episoodid, intervjuud ja veebinarid. Pikkade videote hind on kuupakettidest eraldi. Kirjuta, mida ja kui tihti teed, ja saadame hinnapakkumise."],
         ["Kui kiiresti videod valmis saan?", "See sõltub video pikkusest ja paketist. Lepime tähtaja kokku alustades ning iga video käiku saad jälgida oma kliendiportaalis."],
         ["Kuidas tasuta proovimontaaž käib?", "Jäta oma e-post ja saadame sulle üleslaadimislingi. Saada ühe video materjal ja saad tasuta valmis montaaži tagasi. Kaarti pole vaja."],
-        ["Kuidas maksmine käib?", "Enne iga projekti algust palume tasuda ettemaksuna 50% kogu arve summast. Alustame tööga kohe, kui makse on laekunud."],
         ["Kas saan paketti vahetada või lõpetada?", "Jah. Paketid kehtivad kuu kaupa: vaheta suurema või väiksema vastu või lõpeta enne järgmist arveldusperioodi."],
         ["Kellele videod kuuluvad?", "Sulle. Kõik, mis me üle anname, on sinu oma postitamiseks, taaskasutamiseks ja hoidmiseks."]
       ],
@@ -763,7 +758,6 @@ class Component extends DCLogic {
         ["Daily", "Deux publications par jour, comme Pioneerlands.", ["{n} vidéos courtes par mois", "Tous les formats, y compris LinkedIn et X", "Un monteur dédié", "Accès à votre portail client", "Un bilan mensuel des accroches et des résultats"]]
       ],
       "allPlans": "Toutes les formules incluent les sous-titres, votre charte, les retouches et le portail client, et sont résiliables à tout moment.",
-      "deposit": "Chaque projet démarre dès que 50 % du montant total de la facture est réglé.",
       "custom": "Des vidéos YouTube longues, des épisodes de podcast ou des webinaires ?",
       "customLink": "Demandez un devis",
       "compareKicker": "Comparatif",
@@ -778,7 +772,6 @@ class Component extends DCLogic {
         ["Montez-vous des formats longs ?", "Oui : vidéos YouTube complètes, épisodes de podcast vidéo, interviews et webinaires. Les formats longs sont facturés à part des abonnements mensuels. Dites-nous ce que vous produisez et à quel rythme, et nous vous enverrons un devis."],
         ["Quels sont les délais de livraison ?", "Cela dépend de la durée de la vidéo et de votre formule. Nous convenons d'un délai avec vous au démarrage, et vous suivez chaque vidéo dans votre portail client."],
         ["Comment fonctionne le montage test gratuit ?", "Laissez votre e-mail, nous vous envoyons un lien d'import. Envoyez les rushes d'une vidéo et recevez gratuitement un montage finalisé. Aucune carte requise."],
-        ["Comment se passe le paiement ?", "Avant de démarrer un projet, nous demandons un acompte de 50 % du montant total de la facture. Le travail commence dès réception de ce paiement."],
         ["Puis-je changer de formule ou résilier ?", "Oui. Les formules sont mensuelles : passez à une formule supérieure ou inférieure, ou résiliez avant la prochaine échéance."],
         ["À qui appartiennent les vidéos ?", "À vous. Tout ce que nous livrons vous appartient : publiez-le, réutilisez-le, gardez-le."]
       ],
@@ -860,7 +853,6 @@ class Component extends DCLogic {
         ["Daily", "Zwei Posts pro Tag, wie bei Pioneerlands.", ["{n} Kurzvideos pro Monat", "Alle Formate, auch LinkedIn und X", "Ein fester Editor", "Zugang zu Ihrem Kundenportal", "Monatlicher Check von Hooks und Ergebnissen"]]
       ],
       "allPlans": "Jedes Paket enthält Untertitel, Ihr Branding, Korrekturen und das Kundenportal und ist jederzeit kündbar.",
-      "deposit": "Jedes Projekt startet, sobald 50 % der Gesamtrechnung bezahlt sind.",
       "custom": "Lange YouTube-Videos, Podcast-Folgen oder Webinare?",
       "customLink": "Angebot anfragen",
       "compareKicker": "Im Vergleich",
@@ -875,7 +867,6 @@ class Component extends DCLogic {
         ["Schneiden Sie auch lange Videos?", "Ja: komplette YouTube-Videos, Video-Podcast-Folgen, Interviews und Webinare. Langformate werden getrennt von den Monatspaketen berechnet. Sagen Sie uns, was Sie produzieren und wie oft, und wir schicken Ihnen ein Angebot."],
         ["Wie schnell bekomme ich meine Videos?", "Das hängt von der Länge des Videos und Ihrem Paket ab. Wir vereinbaren zum Start eine Lieferzeit mit Ihnen, und jedes Video verfolgen Sie in Ihrem Kundenportal."],
         ["Wie funktioniert der kostenlose Testschnitt?", "Hinterlassen Sie Ihre E-Mail-Adresse, wir schicken Ihnen einen Upload-Link. Senden Sie das Material eines Videos und Sie erhalten kostenlos einen fertigen Schnitt. Keine Karte nötig."],
-        ["Wie funktioniert die Bezahlung?", "Vor Beginn jedes Projekts bitten wir um eine Anzahlung von 50 % der Gesamtrechnung. Wir legen los, sobald die Zahlung eingegangen ist."],
         ["Kann ich das Paket wechseln oder kündigen?", "Ja. Die Pakete laufen monatlich: Wechseln Sie nach oben oder unten oder kündigen Sie vor dem nächsten Abrechnungszeitraum."],
         ["Wem gehören die Videos?", "Ihnen. Alles, was wir liefern, gehört Ihnen – zum Posten, Wiederverwenden und Behalten."]
       ],
